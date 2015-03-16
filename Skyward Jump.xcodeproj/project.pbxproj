@@ -15,6 +15,13 @@
 		D0B51CC81AB7589100C26D1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B51CC71AB7589100C26D1F /* Images.xcassets */; };
 		D0B51CCB1AB7589100C26D1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B51CC91AB7589100C26D1F /* LaunchScreen.xib */; };
 		D0B51CD71AB7589100C26D1F /* Skyward_JumpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CD61AB7589100C26D1F /* Skyward_JumpTests.swift */; };
+		D0B51CE11AB75E2200C26D1F /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CE01AB75E2200C26D1F /* MainMenuViewController.swift */; };
+		D0B51CE41AB7776500C26D1F /* CharacterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CE31AB7776500C26D1F /* CharacterSprite.swift */; };
+		D0B51CE61AB7779300C26D1F /* CloudSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CE51AB7779300C26D1F /* CloudSprite.swift */; };
+		D0B51CE91AB7785C00C26D1F /* MultiplayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CE81AB7785C00C26D1F /* MultiplayerManager.swift */; };
+		D0B51CEB1AB7786C00C26D1F /* CommunicationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */; };
+		D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */; };
+		D0B51CF11AB7797E00C26D1F /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CF01AB7797E00C26D1F /* World.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +47,13 @@
 		D0B51CD01AB7589100C26D1F /* Skyward JumpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Skyward JumpTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B51CD51AB7589100C26D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0B51CD61AB7589100C26D1F /* Skyward_JumpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skyward_JumpTests.swift; sourceTree = "<group>"; };
+		D0B51CE01AB75E2200C26D1F /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		D0B51CE31AB7776500C26D1F /* CharacterSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSprite.swift; sourceTree = "<group>"; };
+		D0B51CE51AB7779300C26D1F /* CloudSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudSprite.swift; sourceTree = "<group>"; };
+		D0B51CE81AB7785C00C26D1F /* MultiplayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerManager.swift; sourceTree = "<group>"; };
+		D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationStrategy.swift; sourceTree = "<group>"; };
+		D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterCommunication.swift; sourceTree = "<group>"; };
+		D0B51CF01AB7797E00C26D1F /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +95,12 @@
 		D0B51CB91AB7589100C26D1F /* Skyward Jump */ = {
 			isa = PBXGroup;
 			children = (
+				D0B51CEE1AB7794500C26D1F /* ViewControllers */,
+				D0B51CE71AB7785200C26D1F /* Multiplayer */,
+				D0B51CE21AB7775900C26D1F /* Sprites */,
+				D0B51CEF1AB7795300C26D1F /* Scenes */,
+				D0B51CF01AB7797E00C26D1F /* World.swift */,
 				D0B51CBC1AB7589100C26D1F /* AppDelegate.swift */,
-				D0B51CBE1AB7589100C26D1F /* GameScene.sks */,
-				D0B51CC01AB7589100C26D1F /* GameScene.swift */,
-				D0B51CC21AB7589100C26D1F /* GameViewController.swift */,
 				D0B51CC41AB7589100C26D1F /* Main.storyboard */,
 				D0B51CC71AB7589100C26D1F /* Images.xcassets */,
 				D0B51CC91AB7589100C26D1F /* LaunchScreen.xib */,
@@ -116,6 +132,43 @@
 				D0B51CD51AB7589100C26D1F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0B51CE21AB7775900C26D1F /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				D0B51CE31AB7776500C26D1F /* CharacterSprite.swift */,
+				D0B51CE51AB7779300C26D1F /* CloudSprite.swift */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
+		D0B51CE71AB7785200C26D1F /* Multiplayer */ = {
+			isa = PBXGroup;
+			children = (
+				D0B51CE81AB7785C00C26D1F /* MultiplayerManager.swift */,
+				D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */,
+				D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */,
+			);
+			name = Multiplayer;
+			sourceTree = "<group>";
+		};
+		D0B51CEE1AB7794500C26D1F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0B51CE01AB75E2200C26D1F /* MainMenuViewController.swift */,
+				D0B51CC21AB7589100C26D1F /* GameViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D0B51CEF1AB7795300C26D1F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D0B51CBE1AB7589100C26D1F /* GameScene.sks */,
+				D0B51CC01AB7589100C26D1F /* GameScene.swift */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +272,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B51CE11AB75E2200C26D1F /* MainMenuViewController.swift in Sources */,
 				D0B51CC11AB7589100C26D1F /* GameScene.swift in Sources */,
+				D0B51CE91AB7785C00C26D1F /* MultiplayerManager.swift in Sources */,
+				D0B51CE61AB7779300C26D1F /* CloudSprite.swift in Sources */,
+				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,
 				D0B51CC31AB7589100C26D1F /* GameViewController.swift in Sources */,
+				D0B51CE41AB7776500C26D1F /* CharacterSprite.swift in Sources */,
 				D0B51CBD1AB7589100C26D1F /* AppDelegate.swift in Sources */,
+				D0B51CEB1AB7786C00C26D1F /* CommunicationStrategy.swift in Sources */,
+				D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +473,7 @@
 				D0B51CDC1AB7589100C26D1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0B51CDD1AB7589100C26D1F /* Build configuration list for PBXNativeTarget "Skyward JumpTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +482,7 @@
 				D0B51CDF1AB7589100C26D1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
