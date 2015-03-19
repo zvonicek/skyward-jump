@@ -17,22 +17,13 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MultiplayerManager.sharedInstance.comm.authenticate(self)
+        //MultiplayerManager.sharedInstance.comm.authenticate(self)
     }
 
     @IBAction func didClickMultiplayerButton(sender: UIButton) {
         MultiplayerManager.sharedInstance.comm.findMatch(self, callback: { () -> Void in
             self.performSegueWithIdentifier("multiplayerSegue", sender: self)
         })
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if let dest = segue.destinationViewController as? GameViewController {
-            if segue.identifier == "multiplayerSegue" {
-                dest.multiplayerMode = true
-            }
-        }
-        
     }
     
 }

@@ -9,42 +9,23 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    var character: CharacterSprite!
-    weak var controllerDelegate: GameViewControllerDelegate?
+    let player = SKSpriteNode(imageNamed: "pika.png")
+    let testPlatform = SKSpriteNode(imageNamed: "platform.png")
     
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        player.position = CGPointMake(50, 50)
+        self.addChild(player)
         
-        self.addChild(myLabel)
+        testPlatform.position = CGPointMake(100, 100);
+        testPlatform.xScale = 0.5
+        testPlatform.yScale = 0.5
+        self.addChild(testPlatform)
         
-        character = CharacterSprite()
-        character.xScale = 0.5
-        character.yScale = 0.5
-        character.position = CGPointMake(500, 500)
         
-        let action = SKAction.sequence([
-            SKAction.moveByX(100, y: 0, duration: 1),
-            SKAction.moveByX(-100, y: 0, duration: 1),
-            ])
-        
-        character.runAction(SKAction.repeatActionForever(action))
-        self.addChild(character)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /* Called when a touch begins */
         
-        self.paused = !self.paused
-        
-        if (self.paused) {
-            println("paused")
-        } else {
-            println("resumed")
-        }
     }
    
     override func update(currentTime: CFTimeInterval) {
