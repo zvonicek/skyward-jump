@@ -8,23 +8,6 @@
 
 import Foundation
 
-class World: NSCoding {
-    var clouds = [CloudSprite]()
-    
-    // MARK: NSCoding
-    
-    required convenience init(coder aDecoder: NSCoder) {
-        self.init()
-        self.clouds = aDecoder.decodeObjectForKey("clouds") as [CloudSprite]
-    }
-    
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.clouds, forKey: "clouds")
-    }
-    
-    // MARK: 
-    
-    init() {
-        
-    }
+struct World {
+    var platforms: [Platform]
 }
