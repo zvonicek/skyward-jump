@@ -10,6 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     var character: CharacterSprite!
+    weak var controllerDelegate: GameViewControllerDelegate?
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -40,7 +41,9 @@ class GameScene: SKScene {
         self.paused = !self.paused
         
         if (self.paused) {
-            
+            println("paused")
+        } else {
+            println("resumed")
         }
     }
    

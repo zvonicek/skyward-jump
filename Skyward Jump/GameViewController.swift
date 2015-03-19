@@ -25,12 +25,22 @@ extension SKNode {
     }
 }
 
-class GameViewController: UIViewController {
+protocol GameViewControllerDelegate: class {
+    func dismissViewController()
+}
 
+class GameViewController: UIViewController, GameViewControllerDelegate {
+
+    var multiplayerMode = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let scene = multiplayerMode ? MultiplayerGameScene.unarchiveFromFile("GameScene") : GameScene.unarchiveFromFile("GameScene")
 
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
+        if let scene = scene as? GameScene {
+            scene.controllerDelegate = self
+            
             // Configure the view.
             let skView = self.view as SKView
             skView.showsFPS = true
@@ -65,5 +75,11 @@ class GameViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    // MARK: GameViewControllerDelegate
+    
+    func dismissViewController() {
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
 }
