@@ -18,16 +18,30 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jlz-Ub-Ch0">
                                 <rect key="frame" x="104" y="105" width="113" height="33"/>
-                                <state key="normal" title="New Game">
+                                <state key="normal" title="Single player">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LVB-YS-i5n" kind="modal" modalTransitionStyle="crossDissolve" animates="NO" id="plr-lq-RxU"/>
+                                    <segue destination="LVB-YS-i5n" kind="modal" identifier="singleplayerSegue" modalTransitionStyle="crossDissolve" animates="NO" id="plr-lq-RxU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbG-Ay-ycC">
+                                <rect key="frame" x="107" y="146" width="107" height="30"/>
+                                <state key="normal" title="Multiplayer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickMultiplayerButton:" destination="0TG-DD-v0T" eventType="touchUpInside" id="Byc-Cd-gvn"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="multiPlayerButton" destination="LbG-Ay-ycC" id="2Mc-G4-Pfr"/>
+                        <outlet property="singlePlayerButton" destination="Jlz-Ub-Ch0" id="N80-xo-wA2"/>
+                        <segue destination="LVB-YS-i5n" kind="modal" identifier="multiplayerSegue" animates="NO" id="97q-bZ-Zyz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2L-nh-IfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,4 +71,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="plr-lq-RxU"/>
+    </inferredMetricsTieBreakers>
 </document>

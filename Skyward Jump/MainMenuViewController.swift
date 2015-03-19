@@ -7,29 +7,32 @@
 //
 
 import UIKit
+import GameKit
 
 class MainMenuViewController: UIViewController {
 
+    @IBOutlet var singlePlayerButton: UIButton!
+    @IBOutlet var multiPlayerButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        MultiplayerManager.sharedInstance.comm.authenticate(self)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func didClickMultiplayerButton(sender: UIButton) {
+        MultiplayerManager.sharedInstance.comm.findMatch(self, callback: { () -> Void in
+            self.performSegueWithIdentifier("multiplayerSegue", sender: self)
+        })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if let dest = segue.destinationViewController as? GameViewController {
+            if segue.identifier == "multiplayerSegue" {
+                dest.multiplayerMode = true
+            }
+        }
+        
     }
-    */
-
+    
 }

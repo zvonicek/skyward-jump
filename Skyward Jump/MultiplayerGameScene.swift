@@ -47,6 +47,6 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     }
     
     func matchEnded() {
-        
+        controllerDelegate?.dismissViewController()
     }
 }

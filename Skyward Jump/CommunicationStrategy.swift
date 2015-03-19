@@ -8,8 +8,18 @@
 
 import Foundation
 
+typealias Callback = () -> Void
+
 protocol CommunicationStrategy {
-    func findMatch()
-    func sendData(data: NSData)
+    var delegate: CommunicationDelegate? {get set}
+    
+    func authenticate(vc: UIViewController)
+    func findMatch(vc: UIViewController, callback: Callback)
+    func sendMove(point: CGPoint)
     func disconnect()
+}
+
+protocol CommunicationDelegate: class {
+    func updateOpponentMove(point: CGPoint)
+    func matchEnded()
 }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D04254A61AB8AA1C00191A40 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D04254A51AB8AA1C00191A40 /* GameKitHelper.m */; };
+		D04254A81AB980EE00191A40 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04254A71AB980EE00191A40 /* Message.swift */; };
+		D04254AA1AB9988400191A40 /* MultiplayerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04254A91AB9988400191A40 /* MultiplayerGameScene.swift */; };
+		D0507AC01AB8531F00977F08 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0507ABF1AB8531F00977F08 /* GameKit.framework */; };
 		D0B51CBD1AB7589100C26D1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CBC1AB7589100C26D1F /* AppDelegate.swift */; };
 		D0B51CBF1AB7589100C26D1F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D0B51CBE1AB7589100C26D1F /* GameScene.sks */; };
 		D0B51CC11AB7589100C26D1F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CC01AB7589100C26D1F /* GameScene.swift */; };
@@ -35,6 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D04254A31AB8AA1C00191A40 /* Skyward Jump-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Skyward Jump-Bridging-Header.h"; sourceTree = "<group>"; };
+		D04254A41AB8AA1C00191A40 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
+		D04254A51AB8AA1C00191A40 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
+		D04254A71AB980EE00191A40 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		D04254A91AB9988400191A40 /* MultiplayerGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerGameScene.swift; sourceTree = "<group>"; };
+		D0507ABF1AB8531F00977F08 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D0B51CB71AB7589100C26D1F /* Skyward Jump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyward Jump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B51CBB1AB7589100C26D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0B51CBC1AB7589100C26D1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0507AC01AB8531F00977F08 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +88,7 @@
 		D0B51CAE1AB7589100C26D1F = {
 			isa = PBXGroup;
 			children = (
+				D0507ABF1AB8531F00977F08 /* GameKit.framework */,
 				D0B51CB91AB7589100C26D1F /* Skyward Jump */,
 				D0B51CD31AB7589100C26D1F /* Skyward JumpTests */,
 				D0B51CB81AB7589100C26D1F /* Products */,
@@ -105,6 +117,7 @@
 				D0B51CC71AB7589100C26D1F /* Images.xcassets */,
 				D0B51CC91AB7589100C26D1F /* LaunchScreen.xib */,
 				D0B51CBA1AB7589100C26D1F /* Supporting Files */,
+				D04254A31AB8AA1C00191A40 /* Skyward Jump-Bridging-Header.h */,
 			);
 			path = "Skyward Jump";
 			sourceTree = "<group>";
@@ -146,9 +159,12 @@
 		D0B51CE71AB7785200C26D1F /* Multiplayer */ = {
 			isa = PBXGroup;
 			children = (
+				D04254A41AB8AA1C00191A40 /* GameKitHelper.h */,
+				D04254A51AB8AA1C00191A40 /* GameKitHelper.m */,
 				D0B51CE81AB7785C00C26D1F /* MultiplayerManager.swift */,
 				D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */,
 				D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */,
+				D04254A71AB980EE00191A40 /* Message.swift */,
 			);
 			name = Multiplayer;
 			sourceTree = "<group>";
@@ -167,6 +183,7 @@
 			children = (
 				D0B51CBE1AB7589100C26D1F /* GameScene.sks */,
 				D0B51CC01AB7589100C26D1F /* GameScene.swift */,
+				D04254A91AB9988400191A40 /* MultiplayerGameScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -220,6 +237,12 @@
 				TargetAttributes = {
 					D0B51CB61AB7589100C26D1F = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5VWB99DS38;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					D0B51CCF1AB7589100C26D1F = {
 						CreatedOnToolsVersion = 6.2;
@@ -272,6 +295,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04254AA1AB9988400191A40 /* MultiplayerGameScene.swift in Sources */,
+				D04254A61AB8AA1C00191A40 /* GameKitHelper.m in Sources */,
 				D0B51CE11AB75E2200C26D1F /* MainMenuViewController.swift in Sources */,
 				D0B51CC11AB7589100C26D1F /* GameScene.swift in Sources */,
 				D0B51CE91AB7785C00C26D1F /* MultiplayerManager.swift in Sources */,
@@ -280,6 +305,7 @@
 				D0B51CC31AB7589100C26D1F /* GameViewController.swift in Sources */,
 				D0B51CE41AB7776500C26D1F /* CharacterSprite.swift in Sources */,
 				D0B51CBD1AB7589100C26D1F /* AppDelegate.swift in Sources */,
+				D04254A81AB980EE00191A40 /* Message.swift in Sources */,
 				D0B51CEB1AB7786C00C26D1F /* CommunicationStrategy.swift in Sources */,
 				D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */,
 			);
@@ -404,9 +430,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Skyward Jump/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Skyward Jump/Skyward Jump-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -414,9 +446,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Skyward Jump/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Skyward Jump/Skyward Jump-Bridging-Header.h";
 			};
 			name = Release;
 		};
