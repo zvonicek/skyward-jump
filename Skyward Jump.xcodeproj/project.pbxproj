@@ -11,6 +11,7 @@
 		D04254A81AB980EE00191A40 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04254A71AB980EE00191A40 /* Message.swift */; };
 		D04254AA1AB9988400191A40 /* MultiplayerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04254A91AB9988400191A40 /* MultiplayerGameScene.swift */; };
 		D0506FD01ABAF06E0009BD7E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0506FCF1ABAF06E0009BD7E /* Platform.swift */; };
+		D0506FD51ABAF9E90009BD7E /* WorldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */; };
 		D0507AC01AB8531F00977F08 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0507ABF1AB8531F00977F08 /* GameKit.framework */; };
 		D0B51CBD1AB7589100C26D1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CBC1AB7589100C26D1F /* AppDelegate.swift */; };
 		D0B51CBF1AB7589100C26D1F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D0B51CBE1AB7589100C26D1F /* GameScene.sks */; };
@@ -46,6 +47,7 @@
 		D04254A71AB980EE00191A40 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D04254A91AB9988400191A40 /* MultiplayerGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerGameScene.swift; sourceTree = "<group>"; };
 		D0506FCF1ABAF06E0009BD7E /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldFactory.swift; sourceTree = "<group>"; };
 		D0507ABF1AB8531F00977F08 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D0B51CB71AB7589100C26D1F /* Skyward Jump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyward Jump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B51CBB1AB7589100C26D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,7 +94,7 @@
 			children = (
 				D0B51CF01AB7797E00C26D1F /* World.swift */,
 				D0506FCF1ABAF06E0009BD7E /* Platform.swift */,
-				D0506FD21ABAF0D90009BD7E /* WorldManager.swift */,
+				D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */,
 			);
 			name = World;
 			sourceTree = "<group>";
@@ -307,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0506FD51ABAF9E90009BD7E /* WorldFactory.swift in Sources */,
 				D0506FD01ABAF06E0009BD7E /* Platform.swift in Sources */,
 				D04254AA1AB9988400191A40 /* MultiplayerGameScene.swift in Sources */,
 				D04254A61AB8AA1C00191A40 /* GameKitHelper.m in Sources */,
