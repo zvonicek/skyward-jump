@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ADE211BF1ABCA7F9006EE1AA /* CollisionCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE211BE1ABCA7F9006EE1AA /* CollisionCategories.swift */; };
 		D04254A61AB8AA1C00191A40 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D04254A51AB8AA1C00191A40 /* GameKitHelper.m */; };
 		D04254A81AB980EE00191A40 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04254A71AB980EE00191A40 /* Message.swift */; };
 		D04254AA1AB9988400191A40 /* MultiplayerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04254A91AB9988400191A40 /* MultiplayerGameScene.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ADE211BE1ABCA7F9006EE1AA /* CollisionCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionCategories.swift; sourceTree = "<group>"; };
 		D04254A31AB8AA1C00191A40 /* Skyward Jump-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Skyward Jump-Bridging-Header.h"; sourceTree = "<group>"; };
 		D04254A41AB8AA1C00191A40 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
 		D04254A51AB8AA1C00191A40 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			children = (
 				D0B51CE31AB7776500C26D1F /* CharacterSprite.swift */,
 				D0B51CE51AB7779300C26D1F /* CloudSprite.swift */,
+				ADE211BE1ABCA7F9006EE1AA /* CollisionCategories.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				D04254A61AB8AA1C00191A40 /* GameKitHelper.m in Sources */,
 				D0B51CE11AB75E2200C26D1F /* MainMenuViewController.swift in Sources */,
 				D0B51CC11AB7589100C26D1F /* GameScene.swift in Sources */,
+				ADE211BF1ABCA7F9006EE1AA /* CollisionCategories.swift in Sources */,
 				D0B51CE91AB7785C00C26D1F /* MultiplayerManager.swift in Sources */,
 				D0B51CE61AB7779300C26D1F /* CloudSprite.swift in Sources */,
 				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,
