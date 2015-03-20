@@ -13,7 +13,7 @@ class CloudSprite: SKNode {
     let platformSprite = SKSpriteNode(imageNamed: "platform.png")
     
     
-    //Adds physics to platforms
+    //Adds physics to platforms.
     func platformPhysics() {
         
         
@@ -26,7 +26,7 @@ class CloudSprite: SKNode {
     }
     
    
-    //Function only create 1 platform at a fixed posistion
+    //Function only create 1 platform at a fixed posistion.
     func createPlatforms() -> SKNode {
         
         platformSprite.position = CGPointMake(200, 100);
