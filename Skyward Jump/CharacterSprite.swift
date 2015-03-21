@@ -25,7 +25,7 @@ class CharacterSprite: SKNode {
         playerSprite.physicsBody?.usesPreciseCollisionDetection = true
         
         playerSprite.physicsBody?.categoryBitMask = Category.playerCategory // category
-        playerSprite.physicsBody?.collisionBitMask = 0 //what type of collision it can have
+        playerSprite.physicsBody?.collisionBitMask =  Category.platformCategory | Category.floorCategory | Category.wallCategory //what type of collision it can have
         playerSprite.physicsBody?.contactTestBitMask = Category.platformCategory | Category.floorCategory | Category.wallCategory //inform when these type of collision occurs
         
     }
