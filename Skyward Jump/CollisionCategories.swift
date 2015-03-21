@@ -10,11 +10,10 @@ import Foundation
 
 struct Categories {
     
-    static let WallCategory: UInt32 = 0x1 << 1
-    static let PlatformCategory: UInt32 = 0x1 << 2
-    static let FloorCategory: UInt32 = 0x1 << 3
-    static let PlayerCatergory: UInt32 = 0x1 << 4
-    static let NothingCategory: UInt32 = 0x1 << 5
+    static let playerCategory: UInt32 = 0x1 << 1
+    static let platformCategory: UInt32 = 0x1 << 2
+    static let floorCategory: UInt32 = 0x1 << 3
+    static let wallCategory: UInt32 = 0x1 << 4
    
 
     
