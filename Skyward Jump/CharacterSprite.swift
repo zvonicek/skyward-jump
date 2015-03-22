@@ -11,7 +11,7 @@ import SpriteKit
 class CharacterSprite: SKNode {
     
     let playerSprite = SKSpriteNode(imageNamed: "pika.png")
-    
+    var facingRight = false
     
     func playerPhysics() {
         
@@ -50,9 +50,13 @@ class CharacterSprite: SKNode {
         self.addChild(playerSprite)
         
         return playerSprite
-        
     }
-
+    
+    func flipFace() {
+        let flipAction = SKAction.scaleXTo(playerSprite.xScale * -1, duration: 0.0)
+        playerSprite.runAction(flipAction)
+        facingRight = !facingRight
+    }
     
 
 }
