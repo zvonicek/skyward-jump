@@ -14,8 +14,9 @@ class CloudSprite: SKNode {
     
     func platformPhysics() {
         
-        //Fix space between player and platform
-        platformSprite.physicsBody = SKPhysicsBody(rectangleOfSize: platformSprite.size)
+        
+        //platformSprite.physicsBody = SKPhysicsBody(rectangleOfSize: platformSprite.size)
+        platformSprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "platform"), size: platformSprite.size)
         platformSprite.physicsBody?.dynamic = false
         platformSprite.physicsBody?.usesPreciseCollisionDetection = true
         platformSprite.physicsBody?.friction = 0.0

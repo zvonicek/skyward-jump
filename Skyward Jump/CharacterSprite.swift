@@ -15,7 +15,8 @@ class CharacterSprite: SKNode {
     
     func playerPhysics() {
         
-        playerSprite.physicsBody = SKPhysicsBody(circleOfRadius: playerSprite.size.width / 2)
+        //playerSprite.physicsBody = SKPhysicsBody(circleOfRadius: playerSprite.size.width / 2)
+        playerSprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "pika"), size: playerSprite.size)
         playerSprite.physicsBody?.dynamic = false
         playerSprite.physicsBody?.allowsRotation = false
         playerSprite.physicsBody?.restitution = 1.0 //makes it bounce
@@ -37,7 +38,8 @@ class CharacterSprite: SKNode {
     
     func startPlayerImpulse() {
         playerSprite.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 30.0))
-        
+        println("Given initial impulse")
+
     }
     
     func createPlayer() -> SKNode {

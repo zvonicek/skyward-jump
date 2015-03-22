@@ -56,6 +56,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func collisionDetected() {
         
         player.physicsBody?.applyForce(CGVector(dx: 0.0, dy: 50.0))
+        println("Force applied")
         
     }
     
@@ -77,12 +78,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         /*Not behaving right, should only detect collison when player is moving downward...*/
-        //React to contact between player and platform
-        if (firstBody.categoryBitMask == Category.playerCategory && secondBody.categoryBitMask == Category.platformCategory) && (player.physicsBody?.velocity.dy < 0) {
-            
-            collisionDetected() //This is not called
-            //test result with console
+        //React to contact between player and platform, and check if velocity y direction is < 0, which
+        //means it is moving downwards. Should only collide downwards.
+        if (firstBody.categoryBitMask == Category.playerCategory && secondBody.categoryBitMask == Category.platformCategory && player.physicsBody?.velocity.dy < 0) {
             println("Collision with platform")
+            
+            collisionDetected() //This is not called, but no force are applied
+            
             
         }
         
@@ -101,8 +103,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         touched = true
         for touch: AnyObject in touches {
             location = touch.locationInNode(self)
+            player.startPlayerDynamics()
+            player.startPlayerImpulse()
             
         }
+        
         player.startPlayerDynamics()
         player.startPlayerImpulse()
         
