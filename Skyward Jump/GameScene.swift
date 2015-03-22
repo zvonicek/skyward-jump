@@ -96,20 +96,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else {
             let touch = touches.anyObject() as UITouch
             let touchLocation = touch.locationInNode(self) as CGPoint
+            adjustFacingDirection(touchLocation)
             moveToPosition(touchLocation)
         }
     }
     
     //Function for moving from one position to a touch position. Scale to speed movement.
     func moveToPosition(position: CGPoint) {
-        /*let speed = 0.1 as CGFloat
-        var dx = position.x - player.position.x
-        var dy = player.position.y
-        dx = dx * speed
-        dy = dy * speed*/
-        
         //new position of player updated here
-        player.position = CGPointMake(position.x, player.position.y)
+        let newPosition = CGPointMake(position.x, player.position.y)
+        let dx = abs(position.x - player.position.x)/1000
+        let time = NSTimeInterval(dx + 0.8)
+        player.runAction(SKAction.moveToX(position.x, duration: time))
     }
     
     func adjustFacingDirection(location: CGPoint) {
@@ -120,9 +118,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
-        
-        //TORUS
+        let pWidth = player.sprite.size.width
+        if player.position.x > self.size.width + pWidth {
+            player.position = CGPoint(x: -pWidth, y: player.position.y)
+        } else if player.position.x < -pWidth {
+            player.position = CGPoint(x: self.size.width + pWidth, y: player.position.y)
+        }
     }
     
     

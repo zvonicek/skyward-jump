@@ -13,7 +13,8 @@ class CloudSprite: SKNode {
     let sprite = SKSpriteNode(imageNamed: "platform.png")
     
     func platformPhysics(scale: CGFloat) {
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: scale*sprite.size.width, height: scale*sprite.size.height))
+        let scaledSize = CGSize(width: scale * sprite.size.width, height: scale * sprite.size.height)
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: scaledSize)
         self.physicsBody?.dynamic = false
         self.physicsBody?.categoryBitMask = Category.Platform
         self.physicsBody?.collisionBitMask = 0
