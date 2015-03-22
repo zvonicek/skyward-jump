@@ -31,12 +31,12 @@ class CloudSprite: SKNode {
     
     //Should be able to create multiple platforms
     //Function only create 1 platform at a fixed posistion
-    func createPlatforms(pos: CGPoint) -> SKNode {
+    func createPlatforms(pos: CGPoint, scale: CGFloat) -> SKNode {
         
         let posOnScene = CGPoint(x: pos.x, y: pos.y)
         platformSprite.position = posOnScene
-        platformSprite.xScale = 0.5
-        platformSprite.yScale = 0.5
+        platformSprite.xScale = scale
+        platformSprite.yScale = scale
         platformPhysics()
         
         self.addChild(platformSprite)

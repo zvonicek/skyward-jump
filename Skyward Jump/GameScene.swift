@@ -17,6 +17,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let platform2: CloudSprite = CloudSprite() //2nd platform node
     //    let platform3: PlatformSprite = PlatformSprite() //3rd platform node
     
+    //Floor, so the character doesn't get lost
+    let floor: CloudSprite = CloudSprite()
+    
     //Controll attributes
     var touched: Bool = false
     
@@ -39,10 +42,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         player.createPlayer()
-        platform.createPlatforms(CGPoint(x: 200, y: 100))
-        platform2.createPlatforms(CGPoint(x: 50, y: 200))
+        platform.createPlatforms(CGPoint(x: 200, y: 100), scale: CGFloat(0.5))
+        platform2.createPlatforms(CGPoint(x: 50, y: 200), scale: CGFloat(0.5))
         //        platform3.createPlatforms(CGPoint(x: 200, y: 350))
-        
+        floor.createPlatforms(CGPoint(x: 300, y: -100), scale: 5)
         
     }
     
@@ -51,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(platform)
         self.addChild(platform2)
         //        self.addChild(platform3)
+        self.addChild(floor)
     }
     
     func collisionDetected() {
@@ -102,10 +106,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //move node to touch location
         touched = true
         for touch: AnyObject in touches {
-            location = touch.locationInNode(self)
+            location = touch.locationInNode(self) as CGPoint
             player.startPlayerDynamics()
             player.startPlayerImpulse()
-            
+            adjustFacingDirection(location)
         }
         
         player.startPlayerDynamics()
@@ -132,6 +136,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.position = CGPointMake(player.position.x + dx, player.position.y + dy)
     }
     
+    func adjustFacingDirection(location: CGPoint) {
+        if (player.facingRight && player.position.x > location.x) |
+            (!player.facingRight && player.position.x < location.x) {
+            player.flipFace()
+        }
+    }
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
