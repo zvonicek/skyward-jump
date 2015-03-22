@@ -23,6 +23,7 @@ class CharacterSprite: SKNode {
         playerSprite.physicsBody?.friction = 0.0
         playerSprite.physicsBody?.angularDamping = 0.0
         playerSprite.physicsBody?.linearDamping = 0.0
+        playerSprite.physicsBody?.mass = 1.0
         playerSprite.physicsBody?.usesPreciseCollisionDetection = true
         
         playerSprite.physicsBody?.categoryBitMask = Category.playerCategory // category
