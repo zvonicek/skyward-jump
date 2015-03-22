@@ -10,51 +10,46 @@ import SpriteKit
 
 class CharacterSprite: SKNode {
     
-    let playerSprite = SKSpriteNode(imageNamed: "pika.png")
+    let sprite = SKSpriteNode(imageNamed: "pika.png")
     var facingRight = false
     
     func playerPhysics() {
+        self.physicsBody?.dynamic = false
+        self.physicsBody = SKPhysicsBody(circleOfRadius: sprite.size.width/2)
+        self.physicsBody?.dynamic = false
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.restitution = 1.0
+        self.physicsBody?.friction = 0.0
+        self.physicsBody?.angularDamping = 0.0
+        self.physicsBody?.linearDamping = 0.0
+        self.physicsBody?.mass = 1.0
+        self.physicsBody?.usesPreciseCollisionDetection = true
         
-        //playerSprite.physicsBody = SKPhysicsBody(circleOfRadius: playerSprite.size.width / 2)
-        playerSprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "pika"), size: playerSprite.size)
-        playerSprite.physicsBody?.dynamic = false
-        playerSprite.physicsBody?.allowsRotation = false
-        playerSprite.physicsBody?.restitution = 1.0 //makes it bounce
-        playerSprite.physicsBody?.friction = 0.0
-        playerSprite.physicsBody?.angularDamping = 0.0
-        playerSprite.physicsBody?.linearDamping = 0.0
-        playerSprite.physicsBody?.mass = 1.0
-        playerSprite.physicsBody?.usesPreciseCollisionDetection = true
-        
-        playerSprite.physicsBody?.categoryBitMask = Category.playerCategory // category
-        playerSprite.physicsBody?.collisionBitMask =  Category.platformCategory | Category.floorCategory | Category.wallCategory //what type of collision it can have
-        playerSprite.physicsBody?.contactTestBitMask = Category.platformCategory | Category.floorCategory | Category.wallCategory //inform when these type of collision occurs
-        
+        self.physicsBody?.categoryBitMask = Category.Player
+        self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.contactTestBitMask = Category.Platform
     }
     
     func startPlayerDynamics() {
-        playerSprite.physicsBody?.dynamic = true
-        
+        self.physicsBody?.dynamic = true
     }
     
     func startPlayerImpulse() {
-        playerSprite.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 30.0))
-        println("Given initial impulse")
+        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 100.0))
+        println("First impulse")
 
     }
     
     func createPlayer() -> SKNode {
-        
-        playerSprite.position = CGPointMake(50, 50)
+        self.addChild(sprite)
+        self.position = CGPoint(x: 50, y: 50)
         playerPhysics()
-        self.addChild(playerSprite)
         
-        return playerSprite
+        return self
     }
     
     func flipFace() {
-        let flipAction = SKAction.scaleXTo(playerSprite.xScale * -1, duration: 0.0)
-        playerSprite.runAction(flipAction)
+        self.runAction(SKAction.scaleXTo(self.xScale * -1, duration: 0.0))
         facingRight = !facingRight
     }
     

@@ -29,6 +29,7 @@
 		D0B51CEB1AB7786C00C26D1F /* CommunicationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */; };
 		D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */; };
 		D0B51CF11AB7797E00C26D1F /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CF01AB7797E00C26D1F /* World.swift */; };
+		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationStrategy.swift; sourceTree = "<group>"; };
 		D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterCommunication.swift; sourceTree = "<group>"; };
 		D0B51CF01AB7797E00C26D1F /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 		D0B51CBA1AB7589100C26D1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */,
 				D0B51CBB1AB7589100C26D1F /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -295,6 +298,7 @@
 				D0B51CC81AB7589100C26D1F /* Images.xcassets in Resources */,
 				D0B51CBF1AB7589100C26D1F /* GameScene.sks in Resources */,
 				D0B51CC61AB7589100C26D1F /* Main.storyboard in Resources */,
+				E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

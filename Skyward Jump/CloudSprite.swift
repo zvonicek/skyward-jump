@@ -10,39 +10,26 @@ import SpriteKit
 
 class CloudSprite: SKNode {
     
-    let platformSprite = SKSpriteNode(imageNamed: "platform.png")
+    let sprite = SKSpriteNode(imageNamed: "platform.png")
     
-    func platformPhysics() {
-        
-        
-        //platformSprite.physicsBody = SKPhysicsBody(rectangleOfSize: platformSprite.size)
-        platformSprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "platform"), size: platformSprite.size)
-        platformSprite.physicsBody?.dynamic = false
-        platformSprite.physicsBody?.usesPreciseCollisionDetection = true
-        platformSprite.physicsBody?.friction = 0.0
-        platformSprite.physicsBody?.linearDamping = 0.0
-        
-        platformSprite.physicsBody?.categoryBitMask = Category.platformCategory
-        platformSprite.physicsBody?.contactTestBitMask = 0
-        
-        
+    func platformPhysics(scale: CGFloat) {
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: scale*sprite.size.width, height: scale*sprite.size.height))
+        self.physicsBody?.dynamic = false
+        self.physicsBody?.categoryBitMask = Category.Platform
+        self.physicsBody?.collisionBitMask = 0
     }
     
     
     //Should be able to create multiple platforms
     //Function only create 1 platform at a fixed posistion
-    func createPlatforms(pos: CGPoint, scale: CGFloat) -> SKNode {
+    func createPlatform(pos: CGPoint, scale: CGFloat) -> SKNode {
+        self.addChild(sprite)
+        self.position = pos
+        self.xScale = scale
+        self.yScale = scale
+        platformPhysics(scale)
         
-        let posOnScene = CGPoint(x: pos.x, y: pos.y)
-        platformSprite.position = posOnScene
-        platformSprite.xScale = scale
-        platformSprite.yScale = scale
-        platformPhysics()
-        
-        self.addChild(platformSprite)
-        
-        return platformSprite
-        
+        return self
     }
     
 

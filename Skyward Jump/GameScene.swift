@@ -15,21 +15,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let player: CharacterSprite = CharacterSprite() //create a player node
     let platform: CloudSprite = CloudSprite() //create a platform node
     let platform2: CloudSprite = CloudSprite() //2nd platform node
-    //    let platform3: PlatformSprite = PlatformSprite() //3rd platform node
     
     //Floor, so the character doesn't get lost
     let floor: CloudSprite = CloudSprite()
     
     //Controll attributes
-    var touched: Bool = false
+    var firstTouch = true
     
+    //Sound effects
+    let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
     
     //Start location of the player
     var location = CGPointMake(50, 50)
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
     }
     
     override init(size: CGSize) {
@@ -37,31 +37,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundColor = SKColor.whiteColor()
         
         //Adds gravity to the y-direction
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
+        
         //Add contact delegate
         physicsWorld.contactDelegate = self
         
         player.createPlayer()
-        platform.createPlatforms(CGPoint(x: 200, y: 100), scale: CGFloat(0.5))
-        platform2.createPlatforms(CGPoint(x: 50, y: 200), scale: CGFloat(0.5))
-        //        platform3.createPlatforms(CGPoint(x: 200, y: 350))
-        floor.createPlatforms(CGPoint(x: 300, y: -100), scale: 5)
-        
+        platform.createPlatform(CGPoint(x: 200, y: 100), scale: CGFloat(0.5))
+        platform2.createPlatform(CGPoint(x: 50, y: 200), scale: CGFloat(0.5))
+        floor.createPlatform(CGPoint(x: 300, y: 0), scale: 5)
+        floor.yScale = 1
     }
     
     override func didMoveToView(view: SKView) {
-        self.addChild(player)
         self.addChild(platform)
         self.addChild(platform2)
-        //        self.addChild(platform3)
         self.addChild(floor)
-    }
-    
-    func collisionDetected() {
-        
-        player.physicsBody?.applyForce(CGVector(dx: 0.0, dy: 50.0))
-        println("Force applied")
-        
+        self.addChild(player)
     }
     
     //Function get automatically called when to bodies are in contact
@@ -81,15 +73,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        /*Not behaving right, should only detect collison when player is moving downward...*/
-        //React to contact between player and platform, and check if velocity y direction is < 0, which
-        //means it is moving downwards. Should only collide downwards.
-        if (firstBody.categoryBitMask == Category.playerCategory && secondBody.categoryBitMask == Category.platformCategory && player.physicsBody?.velocity.dy < 0) {
+        if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Platform && player.physicsBody?.velocity.dy < 0) {
             println("Collision with platform")
-            
-            collisionDetected() //This is not called, but no force are applied
-            
-            
+            runAction(bounceSound)
+            player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300.0)
         }
         
         //TODO:
@@ -101,39 +88,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //Touch anywhere on the screen, and the game starts. Setting dynamics to true and adds initial upwards impulse
     //to the player.
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        
-        //move node to touch location
-        touched = true
-        for touch: AnyObject in touches {
-            location = touch.locationInNode(self) as CGPoint
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        if firstTouch {
             player.startPlayerDynamics()
             player.startPlayerImpulse()
-            adjustFacingDirection(location)
-        }
-        
-        player.startPlayerDynamics()
-        player.startPlayerImpulse()
-        
-    }
-    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        //update node to touch loaction
-        for touch: AnyObject in touches {
-            location = touch.locationInNode(self)
+            firstTouch = false
+        } else {
+            let touch = touches.anyObject() as UITouch
+            let touchLocation = touch.locationInNode(self) as CGPoint
+            moveToPosition(touchLocation)
         }
     }
     
     //Function for moving from one position to a touch position. Scale to speed movement.
-    func moveToPosition() {
-        let speed = 0.1 as CGFloat
-        var dx = location.x - player.position.x
-        var dy = location.y - player.position.y
+    func moveToPosition(position: CGPoint) {
+        /*let speed = 0.1 as CGFloat
+        var dx = position.x - player.position.x
+        var dy = player.position.y
         dx = dx * speed
-        dy = dy * speed
+        dy = dy * speed*/
         
         //new position of player updated here
-        player.position = CGPointMake(player.position.x + dx, player.position.y + dy)
+        player.position = CGPointMake(position.x, player.position.y)
     }
     
     func adjustFacingDirection(location: CGPoint) {
@@ -146,14 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
-        if(touched) {
-            moveToPosition()
-        }
-    }
-    
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        touched = false
-        
+        //TORUS
     }
     
     
