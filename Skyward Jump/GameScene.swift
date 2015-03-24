@@ -19,6 +19,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Floor, so the character doesn't get lost
     let floor: CloudSprite = CloudSprite()
     
+    //Pause-button
+    let pauseButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+    let pauseIcon = UIImage(named: "pause.png")
+    let playIcon = UIImage(named: "play.png")
+    
     //Controll attributes
     var firstTouch = true
     
@@ -47,6 +52,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platform2.createPlatform(CGPoint(x: 50, y: 200), scale: CGFloat(0.5))
         floor.createPlatform(CGPoint(x: 300, y: 0), scale: 5)
         floor.yScale = 1
+        
+        //Add and configure pause-button
+        pauseButton.frame = CGRectMake(self.size.width * 0.9, 10, 30, 30)
+        pauseButton.setImage(pauseIcon, forState: .Normal)
+        pauseButton.addTarget(self, action: "pauseGame:", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     override func didMoveToView(view: SKView) {
@@ -54,6 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(platform2)
         self.addChild(floor)
         self.addChild(player)
+        self.view?.addSubview(pauseButton)
     }
     
     //Function get automatically called when to bodies are in contact
@@ -126,5 +137,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func pauseGame(sender: UIButton){
+        self.paused = !self.paused
+        let pauseImg = self.paused ? playIcon : pauseIcon
+        pauseButton.setImage(pauseImg, forState: .Normal)
+    }
     
 }
