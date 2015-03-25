@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class PlatformLayerNode: SKNode {
+class PlatformLayer: SKNode {
     init(world: World) {
         super.init()
         

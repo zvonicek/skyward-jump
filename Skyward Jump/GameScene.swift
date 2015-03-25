@@ -12,7 +12,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Sprites to add to the scene
     let player: CharacterSprite = CharacterSprite() //create a player node
     
-    let platformLayer: PlatformLayerNode
+    let platformLayer: PlatformLayer
     
     //Pause-button
     let pauseButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
@@ -37,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let platform2 = Platform(position: CGPointMake(50, 200))
         let world = World(platforms: [platform1, platform2])
         
-        platformLayer = PlatformLayerNode(world: world)
+        platformLayer = PlatformLayer(world: world)
         
         super.init(size: size)
         backgroundColor = SKColor.whiteColor()
