@@ -30,6 +30,7 @@
 		D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */; };
 		D0B51CF11AB7797E00C26D1F /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CF01AB7797E00C26D1F /* World.swift */; };
 		D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */; };
+		D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */; };
 		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterCommunication.swift; sourceTree = "<group>"; };
 		D0B51CF01AB7797E00C26D1F /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformLayer.swift; sourceTree = "<group>"; };
+		D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpponentSprite.swift; sourceTree = "<group>"; };
 		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B51CE31AB7776500C26D1F /* CharacterSprite.swift */,
+				D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */,
 				D0B51CE51AB7779300C26D1F /* CloudSprite.swift */,
 				ADE211BE1ABCA7F9006EE1AA /* CollisionCategories.swift */,
 			);
@@ -334,6 +337,7 @@
 				D0B51CE11AB75E2200C26D1F /* MainMenuViewController.swift in Sources */,
 				D0B51CC11AB7589100C26D1F /* GameScene.swift in Sources */,
 				ADE211BF1ABCA7F9006EE1AA /* CollisionCategories.swift in Sources */,
+				D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */,
 				D0B51CE91AB7785C00C26D1F /* MultiplayerManager.swift in Sources */,
 				D0B51CE61AB7779300C26D1F /* CloudSprite.swift in Sources */,
 				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,

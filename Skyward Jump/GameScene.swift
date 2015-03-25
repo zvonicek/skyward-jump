@@ -9,6 +9,9 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    //Parent view controller delegate
+    weak var controllerDelegate: GameViewControllerDelegate?
+    
     //Sprites to add to the scene
     let player: CharacterSprite = CharacterSprite() //create a player node
     

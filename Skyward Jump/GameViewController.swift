@@ -9,10 +9,18 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+protocol GameViewControllerDelegate: class {
+    func dismissViewController()
+}
+
+class GameViewController: UIViewController, GameViewControllerDelegate {
+    var multiplayerMode = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let scene = GameScene(size: self.view.bounds.size)
+        
+        let scene = multiplayerMode ? MultiplayerGameScene(size: self.view.bounds.size) : GameScene(size: self.view.bounds.size)
+        scene.controllerDelegate = self
         let skView = view as SKView
         scene.scaleMode = .ResizeFill
         skView.presentScene(scene)
@@ -20,5 +28,10 @@ class GameViewController: UIViewController {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    // MARK: GameViewControllerDelegate
+    func dismissViewController() {
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
 }

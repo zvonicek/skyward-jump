@@ -26,4 +26,11 @@ class MainMenuViewController: UIViewController {
         })        
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if let dest = segue.destinationViewController as? GameViewController {
+            if segue.identifier == "multiplayerSegue" {
+                dest.multiplayerMode = true
+            }
+        }
+    }
 }
