@@ -8,7 +8,22 @@
 
 import Foundation
 
-struct Platform {
+class Platform: NSObject, NSCoding {
     var position: CGPoint
     var length: CGFloat
+    
+    init(position: CGPoint, length: CGFloat) {
+        self.position = position
+        self.length = length
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.position = aDecoder.decodeCGPointForKey("pos")
+        self.length = CGFloat(aDecoder.decodeFloatForKey("len") as Float)
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeCGPoint(self.position, forKey: "pos")
+        aCoder.encodeFloat(Float(length), forKey: "len")
+    }
 }
