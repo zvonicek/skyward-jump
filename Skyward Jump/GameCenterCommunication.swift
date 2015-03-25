@@ -12,7 +12,7 @@ import GameKit
 class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     
     var viewController: UIViewController?
-    var callback: Callback?
+    var callback: StartGameCallback?
     weak var delegate: CommunicationDelegate?
     
     var sendPacketIndex:UInt16 = 0
@@ -31,9 +31,24 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()        
     }
     
-    func findMatch(vc: UIViewController, callback: () -> Void) {
+    func findMatch(vc: UIViewController, callback: StartGameCallback) {
         self.callback = callback
         GameKitHelper.sharedGameKitHelper().findMatchWithMinPlayers(2, maxPlayers: 2, viewController: vc, delegate: self)
+    }
+    
+    func negotiateWorld() {
+        let platform1 = Platform(position: CGPointMake(10, 10), length: 10.0)
+        let platform2 = Platform(position: CGPointMake(20, 20), length: CGFloat(Int(rand()) % 100))
+        let world = World(platforms: [platform1, platform2])
+        let worldData = NSKeyedArchiver.archivedDataWithRootObject(world)
+            
+        var message = MessageNegotiateWorld(messageType: MessageType.NegotiateWorld, randomNumber: arc4random())
+        
+        let data = NSMutableData()
+        data.appendData(NSData(bytes: &message, length: sizeof(MessageNegotiateWorld)))
+        data.appendData(worldData)
+        
+        self.sendData(data)
     }
     
     func sendMove(position: CGPoint) {
@@ -51,9 +66,7 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     
     func matchStarted() {
         println("match started")
-        if let callback = callback {
-            callback()
-        }        
+        self.negotiateWorld()
     }
     
     func match(match: GKMatch, didReceiveData: NSData, fromPlayer: String) {
@@ -61,6 +74,8 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         let message = UnsafePointer<Message>(didReceiveData.bytes).memory
         
         switch (message.messageType) {
+        case .NegotiateWorld:
+            handleNegotiateWorldMessage(match, data: didReceiveData, player: fromPlayer)
         case .Move:
             handleMoveMessage(match, data: didReceiveData, player: fromPlayer)
         default:
@@ -74,6 +89,16 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     }
     
     // MARK: message extraction
+    
+    func handleNegotiateWorldMessage(match: GKMatch, data: NSData, player: String) {
+        let message = UnsafePointer<MessageNegotiateWorld>(data.bytes).memory
+        let worldData = data.subdataWithRange(NSMakeRange(sizeof(MessageNegotiateWorld), data.length - sizeof(MessageNegotiateWorld)))
+        let world = NSKeyedUnarchiver.unarchiveObjectWithData(worldData) as World
+        
+        if let callback = callback {
+            callback(world: world)
+        }
+    }
     
     func handleMoveMessage(match: GKMatch, data: NSData, player: String) {
         let message = UnsafePointer<MessageMove>(data.bytes).memory
