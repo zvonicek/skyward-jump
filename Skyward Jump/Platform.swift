@@ -17,6 +17,11 @@ class Platform: NSObject, NSCoding {
         self.length = length
     }
     
+    init(position: CGPoint) {
+        self.position = position
+        self.length = 20
+    }
+    
     required init(coder aDecoder: NSCoder) {
         self.position = aDecoder.decodeCGPointForKey("pos")
         self.length = CGFloat(aDecoder.decodeFloatForKey("len") as Float)

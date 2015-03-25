@@ -9,15 +9,10 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
-    
     //Sprites to add to the scene
     let player: CharacterSprite = CharacterSprite() //create a player node
-    let platform: CloudSprite = CloudSprite() //create a platform node
-    let platform2: CloudSprite = CloudSprite() //2nd platform node
     
-    //Floor, so the character doesn't get lost
-    let floor: CloudSprite = CloudSprite()
+    let platformLayer: PlatformLayerNode
     
     //Pause-button
     let pauseButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
@@ -34,10 +29,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var location = CGPointMake(50, 50)
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("NSCoding has not been implemented")
     }
     
     override init(size: CGSize) {
+        let platform1 = Platform(position: CGPointMake(200, 100))
+        let platform2 = Platform(position: CGPointMake(50, 200))
+        let world = World(platforms: [platform1, platform2])
+        
+        platformLayer = PlatformLayerNode(world: world)
+        
         super.init(size: size)
         backgroundColor = SKColor.whiteColor()
         
@@ -48,10 +49,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         player.createPlayer()
-        platform.createPlatform(CGPoint(x: 200, y: 100), scale: CGFloat(0.5))
-        platform2.createPlatform(CGPoint(x: 50, y: 200), scale: CGFloat(0.5))
-        floor.createPlatform(CGPoint(x: 300, y: 0), scale: 5)
-        floor.yScale = 1
         
         //Add and configure pause-button
         pauseButton.frame = CGRectMake(self.size.width * 0.9, 10, 30, 30)
@@ -60,9 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
-        self.addChild(platform)
-        self.addChild(platform2)
-        self.addChild(floor)
+        self.addChild(platformLayer)
         self.addChild(player)
         self.view?.addSubview(pauseButton)
     }

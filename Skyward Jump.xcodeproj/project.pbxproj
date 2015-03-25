@@ -29,6 +29,7 @@
 		D0B51CEB1AB7786C00C26D1F /* CommunicationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */; };
 		D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */; };
 		D0B51CF11AB7797E00C26D1F /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CF01AB7797E00C26D1F /* World.swift */; };
+		D0BC0EF61AC2C02E00AC8ACC /* PlatformLayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF51AC2C02E00AC8ACC /* PlatformLayerNode.swift */; };
 		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationStrategy.swift; sourceTree = "<group>"; };
 		D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterCommunication.swift; sourceTree = "<group>"; };
 		D0B51CF01AB7797E00C26D1F /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		D0BC0EF51AC2C02E00AC8ACC /* PlatformLayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformLayerNode.swift; sourceTree = "<group>"; };
 		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				D0B51CEE1AB7794500C26D1F /* ViewControllers */,
 				D0B51CE71AB7785200C26D1F /* Multiplayer */,
 				D0B51CE21AB7775900C26D1F /* Sprites */,
+				D0BC0EF71AC2C03800AC8ACC /* Nodes */,
 				D0B51CEF1AB7795300C26D1F /* Scenes */,
 				D0506FD11ABAF0C70009BD7E /* World */,
 				D0B51CBC1AB7589100C26D1F /* AppDelegate.swift */,
@@ -206,6 +209,14 @@
 				D04254A91AB9988400191A40 /* MultiplayerGameScene.swift */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		D0BC0EF71AC2C03800AC8ACC /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				D0BC0EF51AC2C02E00AC8ACC /* PlatformLayerNode.swift */,
+			);
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +337,7 @@
 				D0B51CE91AB7785C00C26D1F /* MultiplayerManager.swift in Sources */,
 				D0B51CE61AB7779300C26D1F /* CloudSprite.swift in Sources */,
 				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,
+				D0BC0EF61AC2C02E00AC8ACC /* PlatformLayerNode.swift in Sources */,
 				D0B51CC31AB7589100C26D1F /* GameViewController.swift in Sources */,
 				D0B51CE41AB7776500C26D1F /* CharacterSprite.swift in Sources */,
 				D0B51CBD1AB7589100C26D1F /* AppDelegate.swift in Sources */,
