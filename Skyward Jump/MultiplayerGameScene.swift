@@ -25,14 +25,16 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
-        MultiplayerManager.sharedInstance.comm.sendMove(player.position)
+        MultiplayerManager.sharedInstance.comm.sendMove(player.position, facingRight: player.facingRight)
     }
     
     // MARK: CommunicationDelegate
-    func updateOpponentMove(point: CGPoint) {
+    func updateOpponentMove(point: CGPoint, facingRight: Bool) {
         println(point.x, point.y)
         opponent.position = point
+        opponent.facingRight = facingRight
     }
+    
     func matchEnded() {
         controllerDelegate?.dismissViewController()
     }

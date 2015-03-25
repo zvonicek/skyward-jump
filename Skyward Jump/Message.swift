@@ -38,4 +38,5 @@ struct MessageMove: MessageProtocol {
     var messageType = MessageType.Move
     var position: CGPoint
     var index: UInt16 //packet index
+    var facingRight: ObjCBool
 }

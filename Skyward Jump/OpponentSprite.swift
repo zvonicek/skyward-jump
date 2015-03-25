@@ -10,7 +10,13 @@ import SpriteKit
 
 class OpponentSprite: SKSpriteNode {
     
-    var facingRight = false
+    var facingRight: Bool = false {
+        willSet(newFacing) {
+            if facingRight != newFacing {
+                self.runAction(SKAction.scaleXTo(self.xScale * -1, duration: 0.0))
+            }
+        }
+    }
     
     override init() {
         let texture = SKTexture(imageNamed: "meow")
@@ -20,10 +26,5 @@ class OpponentSprite: SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func flipFace() {
-        self.runAction(SKAction.scaleXTo(self.xScale * -1, duration: 0.0))
-        facingRight = !facingRight
     }
 }

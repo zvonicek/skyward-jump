@@ -15,11 +15,11 @@ protocol CommunicationStrategy {
     
     func authenticate(vc: UIViewController)
     func findMatch(vc: UIViewController, callback: StartGameCallback)
-    func sendMove(point: CGPoint)
+    func sendMove(position: CGPoint, facingRight: Bool)
     func disconnect()
 }
 
 protocol CommunicationDelegate: class {
-    func updateOpponentMove(point: CGPoint)
+    func updateOpponentMove(point: CGPoint, facingRight: Bool)
     func matchEnded()
 }
