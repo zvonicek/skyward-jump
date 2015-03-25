@@ -8,13 +8,13 @@
 
 import Foundation
 
-typealias Callback = () -> Void
+typealias StartGameCallback = (world: World) -> Void
 
 protocol CommunicationStrategy {
     var delegate: CommunicationDelegate? {get set}
     
     func authenticate(vc: UIViewController)
-    func findMatch(vc: UIViewController, callback: Callback)
+    func findMatch(vc: UIViewController, callback: StartGameCallback)
     func sendMove(point: CGPoint)
     func disconnect()
 }

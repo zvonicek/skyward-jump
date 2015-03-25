@@ -21,9 +21,9 @@ class MainMenuViewController: UIViewController {
     }
 
     @IBAction func didClickMultiplayerButton(sender: UIButton) {
-        MultiplayerManager.sharedInstance.comm.findMatch(self, callback: { () -> Void in
+        MultiplayerManager.sharedInstance.comm.findMatch(self, callback: { (world) -> Void in
             self.performSegueWithIdentifier("multiplayerSegue", sender: self)
-        })
+        })        
     }
     
 }

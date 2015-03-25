@@ -9,7 +9,7 @@
 import Foundation
 
 enum MessageType: UInt32 {
-    case GameBegin, Move, GameOver
+    case GameBegin, NegotiateWorld, Move, GameOver
 }
 
 protocol MessageProtocol {
@@ -17,20 +17,25 @@ protocol MessageProtocol {
 }
 
 struct Message: MessageProtocol {
-    var messageType: MessageType
+    var messageType: MessageType    
+}
+
+struct MessageNegotiateWorld: MessageProtocol {
+    var messageType = MessageType.NegotiateWorld
+    var randomNumber: UInt32
 }
 
 struct MessageGameBegin: MessageProtocol {
-    var messageType: MessageType
+    var messageType = MessageType.GameBegin
 }
 
 struct MessageGameOver: MessageProtocol {
-    var messageType: MessageType
+    var messageType = MessageType.GameOver
     var playerWon: UInt32
 }
 
 struct MessageMove: MessageProtocol {
-    var messageType: MessageType
+    var messageType = MessageType.Move
     var position: CGPoint
-    var index: UInt16
+    var index: UInt16 //packet index
 }

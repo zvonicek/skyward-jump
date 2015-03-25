@@ -8,6 +8,18 @@
 
 import Foundation
 
-struct World {
-    var platforms: [Platform]
+class World: NSObject, NSCoding {
+    var platforms: [Platform] = []
+    
+    init(platforms: [Platform]) {
+        self.platforms = platforms
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.platforms = aDecoder.decodeObjectForKey("pl") as [Platform]
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.platforms, forKey: "pl")
+    }
 }
