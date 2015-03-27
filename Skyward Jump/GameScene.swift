@@ -21,9 +21,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let pauseButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
     let pauseIcon = UIImage(named: "pause.png")
     let playIcon = UIImage(named: "play.png")
+
+    //Score-label
+    let scoreLabel = SKLabelNode(fontNamed: "HelveticaNeue-Light")
     
     //Controll attributes
     var firstTouch = true
+    var score = 0
+    var highestPoint: CGFloat
+    let playerStartHeight: CGFloat = 50
     
     //Sound effects
     let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
@@ -36,11 +42,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override init(size: CGSize) {
+        let startPlatform = Platform(position: CGPointMake(50, 45))
         let platform1 = Platform(position: CGPointMake(200, 100))
         let platform2 = Platform(position: CGPointMake(50, 200))
         let world = World(platforms: [platform1, platform2])
         
         platformLayer = PlatformLayer(world: world)
+        highestPoint = playerStartHeight
         
         super.init(size: size)
         backgroundColor = SKColor.whiteColor()
@@ -50,19 +58,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Add contact delegate
         physicsWorld.contactDelegate = self
+        player.createPlayer(playerStartHeight)
         
-        player.createPlayer()
-        
-        //Add and configure pause-button
+        //Configure pause-button
         pauseButton.frame = CGRectMake(self.size.width * 0.9, 10, 30, 30)
         pauseButton.setImage(pauseIcon, forState: .Normal)
         pauseButton.addTarget(self, action: "pauseGame:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        //Configure score-label
+        scoreLabel.fontSize = 14
+        scoreLabel.position = CGPoint(x: self.size.width * 0.8, y: self.size.height - 30)
+        scoreLabel.fontColor = SKColor.blackColor()
+        scoreLabel.text = "Score: 0"
     }
     
     override func didMoveToView(view: SKView) {
         self.addChild(platformLayer)
         self.addChild(player)
         self.view?.addSubview(pauseButton)
+        self.addChild(scoreLabel)
     }
     
     //Function get automatically called when to bodies are in contact
@@ -126,6 +140,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func updateScore(){
+        if player.position.y > highestPoint {
+            highestPoint = floor(player.position.y)
+            let str = "\(highestPoint)"
+            let scoreString = str.substringToIndex(str.endIndex.predecessor().predecessor())
+            scoreLabel.text = "Score: \(scoreString)"
+        }
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         let pWidth = player.sprite.size.width
         if player.position.x > self.size.width + pWidth {
@@ -133,6 +156,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if player.position.x < -pWidth {
             player.position = CGPoint(x: self.size.width + pWidth, y: player.position.y)
         }
+        updateScore()
     }
     
     func pauseGame(sender: UIButton){

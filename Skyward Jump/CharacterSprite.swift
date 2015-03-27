@@ -40,9 +40,9 @@ class CharacterSprite: SKNode {
 
     }
     
-    func createPlayer() -> SKNode {
+    func createPlayer(yPosition: CGFloat) -> SKNode {
         self.addChild(sprite)
-        self.position = CGPoint(x: 50, y: 50)
+        self.position = CGPoint(x: 50, y: yPosition)
         playerPhysics()
         
         return self
