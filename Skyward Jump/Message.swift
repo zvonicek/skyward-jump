@@ -36,7 +36,8 @@ struct MessageGameOver: MessageProtocol {
 
 struct MessageMove: MessageProtocol {
     var messageType = MessageType.Move
-    var position: CGPoint
+    var pos_x: Float
+    var pos_y: Float
     var index: UInt16 //packet index
     var facingRight: ObjCBool
 }
