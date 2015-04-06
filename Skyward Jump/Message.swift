@@ -31,7 +31,7 @@ struct MessageGameBegin: MessageProtocol {
 
 struct MessageGameOver: MessageProtocol {
     var messageType = MessageType.GameOver
-    var playerWon: UInt32
+    var senderWon: ObjCBool
 }
 
 struct MessageMove: MessageProtocol {

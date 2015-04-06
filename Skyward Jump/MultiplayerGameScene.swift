@@ -28,14 +28,26 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
         MultiplayerManager.sharedInstance.comm.sendMove(player.position, facingRight: player.facingRight)
     }
     
+    override func quitGame(sender: Button) {
+        MultiplayerManager.sharedInstance.comm.sendMatchEnded(false)
+        super.quitGame(sender)
+    }
+    
     // MARK: CommunicationDelegate
     func updateOpponentMove(point: CGPoint, facingRight: Bool) {
-        println(point.x, point.y)
         opponent.position = point
         opponent.facingRight = facingRight
     }
     
-    func matchEnded() {
+    func lostConnection() {
+        //TODO: show status message
+        println("lost connection")
+        controllerDelegate?.dismissViewController()
+    }
+    
+    func gameOver(won: Bool) {
+        //TODO: show result
+        println("game over, won: ", won)
         controllerDelegate?.dismissViewController()
     }
 }

@@ -59,8 +59,10 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         self.sendData(data)
     }
     
-    func disconnect() {
-        
+    func sendMatchEnded(won: Bool) {
+        var message = MessageGameOver(messageType: .GameOver, senderWon: ObjCBool(won))
+        let data = NSData(bytes: &message, length: sizeof(MessageGameOver))
+        self.sendData(data)
     }
     
     // MARK: GameKitHelperDelegate
@@ -71,7 +73,6 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     }
     
     func match(match: GKMatch, didReceiveData: NSData, fromPlayer: String) {
-        println("receive data")
         let message = UnsafePointer<Message>(didReceiveData.bytes).memory
         
         switch (message.messageType) {
@@ -79,6 +80,8 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
             handleNegotiateWorldMessage(match, data: didReceiveData, player: fromPlayer)
         case .Move:
             handleMoveMessage(match, data: didReceiveData, player: fromPlayer)
+        case .GameOver:
+            handleGameOverMessage(match, data: didReceiveData, player: fromPlayer)
         default:
             println()
         }
@@ -86,7 +89,7 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     
     func matchEnded() {
         println("match ended")
-        delegate?.matchEnded()
+        delegate?.lostConnection()
     }
     
     // MARK: message extraction
@@ -107,6 +110,11 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
             receivedPacketIndex = message.index
             delegate?.updateOpponentMove(CGPointMake(CGFloat(message.pos_x), CGFloat(message.pos_y)), facingRight: message.facingRight.boolValue)
         }
+    }
+    
+    func handleGameOverMessage(match: GKMatch, data: NSData, player: String) {
+        let message = UnsafePointer<MessageGameOver>(data.bytes).memory
+        delegate?.gameOver(Bool(!message.senderWon))
     }
     
     // MARK: other methods
