@@ -21,6 +21,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let pauseButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
     let pauseIcon = UIImage(named: "pause.png")
     let playIcon = UIImage(named: "play.png")
+    
+    //Pause-node
+    let pauseNode: PausedGameNode
 
     //Score-label
     let scoreLabel = SKLabelNode(fontNamed: "HelveticaNeue-Light")
@@ -49,6 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         platformLayer = PlatformLayer(world: world)
         highestPoint = playerStartHeight
+        pauseNode = PausedGameNode(size: size)
         
         super.init(size: size)
         backgroundColor = SKColor.whiteColor()
@@ -64,6 +68,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton.frame = CGRectMake(self.size.width * 0.9, 10, 30, 30)
         pauseButton.setImage(pauseIcon, forState: .Normal)
         pauseButton.addTarget(self, action: "pauseGame:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        //Configure pause-node
+        pauseNode.quitButton.addTarget(self, action: "quitGame:", forControlEvents: UIControlEvents.TouchUpInside)
         
         //Configure score-label
         scoreLabel.fontSize = 14
@@ -161,8 +168,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func pauseGame(sender: UIButton){
         self.paused = !self.paused
+        
+        if paused {
+            self.addChild(pauseNode)
+        } else {
+            pauseNode.removeFromParent()
+        }
         let pauseImg = self.paused ? playIcon : pauseIcon
         pauseButton.setImage(pauseImg, forState: .Normal)
     }
     
+    func quitGame(sender: Button){
+        controllerDelegate?.dismissViewController()
+    }
 }
