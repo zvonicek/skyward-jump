@@ -16,7 +16,7 @@ class World: NSObject, NSCoding {
     }
     
     required init(coder aDecoder: NSCoder) {
-        self.platforms = aDecoder.decodeObjectForKey("pl") as! [Platform]
+        self.platforms = aDecoder.decodeObjectForKey("pl") as [Platform]
     }
     
     func encodeWithCoder(aCoder: NSCoder) {

@@ -23,7 +23,7 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         let size = CGSizeMake(320, CGFloat(height))
         let scene = multiplayerMode ? MultiplayerGameScene(size:size) : GameScene(size: size)
         scene.controllerDelegate = self
-        let skView = view as! SKView
+        let skView = view as SKView
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
     }
