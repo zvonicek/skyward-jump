@@ -18,7 +18,7 @@ class OpponentSprite: SKSpriteNode {
         }
     }
     
-    override init() {
+    init() {
         let texture = SKTexture(imageNamed: "meow")
         super.init(texture: texture, color: nil, size: texture.size())
         self.position = CGPoint(x: 50, y: 50)

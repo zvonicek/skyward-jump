@@ -12,6 +12,7 @@
 
 
 import SpriteKit
+import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     //Parent view controller delegate
@@ -23,7 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let platformLayer: PlatformLayer
     
     //Pause-button
-    let pauseButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+    let pauseButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     let pauseIcon = UIImage(named: "pause.png")
     let playIcon = UIImage(named: "play.png")
     
@@ -37,7 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var firstTouch = true
     var score = 0
     var highestPoint: CGFloat
-    let playerStartHeight: CGFloat = 50
+    let playerStartHeight: CGFloat = 100
     
     //Sound effects
     let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
@@ -49,6 +50,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var maxY: Int
     let distanceFromPlayer: CGFloat = 200
     let endLevelY:Int?
+    
+    // Motion manager for accelerometer
+    let motionManager: CMMotionManager = CMMotionManager()
+    
+    // Acceleration value from accelerometer
+    var xAcceleration: CGFloat = 0.0
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding has not been implemented")
@@ -98,8 +105,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.fontColor = SKColor.blackColor()
         scoreLabel.text = "Score: 0"
         
-        
+        // CoreMotion
+        // get value every 0.2sec
+        motionManager.accelerometerUpdateInterval = 0.2
+        // every 0.2sec, execute the block of code
+        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {
+            (accelerometerData: CMAccelerometerData!, error: NSError!) in
+            
+            let acceleration = accelerometerData.acceleration
+            self.xAcceleration = (CGFloat(acceleration.x) * 0.75) + (self.xAcceleration * 0.25)
+        })
 
+
+    }
+    
+    override func didSimulatePhysics() {
+        // set velocity based on x-axis acceleration
+        player.physicsBody?.velocity = CGVector(dx: xAcceleration * 400.0, dy: player.physicsBody!.velocity.dy)
+        
+        // check x bounds
+        if player.position.x < -20.0 {
+            player.position = CGPoint(x: self.size.width + 20.0, y: player.position.y)
+        } else if player.position.x > self.size.width + 20.0 {
+            player.position = CGPoint(x: -20.0, y: player.position.y)
+        }
     }
     
     override func didMoveToView(view: SKView) {
@@ -140,17 +169,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //Touch anywhere on the screen, and the game starts. Setting dynamics to true and adds initial upwards impulse
     //to the player.
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if firstTouch {
             player.startPlayerDynamics()
             player.startPlayerImpulse()
             firstTouch = false
-        } else {
+<<<<<<< HEAD
+        }/* else {
             let touch = touches.anyObject() as UITouch
+=======
+        } else {
+            let touch = touches.first as! UITouch
+>>>>>>> origin/master
             let touchLocation = touch.locationInNode(self) as CGPoint
             adjustFacingDirection(touchLocation)
             moveToPosition(touchLocation)
-        }
+        }*/
     }
     
     //Function for moving from one position to a touch position. Scale to speed movement.
@@ -163,7 +197,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func adjustFacingDirection(location: CGPoint) {
-        if (player.facingRight && player.position.x > location.x) |
+        if (player.facingRight && player.position.x > location.x) ||
             (!player.facingRight && player.position.x < location.x) {
             player.flipFace()
         }
@@ -192,15 +226,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // remove game objects that have passed by
         platformLayer.enumerateChildNodesWithName("PLATFORM_NODE", usingBlock: {
             (node, stop) in
-            let p = node as CloudSprite
+            let p = node as! CloudSprite
             if self.player.position.y > p.position.y + self.distanceFromPlayer {
                 p.removeFromParent()
             }
         })
         
         // move scene
-        if player.position.y > 300.0 {
-            platformLayer.position = CGPoint(x: 0.0, y: -(player.position.y - 300.0))
+        if player.physicsBody?.velocity.dy > 0 && Int(player.position.y) > maxY {
+            platformLayer.position = CGPoint(x: 0.0, y: -(player.position.y - 200.0))
             
         }
         
