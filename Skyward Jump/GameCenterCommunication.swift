@@ -48,7 +48,7 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         data.appendData(NSData(bytes: &message, length: sizeof(MessageNegotiateWorld)))
         data.appendData(worldData)
         
-        self.sendData(data)
+        self.sendData(data, reliable: true)
     }
     
     func sendMove(position: CGPoint, facingRight: Bool) {
@@ -56,13 +56,13 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         var message = MessageMove(messageType: .Move, pos_x: Float(position.x), pos_y: Float(position.y), index: sendPacketIndex,
             facingRight: ObjCBool(facingRight))
         let data = NSData(bytes: &message, length: sizeof(MessageMove))
-        self.sendData(data)
+        self.sendData(data, reliable: false)
     }
     
     func sendMatchEnded(won: Bool) {
         var message = MessageGameOver(messageType: .GameOver, senderWon: ObjCBool(won))
         let data = NSData(bytes: &message, length: sizeof(MessageGameOver))
-        self.sendData(data)
+        self.sendData(data, reliable: true)
     }
     
     // MARK: GameKitHelperDelegate
@@ -119,9 +119,10 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     
     // MARK: other methods
     
-    func sendData(data: NSData) {
+    func sendData(data: NSData, reliable: Bool) {
         var error: NSError?
-        GameKitHelper.sharedGameKitHelper().match?.sendDataToAllPlayers(data, withDataMode: GKMatchSendDataMode.Reliable, error: &error)
+        let dataMode = reliable ? GKMatchSendDataMode.Reliable : GKMatchSendDataMode.Unreliable
+        GameKitHelper.sharedGameKitHelper().match?.sendDataToAllPlayers(data, withDataMode: dataMode, error: &error)
         
         if (error != nil) {
             println("error")
