@@ -16,6 +16,14 @@ class GameOverScene: SKScene {
         super.init(size: size)
         
         //add player score label
+        let scoreLabel = SKLabelNode(fontNamed: "HelveticaNeue-Light")
+        scoreLabel.fontSize = 40
+        scoreLabel.fontColor = SKColor.blackColor()
+        scoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
+        scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+//        scoreLabel.text =
+        addChild(scoreLabel)
+
 
     }
     
