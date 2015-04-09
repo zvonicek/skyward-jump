@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class CloudSprite: SKNode {
+class CloudSprite: SKSpriteNode {
     
     let sprite = SKSpriteNode(imageNamed: "platform.png")
     
@@ -28,6 +28,7 @@ class CloudSprite: SKNode {
         self.position = pos
         self.xScale = scale
         self.yScale = scale
+        self.name = "PLATFORM_NODE"
         platformPhysics(scale)
         
         return self
