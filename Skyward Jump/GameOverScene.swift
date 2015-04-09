@@ -21,6 +21,7 @@ class GameOverScene: SKScene {
         scoreLabel.fontColor = SKColor.blackColor()
         scoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
         scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+        //Fix
 //        scoreLabel.text =
         addChild(scoreLabel)
 
