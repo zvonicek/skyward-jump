@@ -45,12 +45,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override init(size: CGSize) {
-        let startPlatform = Platform(position: CGPointMake(50, 45))
-        let platform1 = Platform(position: CGPointMake(200, 100))
-        let platform2 = Platform(position: CGPointMake(50, 200))
-        let world = World(platforms: [platform1, platform2])
+        var w = WorldFactory(level: 1)
+        var platforms = w.fixedPath
+        platforms += w.extraPath
+        platforms += w.voidPath
+        println(w.extraPath.count)
+        println(w.voidPath.count)
+        println(platforms.count)
         
+        let world = World(platforms: platforms)
         platformLayer = PlatformLayer(world: world)
+        
         highestPoint = playerStartHeight
         pauseNode = PausedGameNode(size: size)
         

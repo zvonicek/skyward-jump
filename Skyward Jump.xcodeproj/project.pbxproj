@@ -35,6 +35,7 @@
 		D0B51CF11AB7797E00C26D1F /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CF01AB7797E00C26D1F /* World.swift */; };
 		D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */; };
 		D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */; };
+		DF344F721AD68D7700DAF8A3 /* Level01.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF344F711AD68D7700DAF8A3 /* Level01.plist */; };
 		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		D0B51CF01AB7797E00C26D1F /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformLayer.swift; sourceTree = "<group>"; };
 		D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpponentSprite.swift; sourceTree = "<group>"; };
+		DF344F711AD68D7700DAF8A3 /* Level01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level01.plist; sourceTree = "<group>"; };
 		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 		D0506FD11ABAF0C70009BD7E /* World */ = {
 			isa = PBXGroup;
 			children = (
+				DF344F711AD68D7700DAF8A3 /* Level01.plist */,
 				D0B51CF01AB7797E00C26D1F /* World.swift */,
 				D0506FCF1ABAF06E0009BD7E /* Platform.swift */,
 				D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */,
@@ -336,6 +339,7 @@
 			files = (
 				D0B51CCB1AB7589100C26D1F /* LaunchScreen.xib in Resources */,
 				D0B51CC81AB7589100C26D1F /* Images.xcassets in Resources */,
+				DF344F721AD68D7700DAF8A3 /* Level01.plist in Resources */,
 				D0B51CBF1AB7589100C26D1F /* GameScene.sks in Resources */,
 				D0B51CC61AB7589100C26D1F /* Main.storyboard in Resources */,
 				E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */,
