@@ -14,6 +14,8 @@ class GameOverScene: SKScene {
     
     override init(size: CGSize) {
         super.init(size: size)
+        
+        //add player score label
 
     }
     
