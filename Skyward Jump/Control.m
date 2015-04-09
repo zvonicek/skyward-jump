@@ -835,8 +835,8 @@ static NSString* globalTouchUpInsideSoundName = nil;
     CGFloat width  = size.width  + _boundsTolerance;
     CGFloat height = size.height + _boundsTolerance;
     
-    if (fabsf(local.x) <= 0.5f*(width)) {
-        if (fabsf(local.y) <= 0.5f*(height)) {
+    if (fabs(local.x) <= 0.5f*(width)) {
+        if (fabs(local.y) <= 0.5f*(height)) {
             return YES;
         }
         

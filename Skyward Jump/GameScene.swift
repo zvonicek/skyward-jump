@@ -23,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let platformLayer: PlatformLayer
     
     //Pause-button
-    let pauseButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+    let pauseButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     let pauseIcon = UIImage(named: "pause.png")
     let playIcon = UIImage(named: "play.png")
     
@@ -140,13 +140,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //Touch anywhere on the screen, and the game starts. Setting dynamics to true and adds initial upwards impulse
     //to the player.
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if firstTouch {
             player.startPlayerDynamics()
             player.startPlayerImpulse()
             firstTouch = false
         } else {
-            let touch = touches.anyObject() as UITouch
+            let touch = touches.first as! UITouch
             let touchLocation = touch.locationInNode(self) as CGPoint
             adjustFacingDirection(touchLocation)
             moveToPosition(touchLocation)
@@ -163,7 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func adjustFacingDirection(location: CGPoint) {
-        if (player.facingRight && player.position.x > location.x) |
+        if (player.facingRight && player.position.x > location.x) ||
             (!player.facingRight && player.position.x < location.x) {
             player.flipFace()
         }
@@ -192,7 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // remove game objects that have passed by
         platformLayer.enumerateChildNodesWithName("PLATFORM_NODE", usingBlock: {
             (node, stop) in
-            let p = node as CloudSprite
+            let p = node as! CloudSprite
             if self.player.position.y > p.position.y + self.distanceFromPlayer {
                 p.removeFromParent()
             }
