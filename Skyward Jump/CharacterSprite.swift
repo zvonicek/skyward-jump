@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class CharacterSprite: SKNode {
+class CharacterSprite: SKSpriteNode {
     
     let sprite = SKSpriteNode(imageNamed: "pika.png")
     var facingRight = false

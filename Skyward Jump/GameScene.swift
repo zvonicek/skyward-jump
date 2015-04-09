@@ -6,6 +6,11 @@
 //  Copyright (c) 2015 NTNU. All rights reserved.
 //
 
+
+//// layerPlatform will contain player sprite
+// test
+
+
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -40,12 +45,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Start location of the player
     var location = CGPointMake(50, 50)
     
+    ///// PING //////
+    var maxY: Int
+    let distanceFromPlayer: CGFloat = 200
+    let endLevelY:Int?
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding has not been implemented")
     }
     
     override init(size: CGSize) {
         var w = WorldFactory(level: 1)
+        self.endLevelY = w.levelHeight
         var platforms = w.fixedPath
         platforms += w.extraPath
         platforms += w.voidPath
@@ -55,9 +66,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let world = World(platforms: platforms)
         platformLayer = PlatformLayer(world: world)
+        platformLayer.addChild(player)
         
         highestPoint = playerStartHeight
         pauseNode = PausedGameNode(size: size)
+        
+        //// PING ////
+        maxY = Int(playerStartHeight)
         
         super.init(size: size)
         backgroundColor = SKColor.whiteColor()
@@ -82,11 +97,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.position = CGPoint(x: self.size.width * 0.8, y: self.size.height - 30)
         scoreLabel.fontColor = SKColor.blackColor()
         scoreLabel.text = "Score: 0"
+        
+        
+
     }
     
     override func didMoveToView(view: SKView) {
         self.addChild(platformLayer)
-        self.addChild(player)
         self.view?.addSubview(pauseButton)
         self.addChild(scoreLabel)
     }
@@ -169,7 +186,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.position = CGPoint(x: self.size.width + pWidth, y: player.position.y)
         }
         updateScore()
+        
+        
+        
+        // remove game objects that have passed by
+        platformLayer.enumerateChildNodesWithName("PLATFORM_NODE", usingBlock: {
+            (node, stop) in
+            let p = node as CloudSprite
+            if self.player.position.y > p.position.y + self.distanceFromPlayer {
+                p.removeFromParent()
+            }
+        })
+        
+        // move scene
+        if player.position.y > 300.0 {
+            platformLayer.position = CGPoint(x: 0.0, y: -(player.position.y - 300.0))
+            
+        }
+        
+        // Check if we've finished the level
+        if Int(player.position.y) > self.endLevelY {
+            /// implement finsih level 1
+        }
+        
+        if Int(player.position.y) > maxY {
+            maxY = Int(player.position.y)
+        }
+        // Fall too far, and die
+        if Int(player.position.y) < maxY - 200 {
+            // implement present Gameover scene
+            println("die")
+        }
+
     }
+    
+    
     
     func pauseGame(sender: UIButton){
         self.paused = !self.paused
