@@ -71,5 +71,26 @@ class GameOverScene: SKScene {
         addChild(playAgainButton)
         
         
+        
+        var exitButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
+        exitButton.stateNormalLabel.fontName = "HelveticaNeue"
+        exitButton.stateNormalLabel.fontSize = 19
+        exitButton.stateNormalLabelText = "Quit game"
+        exitButton.position = CGPoint(x: self.size.width/2, y: 100)
+        exitButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
+            target.quitGame()
+        }
+        
+        
+        addChild(exitButton)
+        
+        
     }
+    
+    func quitGame(){
+        controllerDelegate?.dismissViewController()
+    }
+
+        
+
 }
