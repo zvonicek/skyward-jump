@@ -15,7 +15,7 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
-        self.addChild(opponent)
+        platformLayer.addChild(opponent)
         
         MultiplayerManager.sharedInstance.comm.delegate = self
     }
@@ -27,6 +27,11 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
         MultiplayerManager.sharedInstance.comm.sendMove(player.position, facingRight: player.facingRight)
+    }
+    
+    override func die() {
+        MultiplayerManager.sharedInstance.comm.sendMatchEnded(false)
+        super.die()
     }
     
     override func quitGame() {

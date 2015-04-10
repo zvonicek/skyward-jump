@@ -42,7 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let playerStartHeight: CGFloat = 100
     
     //Sound effects
-    let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
+    //let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
     
     //Start location of the player
     var location = CGPointMake(50, 50)
@@ -62,17 +62,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fatalError("NSCoding has not been implemented")
     }
     
-    override init(size: CGSize) {
-        var w = WorldFactory(level: 1)
+    override convenience init(size: CGSize) {
+        self.init(size: size, initWorld: nil)
+    }
+    
+    init(size: CGSize, initWorld: World?) {
+        var w = WorldFactory()
         self.endLevelY = w.levelHeight
-        var platforms = w.fixedPath
-        platforms += w.extraPath
-        platforms += w.voidPath
-        println(w.extraPath.count)
-        println(w.voidPath.count)
-        println(platforms.count)
         
-        let world = World(platforms: platforms)
+        let world: World
+        
+        if let w = initWorld {
+            world = w
+        } else {
+            var platforms = w.fixedPath
+            platforms += w.extraPath
+            platforms += w.voidPath
+            println(w.extraPath.count)
+            println(w.voidPath.count)
+            println(platforms.count)
+            
+            world = World(platforms: platforms)
+        }
+
         platformLayer = PlatformLayer(world: world)
         platformLayer.addChild(player)
         
@@ -160,8 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Platform && player.physicsBody?.velocity.dy < 0) {
-            println("Collision with platform")
-//            runAction(bounceSound)
+            //runAction(bounceSound)
             player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300.0)
         }
         
@@ -249,13 +260,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         // Call the game over scene when falling to far downwards
         if Int(player.position.y) < maxY - 200 {
-            
-            //game scene called
-            controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil)
-
-            println("die")
+            self.die()
         }
 
+    }
+    
+    func die() {
+        //game scene called
+        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil)        
     }
     
     func pauseGame(sender: UIButton){

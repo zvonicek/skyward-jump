@@ -19,6 +19,7 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
     
     var multiplayerMode = false
     var scene: SKScene?
+    var negotiatedWorld: World?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,7 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
 
         let height = UIScreen.mainScreen().bounds.height == 480 ? 480 : 568
         let size = CGSizeMake(320, CGFloat(height))
-        scene = multiplayerMode ? MultiplayerGameScene(size:size) : GameScene(size: size)
+        scene = multiplayerMode ? MultiplayerGameScene(size:size, initWorld: negotiatedWorld) : GameScene(size: size, initWorld: negotiatedWorld)
         (scene as! GameScene).controllerDelegate = self
         scene!.scaleMode = .AspectFill
         skView.presentScene(scene!)        
