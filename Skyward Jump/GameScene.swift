@@ -241,9 +241,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if Int(player.position.y) > maxY {
             maxY = Int(player.position.y)
         }
-        // Fall too far, and die
+        // Call the game over scene when falling to far downwards
         if Int(player.position.y) < maxY - 200 {
-            // implement present Gameover scene
+            
+            //game scene called
+            let gameOverScene = GameOverScene(size: self.size)
+            self.view?.presentScene(gameOverScene)
+
             println("die")
         }
 
