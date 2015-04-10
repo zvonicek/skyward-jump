@@ -33,30 +33,51 @@ class GameOverScene: SKScene {
         gameOverLabel.text = "Game Over"
         self.addChild(gameOverLabel)
         
+        func createPlayerModeLabel() {
+            
+            if(opponentScore == nil) {
+                
+                //add player score label
+                /*needs to retrieve and update the score of the player*/
+                var playerScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+                playerScoreLabel.fontSize = 20
+                playerScoreLabel.fontColor = SKColor.blackColor()
+                playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
+                playerScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+                playerScoreLabel.text = score
+                addChild(playerScoreLabel)
+                
+            } else {
+                
+                //add player score label
+                /*needs to retrieve and update the score of the player*/
+                var playerScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+                playerScoreLabel.fontSize = 20
+                playerScoreLabel.fontColor = SKColor.blackColor()
+                playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
+                playerScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+                playerScoreLabel.text = score
+                addChild(playerScoreLabel)
+                
+                
+                var opponentScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+                opponentScoreLabel.fontSize = 20
+                opponentScoreLabel.fontColor = SKColor.blackColor()
+                opponentScoreLabel.position = CGPoint(x: self.size.width / 2, y: 250)
+                opponentScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+                opponentScoreLabel.text = opponentScore!
+                addChild(opponentScoreLabel)
+                
+            }
+        }
         
-        
-        //add player score label
-        /*needs to retrieve and update the score of the player*/
-        var playerScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-        playerScoreLabel.fontSize = 20
-        playerScoreLabel.fontColor = SKColor.blackColor()
-        playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
-        playerScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
-        playerScoreLabel.text = "*player1 score*"
-        addChild(playerScoreLabel)
-        
-        var opponentScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-        opponentScoreLabel.fontSize = 20
-        opponentScoreLabel.fontColor = SKColor.blackColor()
-        opponentScoreLabel.position = CGPoint(x: self.size.width / 2, y: 250)
-        opponentScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
-        opponentScoreLabel.text = "*player2 score*"
-        addChild(opponentScoreLabel)
+        //call to check which mode we are in.
+        createPlayerModeLabel()
         
         
         var playAgainButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
         playAgainButton.stateNormalLabel.fontName = "HelveticaNeue"
-        playAgainButton.stateNormalLabel.fontSize = 19        
+        playAgainButton.stateNormalLabel.fontSize = 19
         playAgainButton.stateNormalLabelText = "Play again"
         playAgainButton.position = CGPoint(x: self.size.width/2, y: 150)
         playAgainButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
@@ -64,5 +85,7 @@ class GameOverScene: SKScene {
         }
         
         addChild(playAgainButton)
+        
+        
     }
 }
