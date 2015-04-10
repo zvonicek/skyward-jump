@@ -17,7 +17,7 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //MultiplayerManager.sharedInstance.comm.authenticate(self)
+        MultiplayerManager.sharedInstance.comm.authenticate(self)
     }
 
     @IBAction func didClickMultiplayerButton(sender: UIButton) {

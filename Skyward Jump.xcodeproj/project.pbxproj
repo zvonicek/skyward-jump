@@ -11,6 +11,11 @@
 		D01B19151AD7F2FD00931265 /* TWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B19121AD7F2FD00931265 /* TWButton.swift */; };
 		D01B19161AD7F2FD00931265 /* TWControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B19131AD7F2FD00931265 /* TWControl.swift */; };
 		D01B19171AD7F2FD00931265 /* TWSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B19141AD7F2FD00931265 /* TWSwitch.swift */; };
+		D01B19211AD81DF900931265 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B191C1AD81DF900931265 /* Advertiser.swift */; };
+		D01B19221AD81DF900931265 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B191D1AD81DF900931265 /* Browser.swift */; };
+		D01B19231AD81DF900931265 /* PeerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B191E1AD81DF900931265 /* PeerKit.swift */; };
+		D01B19241AD81DF900931265 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B191F1AD81DF900931265 /* Session.swift */; };
+		D01B19251AD81DF900931265 /* Transceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B19201AD81DF900931265 /* Transceiver.swift */; };
 		D04254A61AB8AA1C00191A40 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D04254A51AB8AA1C00191A40 /* GameKitHelper.m */; };
 		D04254A81AB980EE00191A40 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04254A71AB980EE00191A40 /* Message.swift */; };
 		D04254AA1AB9988400191A40 /* MultiplayerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04254A91AB9988400191A40 /* MultiplayerGameScene.swift */; };
@@ -55,6 +60,11 @@
 		D01B19121AD7F2FD00931265 /* TWButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWButton.swift; sourceTree = "<group>"; };
 		D01B19131AD7F2FD00931265 /* TWControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWControl.swift; sourceTree = "<group>"; };
 		D01B19141AD7F2FD00931265 /* TWSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWSwitch.swift; sourceTree = "<group>"; };
+		D01B191C1AD81DF900931265 /* Advertiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
+		D01B191D1AD81DF900931265 /* Browser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
+		D01B191E1AD81DF900931265 /* PeerKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerKit.swift; sourceTree = "<group>"; };
+		D01B191F1AD81DF900931265 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		D01B19201AD81DF900931265 /* Transceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transceiver.swift; sourceTree = "<group>"; };
 		D04254A31AB8AA1C00191A40 /* Skyward Jump-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Skyward Jump-Bridging-Header.h"; sourceTree = "<group>"; };
 		D04254A41AB8AA1C00191A40 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
 		D04254A51AB8AA1C00191A40 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
@@ -109,6 +119,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D01B191A1AD81DC400931265 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				D01B191B1AD81DCE00931265 /* PeerKit */,
+				D09CF6921AD2D8AF00C2EA07 /* Controls */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		D01B191B1AD81DCE00931265 /* PeerKit */ = {
+			isa = PBXGroup;
+			children = (
+				D01B191C1AD81DF900931265 /* Advertiser.swift */,
+				D01B191D1AD81DF900931265 /* Browser.swift */,
+				D01B191E1AD81DF900931265 /* PeerKit.swift */,
+				D01B191F1AD81DF900931265 /* Session.swift */,
+				D01B19201AD81DF900931265 /* Transceiver.swift */,
+			);
+			name = PeerKit;
+			sourceTree = "<group>";
+		};
 		D0506FD11ABAF0C70009BD7E /* World */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +183,7 @@
 		D0B51CB91AB7589100C26D1F /* Skyward Jump */ = {
 			isa = PBXGroup;
 			children = (
-				D09CF6921AD2D8AF00C2EA07 /* Controls */,
+				D01B191A1AD81DC400931265 /* Libraries */,
 				D0B51CEE1AB7794500C26D1F /* ViewControllers */,
 				D0B51CE71AB7785200C26D1F /* Multiplayer */,
 				D0B51CE21AB7775900C26D1F /* Sprites */,
@@ -297,7 +328,7 @@
 				TargetAttributes = {
 					D0B51CB61AB7589100C26D1F = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 5JD6345NK4;
+						DevelopmentTeam = 5VWB99DS38;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -359,9 +390,11 @@
 			files = (
 				D0506FD51ABAF9E90009BD7E /* WorldFactory.swift in Sources */,
 				D0506FD01ABAF06E0009BD7E /* Platform.swift in Sources */,
+				D01B19231AD81DF900931265 /* PeerKit.swift in Sources */,
 				D01B19171AD7F2FD00931265 /* TWSwitch.swift in Sources */,
 				D09CF6891AD2B78700C2EA07 /* PausedGameNode.swift in Sources */,
 				D04254AA1AB9988400191A40 /* MultiplayerGameScene.swift in Sources */,
+				D01B19221AD81DF900931265 /* Browser.swift in Sources */,
 				D04254A61AB8AA1C00191A40 /* GameKitHelper.m in Sources */,
 				D0B51CE11AB75E2200C26D1F /* MainMenuViewController.swift in Sources */,
 				D0B51CC11AB7589100C26D1F /* GameScene.swift in Sources */,
@@ -369,14 +402,17 @@
 				D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */,
 				D0B51CE91AB7785C00C26D1F /* MultiplayerManager.swift in Sources */,
 				D0B51CE61AB7779300C26D1F /* CloudSprite.swift in Sources */,
+				D01B19251AD81DF900931265 /* Transceiver.swift in Sources */,
 				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,
 				D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */,
 				D0B51CC31AB7589100C26D1F /* GameViewController.swift in Sources */,
+				D01B19241AD81DF900931265 /* Session.swift in Sources */,
 				D0B51CE41AB7776500C26D1F /* CharacterSprite.swift in Sources */,
 				D01B19151AD7F2FD00931265 /* TWButton.swift in Sources */,
 				D01B19161AD7F2FD00931265 /* TWControl.swift in Sources */,
 				D0B51CBD1AB7589100C26D1F /* AppDelegate.swift in Sources */,
 				D04254A81AB980EE00191A40 /* Message.swift in Sources */,
+				D01B19211AD81DF900931265 /* Advertiser.swift in Sources */,
 				D05DC3FB1AD7CB34002911A0 /* GameOverScene.swift in Sources */,
 				D0B51CEB1AB7786C00C26D1F /* CommunicationStrategy.swift in Sources */,
 				D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */,
