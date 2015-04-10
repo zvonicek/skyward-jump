@@ -174,17 +174,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.startPlayerDynamics()
             player.startPlayerImpulse()
             firstTouch = false
-<<<<<<< HEAD
-        }/* else {
-            let touch = touches.anyObject() as UITouch
-=======
-        } else {
-            let touch = touches.first as! UITouch
->>>>>>> origin/master
-            let touchLocation = touch.locationInNode(self) as CGPoint
-            adjustFacingDirection(touchLocation)
-            moveToPosition(touchLocation)
-        }*/
+        }
     }
     
     //Function for moving from one position to a touch position. Scale to speed movement.
