@@ -42,7 +42,7 @@ class GameOverScene: SKScene {
             playerScoreLabel.fontColor = SKColor.blackColor()
             playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
             playerScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
-            playerScoreLabel.text = score
+            playerScoreLabel.text = "Score \(score)"
             addChild(playerScoreLabel)
             
             if (opponentScore != nil) {
@@ -51,7 +51,7 @@ class GameOverScene: SKScene {
                 opponentScoreLabel.fontColor = SKColor.blackColor()
                 opponentScoreLabel.position = CGPoint(x: self.size.width / 2, y: 250)
                 opponentScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
-                opponentScoreLabel.text = opponentScore!
+                opponentScoreLabel.text = "Opponent score \(opponentScore!)"
                 addChild(opponentScoreLabel)
             }
         }
