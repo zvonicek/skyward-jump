@@ -174,6 +174,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.startPlayerDynamics()
             player.startPlayerImpulse()
             firstTouch = false
+        } else {
+            let touch = touches.first as! UITouch
+            let touchLocation = touch.locationInNode(self) as CGPoint
+            adjustFacingDirection(touchLocation)
+            moveToPosition(touchLocation)
         }
     }
     
