@@ -35,31 +35,17 @@ class GameOverScene: SKScene {
         
         func createPlayerModeLabel() {
             
-            if(opponentScore == nil) {
-                
-                //add player score label
-                /*needs to retrieve and update the score of the player*/
-                var playerScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-                playerScoreLabel.fontSize = 20
-                playerScoreLabel.fontColor = SKColor.blackColor()
-                playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
-                playerScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
-                playerScoreLabel.text = score
-                addChild(playerScoreLabel)
-                
-            } else {
-                
-                //add player score label
-                /*needs to retrieve and update the score of the player*/
-                var playerScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-                playerScoreLabel.fontSize = 20
-                playerScoreLabel.fontColor = SKColor.blackColor()
-                playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
-                playerScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
-                playerScoreLabel.text = score
-                addChild(playerScoreLabel)
-                
-                
+            //add player score label
+            /*needs to retrieve and update the score of the player*/
+            var playerScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+            playerScoreLabel.fontSize = 20
+            playerScoreLabel.fontColor = SKColor.blackColor()
+            playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
+            playerScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+            playerScoreLabel.text = score
+            addChild(playerScoreLabel)
+            
+            if (opponentScore != nil) {
                 var opponentScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
                 opponentScoreLabel.fontSize = 20
                 opponentScoreLabel.fontColor = SKColor.blackColor()
@@ -67,7 +53,6 @@ class GameOverScene: SKScene {
                 opponentScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
                 opponentScoreLabel.text = opponentScore!
                 addChild(opponentScoreLabel)
-                
             }
         }
         
