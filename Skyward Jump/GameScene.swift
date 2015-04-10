@@ -97,8 +97,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton.addTarget(self, action: "pauseGame:", forControlEvents: UIControlEvents.TouchUpInside)
         
         //Configure pause-node
-        pauseNode.quitButton.addTarget(self, action: "quitGame:", forControlEvents: UIControlEvents.TouchUpInside)
-        
+        pauseNode.quitButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
+            target.quitGame()
+        }
+                
         //Configure score-label
         scoreLabel.fontSize = 14
         scoreLabel.position = CGPoint(x: self.size.width * 0.8, y: self.size.height - 30)
@@ -245,8 +247,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if Int(player.position.y) < maxY - 200 {
             
             //game scene called
-            let gameOverScene = GameOverScene(size: self.size)
-            self.view?.presentScene(gameOverScene)
+            controllerDelegate!.showScoreboard()
 
             println("die")
         }
@@ -267,7 +268,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton.setImage(pauseImg, forState: .Normal)
     }
     
-    func quitGame(sender: Button){
+    func quitGame(){
         controllerDelegate?.dismissViewController()
     }
 }

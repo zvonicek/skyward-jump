@@ -28,9 +28,9 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
         MultiplayerManager.sharedInstance.comm.sendMove(player.position, facingRight: player.facingRight)
     }
     
-    override func quitGame(sender: Button) {
+    override func quitGame() {
         MultiplayerManager.sharedInstance.comm.sendMatchEnded(false)
-        super.quitGame(sender)
+        super.quitGame()
     }
     
     // MARK: CommunicationDelegate

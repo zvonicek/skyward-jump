@@ -10,7 +10,7 @@ import SpriteKit
 
 class PausedGameNode: SKSpriteNode {
     var labelNode = SKLabelNode(fontNamed: "HelveticaNeue-Light")
-    var quitButton = Button(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
+    var quitButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
     
     init(size: CGSize) {
         super.init(texture: nil, color: UIColor(white: 0, alpha: 0.5), size: size)
@@ -21,7 +21,9 @@ class PausedGameNode: SKSpriteNode {
         labelNode.text = "PAUSE"
         
         //Configure QuitButton
-        quitButton.labelText = "Quit"
+        quitButton.stateNormalLabel.fontName = "HelveticaNeue"
+        quitButton.stateNormalLabel.fontSize = 19
+        quitButton.stateNormalLabelText = "Quit"
         quitButton.position = CGPointMake(0, 0)
         
         self.addChild(labelNode)
