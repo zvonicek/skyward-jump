@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 
 class GameOverScene: SKScene {
+    
     //Parent view controller delegate
     weak var controllerDelegate: GameViewControllerDelegate?
     
@@ -22,7 +23,6 @@ class GameOverScene: SKScene {
         
         //set background color to scene
         self.backgroundColor = SKColor.whiteColor()
-        
         
         //add game over label
         /*change to a cooler game over picture picture*/
@@ -73,7 +73,6 @@ class GameOverScene: SKScene {
         
         //call to check which mode we are in.
         createPlayerModeLabel()
-        
         
         var playAgainButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
         playAgainButton.stateNormalLabel.fontName = "HelveticaNeue"

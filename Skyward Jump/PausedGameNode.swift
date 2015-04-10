@@ -9,6 +9,7 @@
 import SpriteKit
 
 class PausedGameNode: SKSpriteNode {
+    
     var labelNode = SKLabelNode(fontNamed: "HelveticaNeue-Light")
     var quitButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
     

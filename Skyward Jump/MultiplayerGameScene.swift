@@ -10,6 +10,7 @@ import Foundation
 import SpriteKit
 
 class MultiplayerGameScene: GameScene, CommunicationDelegate {
+    
     let opponent = OpponentSprite()
     
     override func didMoveToView(view: SKView) {

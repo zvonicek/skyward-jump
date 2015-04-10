@@ -16,6 +16,7 @@ protocol GameViewControllerDelegate: class {
 }
 
 class GameViewController: UIViewController, GameViewControllerDelegate {
+    
     var multiplayerMode = false
     var scene: SKScene?
     
