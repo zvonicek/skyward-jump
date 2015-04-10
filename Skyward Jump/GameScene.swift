@@ -117,8 +117,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let acceleration = accelerometerData.acceleration
             self.xAcceleration = (CGFloat(acceleration.x) * 0.75) + (self.xAcceleration * 0.25)
         })
-
-
+    }
+    
+    deinit {
+        self.pauseButton.removeFromSuperview()
     }
     
     override func didSimulatePhysics() {
@@ -158,7 +160,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Platform && player.physicsBody?.velocity.dy < 0) {
             println("Collision with platform")
-            runAction(bounceSound)
+//            runAction(bounceSound)
             player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300.0)
         }
         
@@ -200,12 +202,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func getScoreString() -> String {
+        let str = "\(highestPoint)"
+        return str.substringToIndex(str.endIndex.predecessor().predecessor())
+    }
+    
     func updateScore(){
         if player.position.y > highestPoint {
             highestPoint = floor(player.position.y)
-            let str = "\(highestPoint)"
-            let scoreString = str.substringToIndex(str.endIndex.predecessor().predecessor())
-            scoreLabel.text = "Score: \(scoreString)"
+            scoreLabel.text = "Score: \(getScoreString())"
         }
     }
     
@@ -247,7 +252,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if Int(player.position.y) < maxY - 200 {
             
             //game scene called
-            controllerDelegate!.showScoreboard()
+            controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil)
 
             println("die")
         }

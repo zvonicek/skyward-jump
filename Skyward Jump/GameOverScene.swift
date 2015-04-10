@@ -10,12 +10,14 @@ import UIKit
 import SpriteKit
 
 class GameOverScene: SKScene {
+    //Parent view controller delegate
+    weak var controllerDelegate: GameViewControllerDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding has not been implemented")
     }
     
-    override init(size: CGSize) {
+    init(size: CGSize, score: String, opponentScore: String?) {
         super.init(size: size)
         
         //set background color to scene
@@ -52,23 +54,15 @@ class GameOverScene: SKScene {
         addChild(opponentScoreLabel)
         
         
-        
-        //add play again label
-        /*needs to behave like a button an replay the game again*/
-        var playAgainButton = SKLabelNode(fontNamed: "HelveticaNeue-Light")
-        playAgainButton.fontSize = 10
-        playAgainButton.fontColor = SKColor.blueColor()
+        var playAgainButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
+        playAgainButton.stateNormalLabel.fontName = "HelveticaNeue"
+        playAgainButton.stateNormalLabel.fontSize = 19        
+        playAgainButton.stateNormalLabelText = "Play again"
         playAgainButton.position = CGPoint(x: self.size.width/2, y: 150)
-        playAgainButton.text = "play again"
+        playAgainButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
+            target.controllerDelegate!.playGame()
+        }
+        
         addChild(playAgainButton)
-        
-        
-        
-        
-        
-        
     }
-    
-    
-    
 }
