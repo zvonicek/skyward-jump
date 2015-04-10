@@ -97,7 +97,7 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     func handleNegotiateWorldMessage(match: GKMatch, data: NSData, player: String) {
         let message = UnsafePointer<MessageNegotiateWorld>(data.bytes).memory
         let worldData = data.subdataWithRange(NSMakeRange(sizeof(MessageNegotiateWorld), data.length - sizeof(MessageNegotiateWorld)))
-        let world = NSKeyedUnarchiver.unarchiveObjectWithData(worldData) as World
+        let world = NSKeyedUnarchiver.unarchiveObjectWithData(worldData) as! World
         
         if let callback = callback {
             callback(world: world)
