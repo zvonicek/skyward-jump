@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 
 class GameOverScene: SKScene {
+    
     //Parent view controller delegate
     weak var controllerDelegate: GameViewControllerDelegate?
     
@@ -23,7 +24,6 @@ class GameOverScene: SKScene {
         //set background color to scene
         self.backgroundColor = SKColor.whiteColor()
         
-        
         //add game over label
         /*change to a cooler game over picture picture*/
         var gameOverLabel = SKLabelNode(fontNamed: "Chalkduster")
@@ -32,8 +32,6 @@ class GameOverScene: SKScene {
         gameOverLabel.position = CGPoint(x:self.size.width/2, y: 350)
         gameOverLabel.text = "Game Over"
         self.addChild(gameOverLabel)
-        
-        
         
         //add player score label
         /*needs to retrieve and update the score of the player*/
@@ -52,7 +50,6 @@ class GameOverScene: SKScene {
         opponentScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
         opponentScoreLabel.text = "*player2 score*"
         addChild(opponentScoreLabel)
-        
         
         var playAgainButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
         playAgainButton.stateNormalLabel.fontName = "HelveticaNeue"

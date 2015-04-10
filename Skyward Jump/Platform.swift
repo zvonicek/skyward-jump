@@ -9,6 +9,7 @@
 import Foundation
 
 class Platform: NSObject, NSCoding {
+    
     var position: CGPoint
     var length: CGFloat
     

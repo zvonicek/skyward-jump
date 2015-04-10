@@ -9,6 +9,7 @@
 import Foundation
 
 class World: NSObject, NSCoding {
+    
     var platforms: [Platform] = []
     
     init(platforms: [Platform]) {
