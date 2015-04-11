@@ -47,6 +47,9 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         var message = MessageNegotiateWorld(messageType: MessageType.NegotiateWorld, randomNumber: arc4random())
         worldMessage = (message, world)
         
+        sendPacketIndex = 0
+        receivedPacketIndex = 0
+        
         GameKitHelper.sharedGameKitHelper().findMatchWithMinPlayers(2, maxPlayers: 2, viewController: vc, delegate: self)
     }
     
