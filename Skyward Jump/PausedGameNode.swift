@@ -11,6 +11,7 @@ import SpriteKit
 class PausedGameNode: SKSpriteNode {
     
     var labelNode = SKLabelNode(fontNamed: "HelveticaNeue-Light")
+    var resumeButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
     var quitButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
     
     init(size: CGSize) {
@@ -18,16 +19,22 @@ class PausedGameNode: SKSpriteNode {
         self.position = CGPointMake(size.width / 2, size.height / 2)
         
         //Configure LabelNode
-        labelNode.position = CGPointMake(0, +100)
+        labelNode.position = CGPointMake(0, 100)
         labelNode.text = "PAUSE"
+
+        resumeButton.allStatesLabelText = "Resume"
+        resumeButton.allStatesLabelFontName = "HelveticaNeue"
+        resumeButton.allStatesLabelFontSize = 19
+        resumeButton.position = CGPointMake(0, 0)
         
         //Configure QuitButton
-        quitButton.stateNormalLabel.fontName = "HelveticaNeue"
-        quitButton.stateNormalLabel.fontSize = 19
-        quitButton.stateNormalLabelText = "Quit"
-        quitButton.position = CGPointMake(0, 0)
+        quitButton.allStatesLabelText = "Quit"
+        quitButton.allStatesLabelFontName = "HelveticaNeue"
+        quitButton.allStatesLabelFontSize = 19
+        quitButton.position = CGPointMake(0, -50)
         
         self.addChild(labelNode)
+        self.addChild(resumeButton)
         self.addChild(quitButton)
     }
 

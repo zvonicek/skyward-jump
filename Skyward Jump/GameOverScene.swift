@@ -59,23 +59,23 @@ class GameOverScene: SKScene {
         //call to check which mode we are in.
         createPlayerModeLabel()
         
-        var playAgainButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
-        playAgainButton.stateNormalLabel.fontName = "HelveticaNeue"
-        playAgainButton.stateNormalLabel.fontSize = 19
-        playAgainButton.stateNormalLabelText = "Play again"
-        playAgainButton.position = CGPoint(x: self.size.width/2, y: 150)
-        playAgainButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
-            target.controllerDelegate!.playGame()
+        if opponentScore == nil {
+            var playAgainButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
+            playAgainButton.allStatesLabelFontName = "HelveticaNeue"
+            playAgainButton.allStatesLabelFontSize = 19
+            playAgainButton.allStatesLabelText = "Play again"
+            playAgainButton.position = CGPoint(x: self.size.width/2, y: 150)
+            playAgainButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
+                target.controllerDelegate!.playGame()
+            }
+            
+            addChild(playAgainButton)            
         }
         
-        addChild(playAgainButton)
-        
-        
-        
         var exitButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
-        exitButton.stateNormalLabel.fontName = "HelveticaNeue"
-        exitButton.stateNormalLabel.fontSize = 19
-        exitButton.stateNormalLabelText = "Quit game"
+        exitButton.allStatesLabelFontName = "HelveticaNeue"
+        exitButton.allStatesLabelFontSize = 19
+        exitButton.allStatesLabelText = "Quit game"
         exitButton.position = CGPoint(x: self.size.width/2, y: 100)
         exitButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
             target.quitGame()

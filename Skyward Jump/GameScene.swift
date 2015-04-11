@@ -107,11 +107,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Configure pause-button
         pauseButton.frame = CGRectMake(self.size.width * 0.9, 10, 30, 30)
         pauseButton.setImage(pauseIcon, forState: .Normal)
-        pauseButton.addTarget(self, action: "pauseGame:", forControlEvents: UIControlEvents.TouchUpInside)
+        pauseButton.addTarget(self, action: "pauseGame", forControlEvents: UIControlEvents.TouchUpInside)
         
         //Configure pause-node
         pauseNode.quitButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
             target.quitGame()
+        }
+        pauseNode.resumeButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
+            target.pauseGame()
         }
                 
         //Configure score-label
@@ -269,7 +272,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil)        
     }
     
-    func pauseGame(sender: UIButton){
+    func pauseGame(){
         self.paused = !self.paused
         
         if paused {
