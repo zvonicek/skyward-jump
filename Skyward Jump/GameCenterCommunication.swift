@@ -102,7 +102,7 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     
     // MARK: message extraction
     
-    func handleNegotiateWorldMessage(match: GKMatch, data: NSData, player: String) {        
+    func handleNegotiateWorldMessage(match: GKMatch, data: NSData, player: String) {
         let message = UnsafePointer<MessageNegotiateWorld>(data.bytes).memory
         let worldData = data.subdataWithRange(NSMakeRange(sizeof(MessageNegotiateWorld), data.length - sizeof(MessageNegotiateWorld)))
         let world = NSKeyedUnarchiver.unarchiveObjectWithData(worldData) as! World

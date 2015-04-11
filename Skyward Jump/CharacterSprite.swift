@@ -35,14 +35,14 @@ class CharacterSprite: SKSpriteNode {
     }
     
     func startPlayerImpulse() {
-        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 400.0))
+        self.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 100.0))
         println("First impulse")
 
     }
     
     func createPlayer(yPosition: CGFloat) -> SKNode {
         self.addChild(sprite)
-        self.position = CGPoint(x: 160, y: yPosition)
+        self.position = CGPoint(x: 50, y: yPosition)
         playerPhysics()
         
         return self

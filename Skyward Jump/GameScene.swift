@@ -39,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var firstTouch = true
     var score = 0
     var highestPoint: CGFloat
-    let playerStartHeight: CGFloat = 100
+    let playerStartHeight: CGFloat = 45
     
     //Sound effects
     //let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
@@ -49,7 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     ///// PING //////
     var maxY: Int
-    let distanceFromPlayer: CGFloat = 200
+    let distanceFromPlayer: CGFloat = 300
     let endLevelY:Int?
     
     // Motion manager for accelerometer
@@ -245,9 +245,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         // move scene
-        if player.physicsBody?.velocity.dy > 0 && Int(player.position.y) > maxY {
+        if Int(player.position.y) > maxY && player.position.y > 200.0 {
             platformLayer.position = CGPoint(x: 0.0, y: -(player.position.y - 200.0))
-            
         }
         
         // Check if we've finished the level
