@@ -69,8 +69,8 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         self.sendData(data, reliable: false)
     }
     
-    func sendMatchEnded(won: Bool) {
-        var message = MessageGameOver(messageType: .GameOver, senderWon: ObjCBool(won))
+    func sendMatchEnded(score: Int, interrupted: Bool) {
+        var message = MessageGameOver(messageType: .GameOver, score: UInt32(score), senderInterrupted: ObjCBool(interrupted))
         let data = NSData(bytes: &message, length: sizeof(MessageGameOver))
         self.sendData(data, reliable: true)
     }
@@ -131,7 +131,7 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     
     func handleGameOverMessage(match: GKMatch, data: NSData, player: String) {
         let message = UnsafePointer<MessageGameOver>(data.bytes).memory
-        delegate?.gameOver(Bool(!message.senderWon))
+        delegate?.gameOver(Int(message.score), interrupted: (Bool(message.senderInterrupted)))
     }
     
     // MARK: other methods

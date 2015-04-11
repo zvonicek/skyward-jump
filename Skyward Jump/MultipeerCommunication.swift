@@ -70,9 +70,8 @@ class MultipeerCommunication: NSObject, CommunicationStrategy, MCBrowserViewCont
         self.sendData(data, reliable: false)
     }
     
-    func sendMatchEnded(won: Bool)
-    {
-        var message = MessageGameOver(messageType: .GameOver, senderWon: ObjCBool(won))
+    func sendMatchEnded(score: Int, interrupted: Bool) {
+        var message = MessageGameOver(messageType: .GameOver, score: UInt32(score), senderInterrupted: ObjCBool(interrupted))
         let data = NSData(bytes: &message, length: sizeof(MessageGameOver))
         self.sendData(data, reliable: true)
     }
@@ -89,7 +88,7 @@ class MultipeerCommunication: NSObject, CommunicationStrategy, MCBrowserViewCont
         data.appendData(NSData(bytes: &message, length: sizeof(MessageNegotiateWorld)))
         data.appendData(worldData)
         
-        self.state == State.Running        
+        self.state = State.Running
         callback!(world: world)
         
         self.sendData(data, reliable: true)
@@ -189,6 +188,6 @@ class MultipeerCommunication: NSObject, CommunicationStrategy, MCBrowserViewCont
     
     func handleGameOverMessage(data: NSData) {
         let message = UnsafePointer<MessageGameOver>(data.bytes).memory
-        delegate?.gameOver(Bool(!message.senderWon))
+        delegate?.gameOver(Int(message.score), interrupted: (Bool(message.senderInterrupted)))
     }
 }

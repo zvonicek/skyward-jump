@@ -30,12 +30,12 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     }
     
     override func die() {
-        MultiplayerManager.sharedInstance.comm.sendMatchEnded(false)
+        MultiplayerManager.sharedInstance.comm.sendMatchEnded(getScoreString().toInt()!, interrupted: false)
         super.die()
     }
     
     override func quitGame() {
-        MultiplayerManager.sharedInstance.comm.sendMatchEnded(false)
+        MultiplayerManager.sharedInstance.comm.sendMatchEnded(getScoreString().toInt()!, interrupted: true)
         super.quitGame()
     }
     
@@ -47,13 +47,16 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     
     func lostConnection() {
         //TODO: show status message
+        
+        let alert = UIAlertView(title: "Error", message: "Connection was lost", delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+        
         println("lost connection")
         controllerDelegate?.dismissViewController()
     }
     
-    func gameOver(won: Bool) {
+    func gameOver(score: Int, interrupted: Bool) {
         //TODO: show result
-        println("game over, won: ", won)
-        controllerDelegate?.dismissViewController()
+        controllerDelegate?.showScoreboard(getScoreString(), opponentScore: "\(score)")
     }
 }
