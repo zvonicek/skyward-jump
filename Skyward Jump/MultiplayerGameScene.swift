@@ -12,10 +12,14 @@ import SpriteKit
 class MultiplayerGameScene: GameScene, CommunicationDelegate {
     
     let opponent = OpponentSprite()
+    let arrow = SKSpriteNode(imageNamed: "arrow")
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         platformLayer.addChild(opponent)
+        
+        arrow.size = CGSizeMake(30, 30)
+        self.addChild(arrow)
         
         MultiplayerManager.sharedInstance.comm.delegate = self
     }
@@ -31,7 +35,10 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     
     override func die() {
         MultiplayerManager.sharedInstance.comm.sendMatchEnded(getScoreString().toInt()!, interrupted: false)
-        super.die()
+        
+        let str = "\(floor(opponent.position.y))"
+        let score = str.substringToIndex(str.endIndex.predecessor().predecessor())
+        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: score)
     }
     
     override func quitGame() {
@@ -43,12 +50,31 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     func updateOpponentMove(point: CGPoint, facingRight: Bool) {
         opponent.position = point
         opponent.facingRight = facingRight
+        
+        println(NSString(format:"%f %f %f %f %f", point.x, point.y, platformLayer.position.x, platformLayer.position.y, self.size.height))
+        
+        let padding = 20
+        
+        if -platformLayer.position.y > point.y + opponent.size.height {
+            arrow.position = CGPointMake(point.x, CGFloat(padding))
+            arrow.hidden = false
+            arrow.yScale = -1.0
+            println("down")
+        } else if -platformLayer.position.y + self.size.height < point.y {
+            arrow.position = CGPointMake(point.x, self.size.height - CGFloat(padding))
+            arrow.hidden = false
+            arrow.yScale = 1.0
+            println("up")
+        } else {
+            arrow.hidden = true
+            println("visible")
+        }
     }
     
     func lostConnection() {
         //TODO: show status message
         
-        let alert = UIAlertView(title: "Error", message: "Connection was lost", delegate: nil, cancelButtonTitle: "OK")
+        let alert = UIAlertView(title: "Error", message: "Connection with other player was lost", delegate: nil, cancelButtonTitle: "OK")
         alert.show()
         
         println("lost connection")
