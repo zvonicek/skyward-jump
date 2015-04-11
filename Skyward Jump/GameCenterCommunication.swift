@@ -35,10 +35,8 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     
     func findMatch(vc: UIViewController, callback: StartGameCallback) {
         self.callback = callback
-        GameKitHelper.sharedGameKitHelper().findMatchWithMinPlayers(2, maxPlayers: 2, viewController: vc, delegate: self)
-    }
-    
-    func negotiateWorld() {
+        
+        // generate world
         // TEMP
         var w = WorldFactory()
         var platforms = w.fixedPath
@@ -46,15 +44,20 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         platforms += w.voidPath
         let world = World(platforms: platforms)
         
-        let worldData = NSKeyedArchiver.archivedDataWithRootObject(world)
-            
         var message = MessageNegotiateWorld(messageType: MessageType.NegotiateWorld, randomNumber: arc4random())
+        worldMessage = (message, world)
+        
+        GameKitHelper.sharedGameKitHelper().findMatchWithMinPlayers(2, maxPlayers: 2, viewController: vc, delegate: self)
+    }
+    
+    func negotiateWorld() {
+        var message = worldMessage!.0
+        let worldData = NSKeyedArchiver.archivedDataWithRootObject(worldMessage!.1)
         
         let data = NSMutableData()
         data.appendData(NSData(bytes: &message, length: sizeof(MessageNegotiateWorld)))
         data.appendData(worldData)
         
-        worldMessage = (message, world)
         self.sendData(data, reliable: true)
     }
     
