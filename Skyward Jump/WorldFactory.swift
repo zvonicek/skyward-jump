@@ -24,28 +24,17 @@ class WorldFactory {
     var fixedPath: [Platform] = []
     var extraPath: [Platform] = []
     var voidPath: [Platform] = []
-    var level: Int
     var levelHeight: Int?
     let numberOfPlatform: Int
     
-    var data: NSDictionary
     
-    init(level: Int) {
+    init() {
         self.levelHeight = 7300
         numberOfPlatform = (self.levelHeight! / jumpHeight)
-        self.level = level
-        
-        
-        // Load data from plist
-        let plistName = "Level0\(level)"
-        println(plistName)
-        let plist = NSBundle.mainBundle().pathForResource(plistName, ofType: "plist")
-        self.data = NSDictionary(contentsOfFile: plist!)!
         
         createFixedPath()
         createExtraPath()
         createVoidPath()
-        
     }
     
     func createVoidPath() {

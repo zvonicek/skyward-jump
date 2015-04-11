@@ -18,13 +18,15 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     var sendPacketIndex:UInt16 = 0
     var receivedPacketIndex:UInt16 = 0
     
+    var worldMessage: (MessageNegotiateWorld, World)?
+    
     init() {
         
     }
     
     // MARK: CommunicationStrategy
     
-    func authenticate(vc: UIViewController) {
+    func authenticate(vc: UIViewController, callback: StartGameCallback) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showAuthenticationViewController", name: PresentAuthenticationViewController, object: nil)
         viewController = vc
         
@@ -37,9 +39,13 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     }
     
     func negotiateWorld() {
-        let platform1 = Platform(position: CGPointMake(10, 10), length: 10.0)
-        let platform2 = Platform(position: CGPointMake(20, 20), length: CGFloat(Int(rand()) % 100))
-        let world = World(platforms: [platform1, platform2])
+        // TEMP
+        var w = WorldFactory()
+        var platforms = w.fixedPath
+        platforms += w.extraPath
+        platforms += w.voidPath
+        let world = World(platforms: platforms)
+        
         let worldData = NSKeyedArchiver.archivedDataWithRootObject(world)
             
         var message = MessageNegotiateWorld(messageType: MessageType.NegotiateWorld, randomNumber: arc4random())
@@ -48,6 +54,7 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         data.appendData(NSData(bytes: &message, length: sizeof(MessageNegotiateWorld)))
         data.appendData(worldData)
         
+        worldMessage = (message, world)
         self.sendData(data, reliable: true)
     }
     
@@ -68,7 +75,6 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     // MARK: GameKitHelperDelegate
     
     @objc func matchStarted() {
-        println("match started")
         self.negotiateWorld()
     }
     
@@ -88,19 +94,27 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     }
     
     @objc func matchEnded() {
-        println("match ended")
         delegate?.lostConnection()
     }
     
     // MARK: message extraction
     
-    func handleNegotiateWorldMessage(match: GKMatch, data: NSData, player: String) {
+    func handleNegotiateWorldMessage(match: GKMatch, data: NSData, player: String) {        
         let message = UnsafePointer<MessageNegotiateWorld>(data.bytes).memory
         let worldData = data.subdataWithRange(NSMakeRange(sizeof(MessageNegotiateWorld), data.length - sizeof(MessageNegotiateWorld)))
         let world = NSKeyedUnarchiver.unarchiveObjectWithData(worldData) as! World
         
-        if let callback = callback {
-            callback(world: world)
+        if let callback = callback, let worldMessage = worldMessage {
+            if message.randomNumber > worldMessage.0.randomNumber {
+                callback(world: world)
+                println("chosen remote world")
+            } else {
+                callback(world: worldMessage.1)
+                println("chosen local world")
+            }
+        } else {
+            print(callback)
+            print(worldMessage)
         }
     }
     

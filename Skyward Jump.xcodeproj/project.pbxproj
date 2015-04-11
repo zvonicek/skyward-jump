@@ -36,6 +36,8 @@
 		D0B51CF11AB7797E00C26D1F /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CF01AB7797E00C26D1F /* World.swift */; };
 		D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */; };
 		D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */; };
+		D0E469491AD6C99D0068868B /* MultipeerCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */; };
+		D0E4694B1AD6CD570068868B /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */; };
 		DF344F721AD68D7700DAF8A3 /* Level01.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF344F711AD68D7700DAF8A3 /* Level01.plist */; };
 		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,8 @@
 		D0B51CF01AB7797E00C26D1F /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformLayer.swift; sourceTree = "<group>"; };
 		D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpponentSprite.swift; sourceTree = "<group>"; };
+		D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerCommunication.swift; sourceTree = "<group>"; };
+		D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		DF344F711AD68D7700DAF8A3 /* Level01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level01.plist; sourceTree = "<group>"; };
 		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E4694B1AD6CD570068868B /* MultipeerConnectivity.framework in Frameworks */,
 				D0507AC01AB8531F00977F08 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D01B191A1AD81DC400931265 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				D09CF6921AD2D8AF00C2EA07 /* Controls */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		D0506FD11ABAF0C70009BD7E /* World */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +146,7 @@
 		D0B51CAE1AB7589100C26D1F = {
 			isa = PBXGroup;
 			children = (
+				D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */,
 				D0507ABF1AB8531F00977F08 /* GameKit.framework */,
 				D0B51CB91AB7589100C26D1F /* Skyward Jump */,
 				D0B51CD31AB7589100C26D1F /* Skyward JumpTests */,
@@ -152,7 +166,7 @@
 		D0B51CB91AB7589100C26D1F /* Skyward Jump */ = {
 			isa = PBXGroup;
 			children = (
-				D09CF6921AD2D8AF00C2EA07 /* Controls */,
+				D01B191A1AD81DC400931265 /* Libraries */,
 				D0B51CEE1AB7794500C26D1F /* ViewControllers */,
 				D0B51CE71AB7785200C26D1F /* Multiplayer */,
 				D0B51CE21AB7775900C26D1F /* Sprites */,
@@ -215,6 +229,7 @@
 				D0B51CE81AB7785C00C26D1F /* MultiplayerManager.swift */,
 				D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */,
 				D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */,
+				D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */,
 				D04254A71AB980EE00191A40 /* Message.swift */,
 			);
 			name = Multiplayer;
@@ -297,7 +312,7 @@
 				TargetAttributes = {
 					D0B51CB61AB7589100C26D1F = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 5JD6345NK4;
+						DevelopmentTeam = 5VWB99DS38;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -370,6 +385,7 @@
 				D0B51CE91AB7785C00C26D1F /* MultiplayerManager.swift in Sources */,
 				D0B51CE61AB7779300C26D1F /* CloudSprite.swift in Sources */,
 				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,
+				D0E469491AD6C99D0068868B /* MultipeerCommunication.swift in Sources */,
 				D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */,
 				D0B51CC31AB7589100C26D1F /* GameViewController.swift in Sources */,
 				D0B51CE41AB7776500C26D1F /* CharacterSprite.swift in Sources */,

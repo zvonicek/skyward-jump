@@ -13,7 +13,7 @@ typealias StartGameCallback = (world: World) -> Void
 protocol CommunicationStrategy {
     var delegate: CommunicationDelegate? {get set}
     
-    func authenticate(vc: UIViewController)
+    func authenticate(vc: UIViewController, callback: StartGameCallback)
     func findMatch(vc: UIViewController, callback: StartGameCallback)
     func sendMove(position: CGPoint, facingRight: Bool)
     func sendMatchEnded(won: Bool)
