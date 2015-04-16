@@ -15,7 +15,7 @@ class CharacterSprite: SKSpriteNode {
     
     func playerPhysics() {
         self.physicsBody?.dynamic = false
-        self.physicsBody = SKPhysicsBody(texture: sprite.texture, size: sprite.size)
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(sprite.size.width, 10), center: CGPointMake(0, -sprite.size.height / 2))
         self.physicsBody?.dynamic = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.restitution = 1.0
