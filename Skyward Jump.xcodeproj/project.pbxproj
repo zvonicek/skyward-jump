@@ -34,6 +34,7 @@
 		D0B51CEB1AB7786C00C26D1F /* CommunicationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */; };
 		D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */; };
 		D0B51CF11AB7797E00C26D1F /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51CF01AB7797E00C26D1F /* World.swift */; };
+		D0B6F7861ADFD26D003DC73E /* SmallPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */; };
 		D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */; };
 		D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */; };
 		D0E469491AD6C99D0068868B /* MultipeerCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */; };
@@ -86,6 +87,7 @@
 		D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationStrategy.swift; sourceTree = "<group>"; };
 		D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterCommunication.swift; sourceTree = "<group>"; };
 		D0B51CF01AB7797E00C26D1F /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallPlatform.swift; sourceTree = "<group>"; };
 		D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformLayer.swift; sourceTree = "<group>"; };
 		D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpponentSprite.swift; sourceTree = "<group>"; };
 		D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerCommunication.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				DF344F711AD68D7700DAF8A3 /* Level01.plist */,
 				D0B51CF01AB7797E00C26D1F /* World.swift */,
 				D0506FCF1ABAF06E0009BD7E /* Platform.swift */,
+				D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */,
 				D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */,
 			);
 			name = World;
@@ -384,6 +387,7 @@
 				D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */,
 				D0B51CE91AB7785C00C26D1F /* MultiplayerManager.swift in Sources */,
 				D0B51CE61AB7779300C26D1F /* CloudSprite.swift in Sources */,
+				D0B6F7861ADFD26D003DC73E /* SmallPlatform.swift in Sources */,
 				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,
 				D0E469491AD6C99D0068868B /* MultipeerCommunication.swift in Sources */,
 				D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */,
@@ -471,7 +475,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -507,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -522,7 +526,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Skyward Jump/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -539,7 +543,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Skyward Jump/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
