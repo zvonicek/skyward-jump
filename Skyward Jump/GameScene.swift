@@ -8,8 +8,6 @@
 
 
 //// layerPlatform will contain player sprite
-// test
-
 
 import SpriteKit
 import CoreMotion
@@ -178,16 +176,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //runAction(bounceSound)
             player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300.0)
         }
-        
-        //TODO:
-        //if: check if collision with floor, move over to GameOver Scene
-        //if: check if collision with wall, move through wall to other side
-        
     }
     
-    
-    //Touch anywhere on the screen, and the game starts. Setting dynamics to true and adds initial upwards impulse
-    //to the player.
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if firstTouch {
             player.startPlayerDynamics()
@@ -268,8 +258,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func die() {
-        //game scene called
-        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil)        
+        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil)
     }
     
     func pauseGame(){
