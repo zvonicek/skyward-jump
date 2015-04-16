@@ -40,7 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let playerStartHeight: CGFloat = 45
     
     //Sound effects
-    //let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
+    let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
     
     //Start location of the player
     var location = CGPointMake(50, 50)
@@ -175,7 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Platform && player.physicsBody?.velocity.dy < 0) {
-            //runAction(bounceSound)
+            runAction(bounceSound)
             player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300.0)
         }
     }
