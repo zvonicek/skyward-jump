@@ -138,6 +138,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didSimulatePhysics() {
+        self.adjustFacingDirection()
+
         // set velocity based on x-axis acceleration
         player.physicsBody?.velocity = CGVector(dx: xAcceleration * 400.0, dy: player.physicsBody!.velocity.dy)
         
@@ -186,7 +188,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else {
             let touch = touches.first as! UITouch
             let touchLocation = touch.locationInNode(self) as CGPoint
-            adjustFacingDirection(touchLocation)
             moveToPosition(touchLocation)
         }
     }
@@ -200,9 +201,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.runAction(SKAction.moveToX(position.x, duration: time))
     }
     
-    func adjustFacingDirection(location: CGPoint) {
-        if (player.facingRight && player.position.x > location.x) ||
-            (!player.facingRight && player.position.x < location.x) {
+    func adjustFacingDirection() {
+        if (player.facingRight && self.xAcceleration < 0) ||
+            (!player.facingRight && self.xAcceleration > 0) {
             player.flipFace()
         }
     }
