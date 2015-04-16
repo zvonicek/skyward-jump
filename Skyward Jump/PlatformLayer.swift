@@ -14,14 +14,12 @@ class PlatformLayer: SKNode {
         super.init()
         
         for platform in world.platforms {
-            let sprite = CloudSprite()
-            sprite.createPlatform(platform.position, scale: CGFloat(0.5))
+            let sprite = CloudSprite(pos: platform.position, width: 50)
             self.addChild(sprite)
         }
         
         //Floor, so the character doesn't get lost
-        let floor: CloudSprite = CloudSprite()
-        floor.createPlatform(CGPoint(x: 300, y: 0), scale: 5)
+        let floor: CloudSprite = CloudSprite(pos: CGPoint(x: 0, y: 3), width: 640)
         floor.yScale = 1
         
         self.addChild(floor)

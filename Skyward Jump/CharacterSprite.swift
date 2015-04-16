@@ -10,12 +10,12 @@ import SpriteKit
 
 class CharacterSprite: SKSpriteNode {
     
-    let sprite = SKSpriteNode(imageNamed: "pika.png")
+    let sprite = SKSpriteNode(imageNamed: "hero")
     var facingRight = false
     
     func playerPhysics() {
         self.physicsBody?.dynamic = false
-        self.physicsBody = SKPhysicsBody(circleOfRadius: sprite.size.width/2)
+        self.physicsBody = SKPhysicsBody(texture: sprite.texture, size: sprite.size)
         self.physicsBody?.dynamic = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.restitution = 1.0

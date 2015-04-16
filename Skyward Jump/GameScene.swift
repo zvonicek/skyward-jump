@@ -40,7 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let playerStartHeight: CGFloat = 45
     
     //Sound effects
-    let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
+    //let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
     
     //Start location of the player
     var location = CGPointMake(50, 50)
@@ -93,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         maxY = Int(playerStartHeight)
         
         super.init(size: size)
-        backgroundColor = SKColor.whiteColor()
+        backgroundColor = SKColor(red: 196/255.0, green: 223/255.0, blue: 155/255.0, alpha: 1.0)
         
         //Adds gravity to the y-direction
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
@@ -175,7 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Platform && player.physicsBody?.velocity.dy < 0) {
-            runAction(bounceSound)
+            //runAction(bounceSound)
             player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300.0)
         }
     }
