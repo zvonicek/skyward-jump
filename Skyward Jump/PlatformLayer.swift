@@ -19,8 +19,7 @@ class PlatformLayer: SKNode {
         }
         
         //Floor, so the character doesn't get lost
-        let floor: CloudSprite = CloudSprite(pos: CGPoint(x: 0, y: 3), width: 640)
-        floor.yScale = 1
+        let floor = FloorSprite()
         
         self.addChild(floor)
     }

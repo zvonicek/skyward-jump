@@ -37,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var firstTouch = true
     var score = 0
     var highestPoint: CGFloat
-    let playerStartHeight: CGFloat = 45
+    let playerStartHeight: CGFloat = 60
     
     //Sound effects
     //let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
@@ -155,6 +155,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(platformLayer)
         self.view?.addSubview(pauseButton)
         self.addChild(scoreLabel)
+        
+        let action = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 0.0, duration: 5.0)
+        self.runAction(action)
     }
     
     //Function get automatically called when to bodies are in contact
