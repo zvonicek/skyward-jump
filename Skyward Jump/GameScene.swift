@@ -29,6 +29,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //Pause-node
     let pauseNode: PausedGameNode
+    
+    //Background-node
+    let backgroundNode: SKSpriteNode
+    var backgroundNodePrevPosition: CGFloat = 0
 
     //Score-label
     let scoreLabel = SKLabelNode(fontNamed: "HelveticaNeue-Light")
@@ -76,9 +80,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             var platforms = w.fixedPath
             platforms += w.extraPath
             platforms += w.voidPath
-            println(w.extraPath.count)
-            println(w.voidPath.count)
-            println(platforms.count)
             
             world = World(platforms: platforms)
         }
@@ -89,11 +90,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         highestPoint = playerStartHeight
         pauseNode = PausedGameNode(size: size)
         
+        backgroundNode = SKSpriteNode()
+        backgroundNode.size = CGSizeMake(size.width * 2, size.height * 2)
+        backgroundNode.color = UIColor(red: 196/255.0, green: 223/255.0, blue: 155/255.0, alpha: 1.0)
+        
         //// PING ////
         maxY = Int(playerStartHeight)
         
         super.init(size: size)
-        backgroundColor = SKColor(red: 196/255.0, green: 223/255.0, blue: 155/255.0, alpha: 1.0)
         
         //Adds gravity to the y-direction
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
@@ -152,12 +156,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
+        self.addChild(backgroundNode)
         self.addChild(platformLayer)
         self.view?.addSubview(pauseButton)
         self.addChild(scoreLabel)
-        
-        let action = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 0.0, duration: 5.0)
-        self.runAction(action)
     }
     
     //Function get automatically called when to bodies are in contact
@@ -244,6 +246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // move scene
         if Int(player.position.y) > maxY && player.position.y > 200.0 {
             platformLayer.position = CGPoint(x: 0.0, y: -(player.position.y - 200.0))
+            updateBackgroundColorIfNeeded()
         }
         
         // Check if we've finished the level
@@ -258,7 +261,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if Int(player.position.y) < maxY - 200 {
             self.die()
         }
-
+    }
+    
+    func updateBackgroundColorIfNeeded() {
+        let levelHeight = 7300
+        var colors = [UIColor(red: 119/255.0, green: 196/255.0, blue: 209/255.0, alpha: 1.0),
+        UIColor(red: 138/255.0, green: 131/255.0, blue: 205/255.0, alpha: 1.0),
+        UIColor(red: 28/255.0, green: 132/255.0, blue: 147/255.0, alpha: 1.0)]
+        var newColor: UIColor?
+        let threshold = levelHeight / (colors.count + 1)
+        
+        for var i = colors.count; i > 0; i-- {
+            if -self.platformLayer.position.y > CGFloat(i*threshold) && backgroundNodePrevPosition < CGFloat(i*threshold) {
+                print("set")
+                self.backgroundNodePrevPosition = -self.platformLayer.position.y
+                let action = SKAction.colorizeWithColor(colors[i-1], colorBlendFactor: 0.0, duration: 5.0)
+                self.backgroundNode.runAction(action)
+                break
+            }
+        }
     }
     
     func die() {
