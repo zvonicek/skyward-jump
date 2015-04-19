@@ -85,6 +85,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         platformLayer = PlatformLayer(world: world)
+        
+        for cSprite in w.coins {
+            platformLayer.addChild(cSprite)
+        }
         platformLayer.addChild(player)
         
         highestPoint = playerStartHeight
@@ -183,6 +187,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //runAction(bounceSound)
             player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300.0)
         }
+        
+        if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Coin) {
+            secondBody.node?.removeFromParent()
+            updateScore()
+        
+        }
+        
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
