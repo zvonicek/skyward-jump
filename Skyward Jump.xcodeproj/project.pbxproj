@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD8EB1941AE3DBFC003306EE /* CoinSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8EB1931AE3DBFC003306EE /* CoinSprite.swift */; };
 		ADE211BF1ABCA7F9006EE1AA /* CollisionCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE211BE1ABCA7F9006EE1AA /* CollisionCategories.swift */; };
 		D01B19151AD7F2FD00931265 /* TWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B19121AD7F2FD00931265 /* TWButton.swift */; };
 		D01B19161AD7F2FD00931265 /* TWControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B19131AD7F2FD00931265 /* TWControl.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD8EB1931AE3DBFC003306EE /* CoinSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinSprite.swift; sourceTree = "<group>"; };
 		ADE211BE1ABCA7F9006EE1AA /* CollisionCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionCategories.swift; sourceTree = "<group>"; };
 		D01B19121AD7F2FD00931265 /* TWButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWButton.swift; sourceTree = "<group>"; };
 		D01B19131AD7F2FD00931265 /* TWControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWControl.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				D094A5151AE138D20033ECCC /* FloorSprite.swift */,
 				ADE211BE1ABCA7F9006EE1AA /* CollisionCategories.swift */,
 				D09CF6881AD2B78700C2EA07 /* PausedGameNode.swift */,
+				AD8EB1931AE3DBFC003306EE /* CoinSprite.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				D0B51CE61AB7779300C26D1F /* CloudSprite.swift in Sources */,
 				D0B6F7861ADFD26D003DC73E /* SmallPlatform.swift in Sources */,
 				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,
+				AD8EB1941AE3DBFC003306EE /* CoinSprite.swift in Sources */,
 				D0E469491AD6C99D0068868B /* MultipeerCommunication.swift in Sources */,
 				D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */,
 				D0B51CC31AB7589100C26D1F /* GameViewController.swift in Sources */,

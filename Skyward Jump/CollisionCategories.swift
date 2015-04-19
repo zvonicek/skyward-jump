@@ -11,6 +11,5 @@ import Foundation
 struct Category {
     static let Player: UInt32 = 0x1 << 1
     static let Platform: UInt32 = 0x1 << 2
-    static let Floor: UInt32 = 0x1 << 3
-//    static let wallCategory: UInt32 = 0x1 << 4
+    static let Coin: UInt32 = 0x1 << 3
 }
