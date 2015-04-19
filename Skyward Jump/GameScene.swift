@@ -89,6 +89,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for cSprite in w.coins {
             platformLayer.addChild(cSprite)
         }
+        for mSprite in w.monsters {
+            mSprite.createMovement()
+            platformLayer.addChild(mSprite)
+        }
         platformLayer.addChild(player)
         
         highestPoint = playerStartHeight

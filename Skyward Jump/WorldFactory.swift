@@ -18,6 +18,7 @@ import Foundation
 let jumpHeight = 140
 let platformHeight = 50
 let platformWidth = 100
+let numberOfMonster = 15
 
 class WorldFactory {
     
@@ -25,6 +26,7 @@ class WorldFactory {
     var extraPath: [Platform] = []
     var voidPath: [Platform] = []
     var coins: [CoinSprite] = []
+    var monsters: [Monster] = []
     var levelHeight: Int?
     let numberOfPlatform: Int
     
@@ -37,6 +39,19 @@ class WorldFactory {
         createExtraPath()
         createVoidPath()
         createCoin()
+        createMonster()
+    }
+    
+    func createMonster() {
+        let height = self.levelHeight! / numberOfMonster
+        for (var i = 0; i < numberOfPlatform; i++ ){
+            var positionY = height * (i + 1)
+            var positionX = randomPositionX()
+            
+            var position = CGPointMake(CGFloat(positionX), CGFloat(positionY))
+            var m = Monster(pos: position)
+            self.monsters.append(m)
+        }
     }
     
     func createCoin() {
