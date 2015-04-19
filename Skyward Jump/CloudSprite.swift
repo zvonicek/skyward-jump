@@ -9,31 +9,23 @@
 import SpriteKit
 
 class CloudSprite: SKSpriteNode {
-    
-    let sprite = SKSpriteNode(imageNamed: "platform.png")
-    
-    func platformPhysics(scale: CGFloat) {
-        let scaledSize = CGSize(width: scale * sprite.size.width, height: scale * sprite.size.height)
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: scaledSize)
+    init(pos: CGPoint, width: CGFloat) {
+        super.init(texture: nil, color: UIColor(red: 219/255.0, green: 235/255.0, blue: 195/255.0, alpha: 1.0), size: CGSize(width: width, height: 10))
+        
+        let border = SKShapeNode(rectOfSize: self.size)
+        border.lineWidth = 2
+        border.strokeColor = UIColor(red: 41/255.0, green: 104/255.0, blue: 121/255.0, alpha: 1.0)
+        self.addChild(border)
+        
+        self.position = pos
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
         self.physicsBody?.dynamic = false
+        self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody?.categoryBitMask = Category.Platform
         self.physicsBody?.collisionBitMask = 0
     }
-    
-    
-    //Should be able to create multiple platforms
-    //Function only create 1 platform at a fixed posistion
-    func createPlatform(pos: CGPoint, scale: CGFloat) -> SKNode {
-        self.addChild(sprite)
-        self.position = pos
-        self.xScale = scale
-        self.yScale = scale
-        self.name = "PLATFORM_NODE"
-        platformPhysics(scale)
-        
-        return self
-    }
-    
 
-   
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

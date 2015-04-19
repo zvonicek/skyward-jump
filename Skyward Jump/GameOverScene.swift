@@ -39,22 +39,13 @@ class GameOverScene: SKScene {
         playerScoreLabel.fontColor = SKColor.blackColor()
         playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
         playerScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
-        playerScoreLabel.text = "Your score \(score)"
+        playerScoreLabel.text = "Your score: \(score)"
         addChild(playerScoreLabel)
         
         if opponentScore == nil {
             gameOverLabel.text = "Game Over"
             
-            var playAgainButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
-            playAgainButton.allStatesLabelFontName = "HelveticaNeue"
-            playAgainButton.allStatesLabelFontSize = 19
-            playAgainButton.allStatesLabelText = "Play again"
-            playAgainButton.position = CGPoint(x: self.size.width/2, y: 150)
-            playAgainButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
-                target.controllerDelegate!.playGame()
-            }
-            
-            addChild(playAgainButton)            
+            initSinglePlayer(score)
         } else {
             if opponentScore!.toInt()! > score.toInt()! {
                 gameOverLabel.text = "You lose!"
@@ -62,13 +53,7 @@ class GameOverScene: SKScene {
                 gameOverLabel.text = "You win!"
             }
             
-            var opponentScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-            opponentScoreLabel.fontSize = 20
-            opponentScoreLabel.fontColor = SKColor.blackColor()
-            opponentScoreLabel.position = CGPoint(x: self.size.width / 2, y: 250)
-            opponentScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
-            opponentScoreLabel.text = "Opponent score \(opponentScore!)"
-            addChild(opponentScoreLabel)
+            initMultiPlayer(opponentScore!)
         }
         
         var exitButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
@@ -80,16 +65,51 @@ class GameOverScene: SKScene {
             target.quitGame()
         }
         
-        
         addChild(exitButton)
+    }
+    
+    func initSinglePlayer(score: String) {
+        var playAgainButton = TWButton(normalColor: UIColor.brownColor(), highlightedColor: UIColor.blackColor(), size: CGSizeMake(180, 40))
+        playAgainButton.allStatesLabelFontName = "HelveticaNeue"
+        playAgainButton.allStatesLabelFontSize = 19
+        playAgainButton.allStatesLabelText = "Play again"
+        playAgainButton.position = CGPoint(x: self.size.width/2, y: 150)
+        playAgainButton.addClosureFor(UIControlEvents.TouchUpInside, target: self) { (target, sender) -> () in
+            target.controllerDelegate!.playGame()
+        }
+        addChild(playAgainButton)
         
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        var highScore: String
         
+        if var hs = userDefaults.stringForKey("highScore") where hs.toInt()! > score.toInt()!
+        {
+            highScore = hs
+        } else {
+            highScore = score
+            userDefaults.setObject(score, forKey: "highScore")
+        }
+        
+        var highScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        highScoreLabel.fontSize = 20
+        highScoreLabel.fontColor = SKColor.blackColor()
+        highScoreLabel.position = CGPoint(x: self.size.width / 2, y: 250)
+        highScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+        highScoreLabel.text = "High score: \(highScore)"
+        addChild(highScoreLabel)
+    }
+    
+    func initMultiPlayer(opponentScore: String) {
+        var opponentScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        opponentScoreLabel.fontSize = 20
+        opponentScoreLabel.fontColor = SKColor.blackColor()
+        opponentScoreLabel.position = CGPoint(x: self.size.width / 2, y: 250)
+        opponentScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+        opponentScoreLabel.text = "Opponent score: \(opponentScore)"
+        addChild(opponentScoreLabel)
     }
     
     func quitGame(){
         controllerDelegate?.dismissViewController()
     }
-
-        
-
 }

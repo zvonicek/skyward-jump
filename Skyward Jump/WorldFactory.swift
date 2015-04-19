@@ -24,6 +24,7 @@ class WorldFactory {
     var fixedPath: [Platform] = []
     var extraPath: [Platform] = []
     var voidPath: [Platform] = []
+    var coins: [CoinSprite] = []
     var levelHeight: Int?
     let numberOfPlatform: Int
     
@@ -35,6 +36,21 @@ class WorldFactory {
         createFixedPath()
         createExtraPath()
         createVoidPath()
+        createCoin()
+    }
+    
+    func createCoin() {
+        for platform in fixedPath {
+            var ppos = platform.position
+            let x = ppos.x
+            let y = ppos.y + 20
+            var pos:CGPoint = CGPointMake(x, y)
+            let coin = CoinSprite(pos: pos)
+            
+            if (arc4random_uniform(2) + 1) == 1 {
+                self.coins.append(coin)
+            }
+        }
     }
     
     func createVoidPath() {

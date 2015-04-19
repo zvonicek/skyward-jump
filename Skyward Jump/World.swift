@@ -11,6 +11,7 @@ import Foundation
 class World: NSObject, NSCoding {
     
     var platforms: [Platform] = []
+    var coins: [Coin] = []
     
     init(platforms: [Platform]) {
         self.platforms = platforms
@@ -18,9 +19,11 @@ class World: NSObject, NSCoding {
     
     required init(coder aDecoder: NSCoder) {
         self.platforms = aDecoder.decodeObjectForKey("pl") as! [Platform]
+        self.coins = aDecoder.decodeObjectForKey("c") as! [Coin]
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.platforms, forKey: "pl")
+        aCoder.encodeObject(self.coins, forKey: "c")
     }
 }

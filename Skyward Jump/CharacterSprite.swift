@@ -10,12 +10,12 @@ import SpriteKit
 
 class CharacterSprite: SKSpriteNode {
     
-    let sprite = SKSpriteNode(imageNamed: "pika.png")
+    let sprite = SKSpriteNode(imageNamed: "hero")
     var facingRight = false
     
     func playerPhysics() {
         self.physicsBody?.dynamic = false
-        self.physicsBody = SKPhysicsBody(circleOfRadius: sprite.size.width/2)
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(sprite.size.width, 10), center: CGPointMake(0, -sprite.size.height / 2))
         self.physicsBody?.dynamic = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.restitution = 1.0
@@ -27,7 +27,7 @@ class CharacterSprite: SKSpriteNode {
         
         self.physicsBody?.categoryBitMask = Category.Player
         self.physicsBody?.collisionBitMask = 0
-        self.physicsBody?.contactTestBitMask = Category.Platform
+        self.physicsBody?.contactTestBitMask = Category.Platform | Category.Coin
     }
     
     func startPlayerDynamics() {
