@@ -86,7 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         platformLayer = PlatformLayer(world: world)
         
-        for cSprite in w.coin {
+        for cSprite in w.coins {
             platformLayer.addChild(cSprite)
         }
         platformLayer.addChild(player)

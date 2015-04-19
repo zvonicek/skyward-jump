@@ -24,7 +24,7 @@ class WorldFactory {
     var fixedPath: [Platform] = []
     var extraPath: [Platform] = []
     var voidPath: [Platform] = []
-    var coin: [CoinSprite] = []
+    var coins: [CoinSprite] = []
     var levelHeight: Int?
     let numberOfPlatform: Int
     
@@ -48,7 +48,7 @@ class WorldFactory {
             let coin = CoinSprite(pos: pos)
             
             if (arc4random_uniform(2) + 1) == 1 {
-                coin.addChild(coin)
+                self.coins.append(coin)
             }
         }
     }
