@@ -16,7 +16,7 @@ class Monster: SKSpriteNode {
         let mon = SKTexture(imageNamed: "monster")
         super.init(texture: mon, color: nil, size: mon.size())
         self.position = pos
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
+        self.physicsBody = SKPhysicsBody(texture: mon, size: self.size)
         self.physicsBody?.dynamic = false
         self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody?.categoryBitMask = Category.Monster
