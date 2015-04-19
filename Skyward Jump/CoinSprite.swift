@@ -8,28 +8,29 @@
 
 import SpriteKit
 
+import SpriteKit
+
 class CoinSprite: SKSpriteNode {
     
-    let coin = SKSpriteNode(imageNamed: "coin")
-    
-    
-    func coinPhysics() {
+    init() {
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: coin.size.width)
+        let coin = SKTexture(imageNamed: "coin")
+        super.init(texture: coin, color: nil, size: coin.size())
+        self.position = CGPoint(x: 200, y: 400) //test position
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
         self.physicsBody?.dynamic = false
         self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody?.categoryBitMask = Category.Coin
         self.physicsBody?.collisionBitMask = 0
+        
+        
+        
     }
     
-    func createCoin() -> SKSpriteNode {
-        
-        self.addChild(coin)
-        coinPhysics()
-        //add position
-        return self
-        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
     
     
 }
