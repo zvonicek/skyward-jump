@@ -198,8 +198,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         }
         
-        if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster) {
+        if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy > 0) {
             characterDidDie()
+        }
+        
+        if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy < 0) {
+            player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 500.0)
+            secondBody.node?.removeFromParent()
+
         }
         
     }
