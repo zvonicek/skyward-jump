@@ -50,30 +50,23 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     func updateOpponentMove(point: CGPoint, facingRight: Bool) {
         opponent.position = point
         opponent.facingRight = facingRight
-        
-        println(NSString(format:"%f %f %f %f %f", point.x, point.y, platformLayer.position.x, platformLayer.position.y, self.size.height))
-        
+                
         let padding = 20
         
         if -platformLayer.position.y > point.y + opponent.size.height {
             arrow.position = CGPointMake(point.x, CGFloat(padding))
             arrow.hidden = false
             arrow.yScale = -1.0
-            println("down")
         } else if -platformLayer.position.y + self.size.height < point.y {
             arrow.position = CGPointMake(point.x, self.size.height - CGFloat(padding))
             arrow.hidden = false
             arrow.yScale = 1.0
-            println("up")
         } else {
             arrow.hidden = true
-            println("visible")
         }
     }
     
     func lostConnection() {
-        //TODO: show status message
-        
         let alert = UIAlertView(title: "Error", message: "Connection with other player was lost", delegate: nil, cancelButtonTitle: "OK")
         alert.show()
         
@@ -82,7 +75,6 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     }
     
     func gameOver(score: Int, interrupted: Bool) {
-        //TODO: show result
         controllerDelegate?.showScoreboard(getScoreString(), opponentScore: "\(score)")
     }
 }
