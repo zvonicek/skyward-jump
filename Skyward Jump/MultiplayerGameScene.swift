@@ -33,7 +33,7 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
         MultiplayerManager.sharedInstance.comm.sendMove(player.position, facingRight: player.facingRight)
     }
     
-    override func die() {
+    override func characterDidDie() {
         MultiplayerManager.sharedInstance.comm.sendMatchEnded(getScoreString().toInt()!, interrupted: false)
         
         let str = "\(floor(opponent.position.y))"

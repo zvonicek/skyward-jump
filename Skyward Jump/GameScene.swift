@@ -259,7 +259,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         // Call the game over scene when falling to far downwards
         if Int(player.position.y) < maxY - 200 {
-            self.die()
+            self.characterDidDie()
         }
     }
     
@@ -282,7 +282,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func die() {
+    func characterDidDie() {
         controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil)
     }
     
