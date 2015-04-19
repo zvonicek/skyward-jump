@@ -198,6 +198,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         }
         
+        if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster) {
+            characterDidDie()
+        }
+        
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {

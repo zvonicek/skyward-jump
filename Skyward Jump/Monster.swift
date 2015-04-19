@@ -10,7 +10,6 @@ import SpriteKit
 
 class Monster: SKSpriteNode {
     
-    /// need to implement collision ////
    
     init(pos: CGPoint) {
         
@@ -20,7 +19,7 @@ class Monster: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
         self.physicsBody?.dynamic = false
         self.physicsBody?.usesPreciseCollisionDetection = true
-        self.physicsBody?.categoryBitMask = Category.Coin
+        self.physicsBody?.categoryBitMask = Category.Monster
         self.physicsBody?.collisionBitMask = 0
         
     }

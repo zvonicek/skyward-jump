@@ -12,4 +12,5 @@ struct Category {
     static let Player: UInt32 = 0x1 << 1
     static let Platform: UInt32 = 0x1 << 2
     static let Coin: UInt32 = 0x1 << 3
+    static let Monster: UInt32 = 0x1 << 4
 }
