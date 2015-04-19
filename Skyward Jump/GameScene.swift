@@ -190,6 +190,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Coin) {
             secondBody.node?.removeFromParent()
+            updateScore()
+        
         }
         
     }
