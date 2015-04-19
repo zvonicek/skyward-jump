@@ -187,6 +187,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //runAction(bounceSound)
             player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300.0)
         }
+        
+        if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Coin) {
+            secondBody.node?.removeFromParent()
+        }
+        
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
