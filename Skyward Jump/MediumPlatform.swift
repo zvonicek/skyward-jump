@@ -1,14 +1,15 @@
 //
-//  SmallPlatform.swift
+//  MediumPlatform.swift
 //  Skyward Jump
 //
-//  Created by Petr Zvoníček on 16.04.15.
+//  Created by Thea Christine Mathisen on 16/04/15.
 //  Copyright (c) 2015 NTNU. All rights reserved.
 //
 
-class SmallPlatform: Platform {
+
+class MediumPlatform: Platform {
     override init(position: CGPoint) {
-        super.init(position: position, length: 1, bounce: 600)
+        super.init(position: position, length: 2, bounce: 450)
     }
     
     required init(coder aDecoder: NSCoder) {

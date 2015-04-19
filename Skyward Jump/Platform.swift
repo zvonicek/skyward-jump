@@ -12,20 +12,24 @@ class Platform: NSObject, NSCoding {
     
     var position: CGPoint
     var length: CGFloat
+    var bounce: Int
     
-    init(position: CGPoint, length: CGFloat) {
+    init(position: CGPoint, length: CGFloat, bounce: Int) {
         self.position = position
         self.length = length
+        self.bounce = bounce
     }
     
     init(position: CGPoint) {
         self.position = position
-        self.length = 20
+        self.length = 1
+        self.bounce = 300
     }
     
     required init(coder aDecoder: NSCoder) {
         self.position = aDecoder.decodeCGPointForKey("pos")
         self.length = CGFloat(aDecoder.decodeFloatForKey("len") as Float)
+        self.bounce = aDecoder.decodeIntegerForKey("bounce")
     }
     
     func encodeWithCoder(aCoder: NSCoder) {

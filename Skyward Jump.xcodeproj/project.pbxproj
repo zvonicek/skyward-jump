@@ -41,6 +41,8 @@
 		D0E4694B1AD6CD570068868B /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */; };
 		DF344F721AD68D7700DAF8A3 /* Level01.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF344F711AD68D7700DAF8A3 /* Level01.plist */; };
 		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
+		E3F30AA01AE0004F0092CE1E /* MediumPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F30A9F1AE0004F0092CE1E /* MediumPlatform.swift */; };
+		E3F30AA21AE000BB0092CE1E /* BigPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F30AA11AE000BB0092CE1E /* BigPlatform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		DF344F711AD68D7700DAF8A3 /* Level01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level01.plist; sourceTree = "<group>"; };
 		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
+		E3F30A9F1AE0004F0092CE1E /* MediumPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumPlatform.swift; sourceTree = "<group>"; };
+		E3F30AA11AE000BB0092CE1E /* BigPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPlatform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,8 @@
 				D0B51CF01AB7797E00C26D1F /* World.swift */,
 				D0506FCF1ABAF06E0009BD7E /* Platform.swift */,
 				D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */,
+				E3F30A9F1AE0004F0092CE1E /* MediumPlatform.swift */,
+				E3F30AA11AE000BB0092CE1E /* BigPlatform.swift */,
 				D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */,
 			);
 			name = World;
@@ -376,12 +382,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0506FD51ABAF9E90009BD7E /* WorldFactory.swift in Sources */,
+				E3F30AA01AE0004F0092CE1E /* MediumPlatform.swift in Sources */,
 				D0506FD01ABAF06E0009BD7E /* Platform.swift in Sources */,
 				D01B19171AD7F2FD00931265 /* TWSwitch.swift in Sources */,
 				D09CF6891AD2B78700C2EA07 /* PausedGameNode.swift in Sources */,
 				D04254AA1AB9988400191A40 /* MultiplayerGameScene.swift in Sources */,
 				D04254A61AB8AA1C00191A40 /* GameKitHelper.m in Sources */,
 				D0B51CE11AB75E2200C26D1F /* MainMenuViewController.swift in Sources */,
+				E3F30AA21AE000BB0092CE1E /* BigPlatform.swift in Sources */,
 				D0B51CC11AB7589100C26D1F /* GameScene.swift in Sources */,
 				ADE211BF1ABCA7F9006EE1AA /* CollisionCategories.swift in Sources */,
 				D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */,
