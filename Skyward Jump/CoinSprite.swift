@@ -16,7 +16,7 @@ class CoinSprite: SKSpriteNode {
         
         let coin = SKTexture(imageNamed: "coin")
         super.init(texture: coin, color: nil, size: coin.size())
-        self.position = CGPoint(x: 200, y: 400) //test position
+        self.position = CGPoint(x: 200, y: 400) //test position of coin
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
         self.physicsBody?.dynamic = false
         self.physicsBody?.usesPreciseCollisionDetection = true
