@@ -40,7 +40,6 @@
 		D0B6F7861ADFD26D003DC73E /* SmallPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */; };
 		D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */; };
 		D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */; };
-		D0E469491AD6C99D0068868B /* MultipeerCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */; };
 		D0E4694B1AD6CD570068868B /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */; };
 		DFAC42B21AE416BD00DA9838 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC42B11AE416BD00DA9838 /* Monster.swift */; };
 		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
@@ -98,7 +97,6 @@
 		D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallPlatform.swift; sourceTree = "<group>"; };
 		D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformLayer.swift; sourceTree = "<group>"; };
 		D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpponentSprite.swift; sourceTree = "<group>"; };
-		D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerCommunication.swift; sourceTree = "<group>"; };
 		D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		DFAC42B11AE416BD00DA9838 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
@@ -247,7 +245,6 @@
 				D0B51CE81AB7785C00C26D1F /* MultiplayerManager.swift */,
 				D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */,
 				D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */,
-				D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */,
 				D04254A71AB980EE00191A40 /* Message.swift */,
 			);
 			name = Multiplayer;
@@ -407,7 +404,6 @@
 				D0B6F7861ADFD26D003DC73E /* SmallPlatform.swift in Sources */,
 				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,
 				AD8EB1941AE3DBFC003306EE /* CoinSprite.swift in Sources */,
-				D0E469491AD6C99D0068868B /* MultipeerCommunication.swift in Sources */,
 				D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */,
 				D0B51CC31AB7589100C26D1F /* GameViewController.swift in Sources */,
 				D0B51CE41AB7776500C26D1F /* CharacterSprite.swift in Sources */,
