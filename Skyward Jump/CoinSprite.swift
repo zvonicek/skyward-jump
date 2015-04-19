@@ -12,11 +12,11 @@ import SpriteKit
 
 class CoinSprite: SKSpriteNode {
     
-    init() {
+    init(pos: CGPoint) {
         
         let coin = SKTexture(imageNamed: "coin")
         super.init(texture: coin, color: nil, size: coin.size())
-        self.position = CGPoint(x: 200, y: 400) //test position of coin
+        self.position = pos
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
         self.physicsBody?.dynamic = false
         self.physicsBody?.usesPreciseCollisionDetection = true
