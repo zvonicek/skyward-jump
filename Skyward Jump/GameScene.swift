@@ -20,8 +20,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Sprites to add to the scene
     let player: CharacterSprite = CharacterSprite() //create a player node
     
-    let coin: CoinSprite = CoinSprite()
-    
     let platformLayer: PlatformLayer
     
     //Pause-button
@@ -92,7 +90,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             platformLayer.addChild(cSprite)
         }
         platformLayer.addChild(player)
-        platformLayer.addChild(coin)
         
         highestPoint = playerStartHeight
         pauseNode = PausedGameNode(size: size)
