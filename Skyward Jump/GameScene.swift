@@ -122,8 +122,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
                 
         //Configure score-label
-        scoreLabel.fontSize = 14
-        scoreLabel.position = CGPoint(x: self.size.width * 0.7, y: self.size.height - 30)
+        scoreLabel.fontSize = 20
+        scoreLabel.position = CGPoint(x: self.size.width * 0.2, y: self.size.height - 30)
         scoreLabel.fontColor = SKColor.blackColor()
         scoreLabel.text = "Score: 0"
         
@@ -204,7 +204,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy < 0) {
             let monsterPosition = secondBody.node?.position
-            player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 500.0)
+            player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 350.0)
             secondBody.node?.removeFromParent()
             showMonsterLabel(monsterPosition!)
             score += monsterValue
@@ -222,7 +222,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabel.text = "+\(coinValue)"
         coinLabel.position = coinPos
         self.addChild(coinLabel)
-        coinLabel.runAction(SKAction.fadeOutWithDuration(2))
+        coinLabel.runAction(SKAction.fadeOutWithDuration(1))
     }
     
     func showMonsterLabel(position: CGPoint) {
@@ -235,7 +235,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         monsterLabel.text = "+\(monsterValue)"
         monsterLabel.position = monsterPos
         self.addChild(monsterLabel)
-        monsterLabel.runAction(SKAction.fadeOutWithDuration(2))
+        monsterLabel.runAction(SKAction.fadeOutWithDuration(1))
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
