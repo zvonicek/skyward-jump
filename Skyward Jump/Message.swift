@@ -36,5 +36,6 @@ struct MessageMove: MessageProtocol {
     var pos_x: Float
     var pos_y: Float
     var index: UInt16 //packet index
+//    var score: UInt16
     var facingRight: ObjCBool
 }
