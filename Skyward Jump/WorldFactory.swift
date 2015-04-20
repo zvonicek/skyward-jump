@@ -238,8 +238,13 @@ class WorldFactory {
     
     
     func generateWorld() -> World {
-        //TODO: implement the method
-        fatalError("generateWorld() has not been implemented")
+        var platforms = self.fixedPath
+        platforms += self.extraPath
+        platforms += self.voidPath
+        var coins = self.coins
+        var monsters = self.monsters
+        var w = World(platforms: platforms, coins: coins, monsters: monsters)
+        return w
     }
     
     

@@ -17,6 +17,8 @@ class World: NSObject, NSCoding {
     
     init(platforms: [Platform], coins: [Coin], monsters: [Monster]) {
         self.platforms = platforms
+        self.coins = coins
+        self.monsters = monsters
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -13,9 +13,23 @@ class PlatformLayer: SKNode {
     init(world: World) {
         super.init()
         
+        // create platforms to sprite
         for platform in world.platforms {
             let sprite = CloudSprite(pos: platform.position, width: 50)
             self.addChild(sprite)
+        }
+        
+        // create coins to sprite
+        for coin in world.coins {
+            let cSprite = CoinSprite(pos: coin.position)
+            self.addChild(cSprite)
+        }
+        
+        // create monsters to sprite
+        for monster in world.monsters {
+            let mSprite = MonsterSprite(pos: monster.position)
+            mSprite.createMovement()
+            self.addChild(mSprite)
         }
         
         //Floor, so the character doesn't get lost

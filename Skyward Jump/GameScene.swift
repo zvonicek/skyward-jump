@@ -54,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let distanceFromPlayer: CGFloat = 300
     let endLevelY:Int?
     
+    
     // Motion manager for accelerometer
     let motionManager: CMMotionManager = CMMotionManager()
     
@@ -77,22 +78,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let w = initWorld {
             world = w
         } else {
-            var platforms = w.fixedPath
-            platforms += w.extraPath
-            platforms += w.voidPath
             
             world = w.generateWorld()
         }
 
         platformLayer = PlatformLayer(world: world)
         
-        for cSprite in w.coins {
-            platformLayer.addChild(cSprite)
-        }
-        for mSprite in w.monsters {
-            mSprite.createMovement()
-            platformLayer.addChild(mSprite)
-        }
         platformLayer.addChild(player)
         
         highestPoint = playerStartHeight
