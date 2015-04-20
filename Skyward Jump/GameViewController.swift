@@ -11,7 +11,7 @@ import SpriteKit
 
 protocol GameViewControllerDelegate: class {
     func dismissViewController()
-    func showScoreboard(score: String, opponentScore: String?)
+    func showScoreboard(score: String, opponentScore: String?, gameover: Bool)
     func playGame()
 }
 
@@ -36,14 +36,14 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     
-    func showScoreboard(score: String, opponentScore: String?) {
+    func showScoreboard(score: String, opponentScore: String?, gameover: Bool) {
         let skView = view as! SKView
         
         if let scene = scene {
             scene.removeFromParent()
         }
         
-        scene = GameOverScene(size: scene!.size, score: score, opponentScore: opponentScore)
+        scene = GameOverScene(size: scene!.size, score: score, opponentScore: opponentScore, gameover: gameover)
         (scene as! GameOverScene).controllerDelegate = self
         skView.presentScene(scene)
     }
