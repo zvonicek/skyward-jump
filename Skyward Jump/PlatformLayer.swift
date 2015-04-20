@@ -14,7 +14,7 @@ class PlatformLayer: SKNode {
         super.init()
         
         for platform in world.platforms {
-            let sprite = CloudSprite(pos: platform.position, width: 50)
+            let sprite = CloudSprite(pos: platform.position, width: platform.length)
             self.addChild(sprite)
         }
         

@@ -20,9 +20,15 @@ class Platform: NSObject, NSCoding {
         self.bounce = bounce
     }
     
+    init(position: CGPoint, length: CGFloat) {
+        self.position = position
+        self.length = length
+        self.bounce = 300
+    }
+    
     init(position: CGPoint) {
         self.position = position
-        self.length = 1
+        self.length = 50
         self.bounce = 300
     }
     
