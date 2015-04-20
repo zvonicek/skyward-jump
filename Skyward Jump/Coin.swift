@@ -11,6 +11,7 @@ import Foundation
 class Coin: NSObject, NSCoding {
     
     var position: CGPoint
+    let value: Int = 200
     
     init(position: CGPoint) {
         self.position = position

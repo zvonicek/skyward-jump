@@ -42,6 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0
     var highestPoint: CGFloat
     let playerStartHeight: CGFloat = 60
+    let coinValue = 200
     
     //Sound effects
     //let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
@@ -53,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var maxY: Int
     let distanceFromPlayer: CGFloat = 300
     let endLevelY:Int?
+    var offset: CGFloat = 0
     
     
     // Motion manager for accelerometer
@@ -189,8 +191,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Coin) {
+            let coinPosition = firstBody.node?.position
             secondBody.node?.removeFromParent()
-            updateScore()
+            showCoinLabel(coinPosition!)
+            score += coinValue
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy > 0) {
@@ -203,6 +207,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         }
         
+    }
+    
+    func showCoinLabel(position: CGPoint) {
+        println(position)
+        let xPos = position.x
+        let yPos = position.y - offset
+        let coinPos = CGPointMake(xPos, yPos)
+        let coinLabel = SKLabelNode(fontNamed: "HelveticaNeue")
+        coinLabel.fontSize = 16
+        coinLabel.fontColor = SKColor.whiteColor()
+        coinLabel.text = "+\(coinValue)"
+        coinLabel.position = coinPos
+        println(coinPos)
+        self.addChild(coinLabel)
+        coinLabel.runAction(SKAction.fadeOutWithDuration(2))
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -265,8 +284,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // move scene
         if Int(player.position.y) > maxY && player.position.y > 200.0 {
+            let prevPos = platformLayer.position.y
             platformLayer.position = CGPoint(x: 0.0, y: -(player.position.y - 200.0))
+            let diff = prevPos - platformLayer.position.y
             updateBackgroundColorIfNeeded()
+            offset += diff
         }
         
         // Check if we've finished the level
