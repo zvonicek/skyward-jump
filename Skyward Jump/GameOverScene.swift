@@ -29,7 +29,7 @@ class GameOverScene: SKScene {
         var gameOverLabel = SKLabelNode(fontNamed: "Chalkduster")
         gameOverLabel.fontSize = 40
         gameOverLabel.fontColor = SKColor.blackColor()
-        gameOverLabel.position = CGPoint(x:self.size.width/2, y: 450)
+        gameOverLabel.position = CGPoint(x:self.size.width/2, y: 425)
         self.addChild(gameOverLabel)
         
         //add player score label
