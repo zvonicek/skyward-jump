@@ -36,13 +36,7 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
     func findMatch(vc: UIViewController, callback: StartGameCallback) {
         self.callback = callback
         
-        // generate world
-        // TEMP
-        var w = WorldFactory()
-        var platforms = w.fixedPath
-        platforms += w.extraPath
-        platforms += w.voidPath
-        let world = World(platforms: platforms)
+        var world = WorldFactory().generateWorld()
         
         var message = MessageNegotiateWorld(messageType: MessageType.NegotiateWorld, randomNumber: arc4random())
         worldMessage = (message, world)

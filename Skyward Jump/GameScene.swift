@@ -54,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let distanceFromPlayer: CGFloat = 300
     let endLevelY:Int?
     
+    
     // Motion manager for accelerometer
     let motionManager: CMMotionManager = CMMotionManager()
     
@@ -77,18 +78,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let w = initWorld {
             world = w
         } else {
-            var platforms = w.fixedPath
-            platforms += w.extraPath
-            platforms += w.voidPath
             
-            world = World(platforms: platforms)
+            world = w.generateWorld()
         }
 
         platformLayer = PlatformLayer(world: world)
         
-        for cSprite in w.coins {
-            platformLayer.addChild(cSprite)
-        }
         platformLayer.addChild(player)
         
         highestPoint = playerStartHeight
@@ -192,6 +187,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
             updateScore()
         
+        }
+        
+        if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy > 0) {
+            characterDidDie()
+        }
+        
+        if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy < 0) {
+            player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 500.0)
+            secondBody.node?.removeFromParent()
+
         }
         
     }

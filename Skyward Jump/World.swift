@@ -12,18 +12,24 @@ class World: NSObject, NSCoding {
     
     var platforms: [Platform] = []
     var coins: [Coin] = []
+    var monsters: [Monster] = []
     
-    init(platforms: [Platform]) {
+    
+    init(platforms: [Platform], coins: [Coin], monsters: [Monster]) {
         self.platforms = platforms
+        self.coins = coins
+        self.monsters = monsters
     }
     
     required init(coder aDecoder: NSCoder) {
         self.platforms = aDecoder.decodeObjectForKey("pl") as! [Platform]
         self.coins = aDecoder.decodeObjectForKey("c") as! [Coin]
+        self.monsters = aDecoder.decodeObjectForKey("m") as! [Monster]        
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.platforms, forKey: "pl")
         aCoder.encodeObject(self.coins, forKey: "c")
+        aCoder.encodeObject(self.monsters, forKey: "m")
     }
 }

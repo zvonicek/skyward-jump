@@ -18,6 +18,7 @@
 		D0506FD01ABAF06E0009BD7E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0506FCF1ABAF06E0009BD7E /* Platform.swift */; };
 		D0506FD51ABAF9E90009BD7E /* WorldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */; };
 		D0507AC01AB8531F00977F08 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0507ABF1AB8531F00977F08 /* GameKit.framework */; };
+		D052A19C1AE4EF8700396E5E /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = D052A19B1AE4EF8700396E5E /* Monster.swift */; };
 		D05DC3FB1AD7CB34002911A0 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05DC3FA1AD7CB34002911A0 /* GameOverScene.swift */; };
 		D094A5161AE138D20033ECCC /* FloorSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094A5151AE138D20033ECCC /* FloorSprite.swift */; };
 		D09CF6891AD2B78700C2EA07 /* PausedGameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CF6881AD2B78700C2EA07 /* PausedGameNode.swift */; };
@@ -40,8 +41,8 @@
 		D0B6F7861ADFD26D003DC73E /* SmallPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */; };
 		D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */; };
 		D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */; };
-		D0E469491AD6C99D0068868B /* MultipeerCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */; };
 		D0E4694B1AD6CD570068868B /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */; };
+		DFAC42B21AE416BD00DA9838 /* MonsterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC42B11AE416BD00DA9838 /* MonsterSprite.swift */; };
 		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
 		E3F30AA01AE0004F0092CE1E /* MediumPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F30A9F1AE0004F0092CE1E /* MediumPlatform.swift */; };
 		E3F30AA21AE000BB0092CE1E /* BigPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F30AA11AE000BB0092CE1E /* BigPlatform.swift */; };
@@ -71,6 +72,7 @@
 		D0506FCF1ABAF06E0009BD7E /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldFactory.swift; sourceTree = "<group>"; };
 		D0507ABF1AB8531F00977F08 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		D052A19B1AE4EF8700396E5E /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		D05DC3FA1AD7CB34002911A0 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		D094A5151AE138D20033ECCC /* FloorSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorSprite.swift; sourceTree = "<group>"; };
 		D09CF6881AD2B78700C2EA07 /* PausedGameNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PausedGameNode.swift; sourceTree = "<group>"; };
@@ -97,8 +99,8 @@
 		D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallPlatform.swift; sourceTree = "<group>"; };
 		D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformLayer.swift; sourceTree = "<group>"; };
 		D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpponentSprite.swift; sourceTree = "<group>"; };
-		D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerCommunication.swift; sourceTree = "<group>"; };
 		D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
+		DFAC42B11AE416BD00DA9838 /* MonsterSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSprite.swift; sourceTree = "<group>"; };
 		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
 		E3F30A9F1AE0004F0092CE1E /* MediumPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumPlatform.swift; sourceTree = "<group>"; };
 		E3F30AA11AE000BB0092CE1E /* BigPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPlatform.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B51CF01AB7797E00C26D1F /* World.swift */,
+				D052A19B1AE4EF8700396E5E /* Monster.swift */,
 				D0506FCF1ABAF06E0009BD7E /* Platform.swift */,
 				D0B1F6CA1AE3EA8B00CD72DD /* Coin.swift */,
 				D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */,
@@ -232,6 +235,7 @@
 				ADE211BE1ABCA7F9006EE1AA /* CollisionCategories.swift */,
 				D09CF6881AD2B78700C2EA07 /* PausedGameNode.swift */,
 				AD8EB1931AE3DBFC003306EE /* CoinSprite.swift */,
+				DFAC42B11AE416BD00DA9838 /* MonsterSprite.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -244,7 +248,6 @@
 				D0B51CE81AB7785C00C26D1F /* MultiplayerManager.swift */,
 				D0B51CEA1AB7786C00C26D1F /* CommunicationStrategy.swift */,
 				D0B51CEC1AB778BB00C26D1F /* GameCenterCommunication.swift */,
-				D0E469481AD6C99D0068868B /* MultipeerCommunication.swift */,
 				D04254A71AB980EE00191A40 /* Message.swift */,
 			);
 			name = Multiplayer;
@@ -388,6 +391,7 @@
 			files = (
 				D0506FD51ABAF9E90009BD7E /* WorldFactory.swift in Sources */,
 				E3F30AA01AE0004F0092CE1E /* MediumPlatform.swift in Sources */,
+				D052A19C1AE4EF8700396E5E /* Monster.swift in Sources */,
 				D0506FD01ABAF06E0009BD7E /* Platform.swift in Sources */,
 				D01B19171AD7F2FD00931265 /* TWSwitch.swift in Sources */,
 				D09CF6891AD2B78700C2EA07 /* PausedGameNode.swift in Sources */,
@@ -404,7 +408,6 @@
 				D0B6F7861ADFD26D003DC73E /* SmallPlatform.swift in Sources */,
 				D0B51CF11AB7797E00C26D1F /* World.swift in Sources */,
 				AD8EB1941AE3DBFC003306EE /* CoinSprite.swift in Sources */,
-				D0E469491AD6C99D0068868B /* MultipeerCommunication.swift in Sources */,
 				D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */,
 				D0B51CC31AB7589100C26D1F /* GameViewController.swift in Sources */,
 				D0B51CE41AB7776500C26D1F /* CharacterSprite.swift in Sources */,
@@ -415,6 +418,7 @@
 				D05DC3FB1AD7CB34002911A0 /* GameOverScene.swift in Sources */,
 				D094A5161AE138D20033ECCC /* FloorSprite.swift in Sources */,
 				D0B51CEB1AB7786C00C26D1F /* CommunicationStrategy.swift in Sources */,
+				DFAC42B21AE416BD00DA9838 /* MonsterSprite.swift in Sources */,
 				D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

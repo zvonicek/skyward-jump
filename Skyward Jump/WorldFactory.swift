@@ -18,13 +18,15 @@ import Foundation
 let jumpHeight = 140
 let platformHeight = 50
 let platformWidth = 100
+let numberOfMonster = 15
 
 class WorldFactory {
     
     var fixedPath: [Platform] = []
     var extraPath: [Platform] = []
     var voidPath: [Platform] = []
-    var coins: [CoinSprite] = []
+    var coins: [Coin] = []
+    var monsters: [Monster] = []
     var levelHeight: Int?
     let numberOfPlatform: Int
     
@@ -37,6 +39,19 @@ class WorldFactory {
         createExtraPath()
         createVoidPath()
         createCoin()
+        createMonster()
+    }
+    
+    func createMonster() {
+        let height = self.levelHeight! / numberOfMonster
+        for (var i = 0; i < numberOfPlatform; i++ ){
+            var positionY = height * (i + 1)
+            var positionX = randomPositionX()
+            
+            var position = CGPointMake(CGFloat(positionX), CGFloat(positionY))
+            var m = Monster(position: position)
+            self.monsters.append(m)
+        }
     }
     
     func createCoin() {
@@ -45,7 +60,7 @@ class WorldFactory {
             let x = ppos.x
             let y = ppos.y + 20
             var pos:CGPoint = CGPointMake(x, y)
-            let coin = CoinSprite(pos: pos)
+            let coin = Coin(position: pos)
             
             if (arc4random_uniform(2) + 1) == 1 {
                 self.coins.append(coin)
@@ -223,8 +238,13 @@ class WorldFactory {
     
     
     func generateWorld() -> World {
-        //TODO: implement the method
-        fatalError("generateWorld() has not been implemented")
+        var platforms = self.fixedPath
+        platforms += self.extraPath
+        platforms += self.voidPath
+        var coins = self.coins
+        var monsters = self.monsters
+        var w = World(platforms: platforms, coins: coins, monsters: monsters)
+        return w
     }
     
     

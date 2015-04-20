@@ -8,8 +8,6 @@
 
 import SpriteKit
 
-import SpriteKit
-
 class CoinSprite: SKSpriteNode {
     
     init(pos: CGPoint) {
