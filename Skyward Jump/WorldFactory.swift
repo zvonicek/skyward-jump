@@ -115,7 +115,7 @@ class WorldFactory {
                         var positionY = randomLowerUpper(i)
                         var positionX = randomPositionX()
                         let position = CGPointMake(CGFloat(positionX), CGFloat(positionY))
-                        var p = Platform(position: position)
+                        var p = randomPlatformSize(position, height: 10)
                         self.extraPath.append(p)
                         
                     } else if randomAmount == 2 {
@@ -124,7 +124,7 @@ class WorldFactory {
                             var positionY = randomLowerUpper(i)
                             var x = positionX
                             let position = CGPointMake(CGFloat(x), CGFloat(positionY))
-                            var p = Platform(position: position)
+                            var p = randomPlatformSize(position, height: 10)
                             self.extraPath.append(p)
                             
                             positionX += Float((platformWidth / 2) + randomDistanceFromEachPlatform())
@@ -135,7 +135,7 @@ class WorldFactory {
                             var positionY = randomLowerUpper(i)
                             var x = positionX
                             let position = CGPointMake(CGFloat(x), CGFloat(positionY))
-                            var p = Platform(position: position)
+                            var p = randomPlatformSize(position, height: 10)
                             self.extraPath.append(p)
                             
                             positionX += Float((platformWidth / 2) + randomDistanceFromEachPlatform())
@@ -153,7 +153,7 @@ class WorldFactory {
                         var positionY = randomLowerUpper(i)
                         var positionX = randomPositionX()
                         let position = CGPointMake(CGFloat(positionX), CGFloat(positionY))
-                        var p = Platform(position: position)
+                        var p = randomPlatformSize(position, height: 28)
                         self.extraPath.append(p)
                         
                     } else {
@@ -162,7 +162,7 @@ class WorldFactory {
                             var positionY = randomLowerUpper(i)
                             var x = positionX
                             let position = CGPointMake(CGFloat(x), CGFloat(positionY))
-                            var p = Platform(position: position)
+                            var p = randomPlatformSize(position, height: 28)
                             self.extraPath.append(p)
                             
                             positionX += Float((platformWidth / 2) + randomDistanceFromEachPlatform())
@@ -179,7 +179,7 @@ class WorldFactory {
                         var positionY = randomLowerUpper(i)
                         var positionX = randomPositionX()
                         let position = CGPointMake(CGFloat(positionX), CGFloat(positionY))
-                        var p = Platform(position: position)
+                        var p = randomPlatformSize(position, height: numberOfPlatform)
                         self.extraPath.append(p)
                         
                     } else {
@@ -188,7 +188,7 @@ class WorldFactory {
                             var positionY = randomLowerUpper(i)
                             var x = positionX
                             let position = CGPointMake(CGFloat(x), CGFloat(positionY))
-                            var p = Platform(position: position)
+                            var p = randomPlatformSize(position, height: numberOfPlatform)
                             self.extraPath.append(p)
                             
                             positionX += Float((platformWidth / 2) + randomDistanceFromEachPlatform())
@@ -210,8 +210,35 @@ class WorldFactory {
         }
     }
     
+    func randomPlatformSize(pos: CGPoint, height: Int) -> Platform{
+        let r = arc4random_uniform(10) + 1
+        if height == 10 {
+            if r <= 2 {
+                return SmallPlatform(position: pos)
+            } else if r >= 3 && r < 7 {
+                return MediumPlatform(position: pos)
+            } else {
+                return BigPlatform(position: pos)
+            }
+        } else if height == 28 {
+            if r <= 4 {
+                return SmallPlatform(position: pos)
+            } else if r >= 5 && r < 9 {
+                return MediumPlatform(position: pos)
+            } else {
+                return BigPlatform(position: pos)
+            }
+        } else {
+            if r <= 6 {
+                return SmallPlatform(position: pos)
+            } else {
+                return MediumPlatform(position: pos)
+            }
+        }
+    }
+    
     func randomDistanceFromEachPlatform() -> Int {
-        return 10//Int(arc4random_uniform(30) + 5)
+        return 20//Int(arc4random_uniform(30) + 5)
     }
     
     func randomLowerUpper(i: Int) -> Int {
