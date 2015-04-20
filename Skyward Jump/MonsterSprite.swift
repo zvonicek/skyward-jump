@@ -25,13 +25,14 @@ class MonsterSprite: SKSpriteNode {
     }
     
     func createMovement() {
-        var x = self.position.x + 20
-        var y = self.position.y
+        var x = self.position.x
+        var y = self.position.y + 20
         var pos = CGPointMake(x, y)
-        var actions:[SKAction] = []
-        var action1 = SKAction.moveTo(pos , duration: 1)
-        var pos2 = CGPointMake(x-20, y)
-        var action2 = SKAction.moveTo(pos2, duration: 1)
+        var actions: [SKAction] = []
+        var action1 = SKAction.moveTo(pos, duration: 0.7)
+        var pos2 = CGPointMake(x, y-20)
+        var action2 = SKAction.moveTo(pos2, duration: 0.7)
+        
         actions.append(action1)
         actions.append(action2)
         
@@ -39,7 +40,10 @@ class MonsterSprite: SKSpriteNode {
         let loopMovement = SKAction.repeatActionForever(generateMovement)
         self.runAction(loopMovement)
 
+        
     }
+    
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
