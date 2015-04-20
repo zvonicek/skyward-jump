@@ -18,7 +18,7 @@ class GameOverScene: SKScene {
         fatalError("NSCoding has not been implemented")
     }
     
-    init(size: CGSize, score: String, opponentScore: String?) {
+    init(size: CGSize, score: String, opponentScore: String?, gameover: Bool) {
         super.init(size: size)
         
         //set background color to scene
@@ -43,7 +43,12 @@ class GameOverScene: SKScene {
         addChild(playerScoreLabel)
         
         if opponentScore == nil {
-            gameOverLabel.text = "Game Over"
+            if gameover {
+                gameOverLabel.text = "Game Over"
+            } else {
+                gameOverLabel.text = "You reach the top"
+                gameOverLabel.fontSize = 30
+            }
             
             initSinglePlayer(score)
         } else {

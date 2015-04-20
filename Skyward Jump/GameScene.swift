@@ -194,7 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy > 0) {
-            characterDidDie()
+            characterDidDie(true)
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy < 0) {
@@ -271,15 +271,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Check if we've finished the level
         if Int(player.position.y) > self.endLevelY {
-            /// implement finsih level 1
+            characterDidDie(false)
+            
         }
         
+        // player moves higher than maxY
         if Int(player.position.y) > maxY {
             maxY = Int(player.position.y)
+            
         }
         // Call the game over scene when falling to far downwards
         if Int(player.position.y) < maxY - 200 {
-            self.characterDidDie()
+            self.characterDidDie(true)
         }
     }
     
@@ -302,8 +305,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func characterDidDie() {
-        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil)
+    func characterDidDie(gameover: Bool) {
+        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil, gameover: gameover)
     }
     
     func pauseGame(){

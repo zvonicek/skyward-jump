@@ -33,12 +33,12 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
         MultiplayerManager.sharedInstance.comm.sendMove(player.position, facingRight: player.facingRight)
     }
     
-    override func characterDidDie() {
+    override func characterDidDie(gameover: Bool) {
         MultiplayerManager.sharedInstance.comm.sendMatchEnded(getScoreString().toInt()!, interrupted: false)
         
         let str = "\(floor(opponent.position.y))"
         let score = str.substringToIndex(str.endIndex.predecessor().predecessor())
-        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: score)
+        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: score, gameover: true)
     }
     
     override func quitGame() {
@@ -75,6 +75,6 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     }
     
     func gameOver(score: Int, interrupted: Bool) {
-        controllerDelegate?.showScoreboard(getScoreString(), opponentScore: "\(score)")
+        controllerDelegate?.showScoreboard(getScoreString(), opponentScore: "\(score)", gameover: true)
     }
 }
