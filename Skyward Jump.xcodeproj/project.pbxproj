@@ -44,6 +44,7 @@
 		D0E4694B1AD6CD570068868B /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */; };
 		DFAC42B21AE416BD00DA9838 /* MonsterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC42B11AE416BD00DA9838 /* MonsterSprite.swift */; };
 		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
+		E397C63E1AE5456600B65E6F /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E397C63D1AE5456600B65E6F /* ding.mp3 */; };
 		E3F30AA01AE0004F0092CE1E /* MediumPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F30A9F1AE0004F0092CE1E /* MediumPlatform.swift */; };
 		E3F30AA21AE000BB0092CE1E /* BigPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F30AA11AE000BB0092CE1E /* BigPlatform.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +103,7 @@
 		D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		DFAC42B11AE416BD00DA9838 /* MonsterSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSprite.swift; sourceTree = "<group>"; };
 		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
+		E397C63D1AE5456600B65E6F /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
 		E3F30A9F1AE0004F0092CE1E /* MediumPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumPlatform.swift; sourceTree = "<group>"; };
 		E3F30AA11AE000BB0092CE1E /* BigPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPlatform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +204,7 @@
 		D0B51CBA1AB7589100C26D1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E397C63D1AE5456600B65E6F /* ding.mp3 */,
 				E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */,
 				D0B51CBB1AB7589100C26D1F /* Info.plist */,
 			);
@@ -369,6 +372,7 @@
 			files = (
 				D0B51CCB1AB7589100C26D1F /* LaunchScreen.xib in Resources */,
 				D0B51CC81AB7589100C26D1F /* Images.xcassets in Resources */,
+				E397C63E1AE5456600B65E6F /* ding.mp3 in Resources */,
 				D0B51CBF1AB7589100C26D1F /* GameScene.sks in Resources */,
 				D0B51CC61AB7589100C26D1F /* Main.storyboard in Resources */,
 				E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */,
