@@ -25,8 +25,8 @@ class WorldFactory {
     var fixedPath: [Platform] = []
     var extraPath: [Platform] = []
     var voidPath: [Platform] = []
-    var coins: [CoinSprite] = []
-    var monsters: [MonsterSprite] = []
+    var coins: [Coin] = []
+    var monsters: [Monster] = []
     var levelHeight: Int?
     let numberOfPlatform: Int
     
@@ -49,7 +49,7 @@ class WorldFactory {
             var positionX = randomPositionX()
             
             var position = CGPointMake(CGFloat(positionX), CGFloat(positionY))
-            var m = MonsterSprite(pos: position)
+            var m = Monster(position: position)
             self.monsters.append(m)
         }
     }
@@ -60,7 +60,7 @@ class WorldFactory {
             let x = ppos.x
             let y = ppos.y + 20
             var pos:CGPoint = CGPointMake(x, y)
-            let coin = CoinSprite(pos: pos)
+            let coin = Coin(position: pos)
             
             if (arc4random_uniform(2) + 1) == 1 {
                 self.coins.append(coin)
