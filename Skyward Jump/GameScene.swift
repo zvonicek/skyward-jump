@@ -43,6 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var highestPoint: CGFloat
     let playerStartHeight: CGFloat = 60
     let coinValue = 200
+    let monsterValue = 500
     
     //Sound effects
     //let bounceSound = SKAction.playSoundFileNamed("bounce.mp3", waitForCompletion: false);
@@ -191,7 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Coin) {
-            let coinPosition = firstBody.node?.position
+            let coinPosition = secondBody.node?.position
             secondBody.node?.removeFromParent()
             showCoinLabel(coinPosition!)
             score += coinValue
@@ -202,26 +203,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy < 0) {
+            let monsterPosition = secondBody.node?.position
             player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 500.0)
             secondBody.node?.removeFromParent()
-
+            showMonsterLabel(monsterPosition!)
+            score += monsterValue
         }
         
     }
     
     func showCoinLabel(position: CGPoint) {
-        println(position)
         let xPos = position.x
         let yPos = position.y - offset
         let coinPos = CGPointMake(xPos, yPos)
-        let coinLabel = SKLabelNode(fontNamed: "HelveticaNeue")
+        let coinLabel = SKLabelNode(fontNamed: "HelveticaNeue-Bold")
         coinLabel.fontSize = 16
         coinLabel.fontColor = SKColor.whiteColor()
         coinLabel.text = "+\(coinValue)"
         coinLabel.position = coinPos
-        println(coinPos)
         self.addChild(coinLabel)
         coinLabel.runAction(SKAction.fadeOutWithDuration(2))
+    }
+    
+    func showMonsterLabel(position: CGPoint) {
+        let xPos = position.x
+        let yPos = position.y - offset
+        let monsterPos = CGPointMake(xPos, yPos)
+        let monsterLabel = SKLabelNode(fontNamed: "HelveticaNeue-Bold")
+        monsterLabel.fontSize = 20
+        monsterLabel.fontColor = SKColor.whiteColor()
+        monsterLabel.text = "+\(monsterValue)"
+        monsterLabel.position = monsterPos
+        self.addChild(monsterLabel)
+        monsterLabel.runAction(SKAction.fadeOutWithDuration(2))
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
