@@ -27,7 +27,7 @@ class CharacterSprite: SKSpriteNode {
         
         self.physicsBody?.categoryBitMask = Category.Player
         self.physicsBody?.collisionBitMask = 0
-        self.physicsBody?.contactTestBitMask = Category.Platform | Category.Coin
+        self.physicsBody?.contactTestBitMask = Category.Platform | Category.Coin | Category.Monster
     }
     
     func startPlayerDynamics() {
