@@ -81,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             platforms += w.extraPath
             platforms += w.voidPath
             
-            world = World(platforms: platforms)
+            world = w.generateWorld()
         }
 
         platformLayer = PlatformLayer(world: world)
