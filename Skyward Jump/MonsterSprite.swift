@@ -1,5 +1,5 @@
 //
-//  Monster.swift
+//  MonsterSprite.swift
 //  Skyward Jump
 //
 //  Created by Keangping on 19/04/15.
@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Monster: SKSpriteNode {
+class MonsterSprite: SKSpriteNode {
     
    
     init(pos: CGPoint) {

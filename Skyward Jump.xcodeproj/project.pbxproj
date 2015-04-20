@@ -41,7 +41,7 @@
 		D0BC0EF61AC2C02E00AC8ACC /* PlatformLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */; };
 		D0BC0EF91AC2CD9000AC8ACC /* OpponentSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */; };
 		D0E4694B1AD6CD570068868B /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */; };
-		DFAC42B21AE416BD00DA9838 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC42B11AE416BD00DA9838 /* Monster.swift */; };
+		DFAC42B21AE416BD00DA9838 /* MonsterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC42B11AE416BD00DA9838 /* MonsterSprite.swift */; };
 		E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */; };
 		E3F30AA01AE0004F0092CE1E /* MediumPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F30A9F1AE0004F0092CE1E /* MediumPlatform.swift */; };
 		E3F30AA21AE000BB0092CE1E /* BigPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F30AA11AE000BB0092CE1E /* BigPlatform.swift */; };
@@ -98,7 +98,7 @@
 		D0BC0EF51AC2C02E00AC8ACC /* PlatformLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformLayer.swift; sourceTree = "<group>"; };
 		D0BC0EF81AC2CD8F00AC8ACC /* OpponentSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpponentSprite.swift; sourceTree = "<group>"; };
 		D0E4694A1AD6CD570068868B /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
-		DFAC42B11AE416BD00DA9838 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		DFAC42B11AE416BD00DA9838 /* MonsterSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterSprite.swift; sourceTree = "<group>"; };
 		E338C5CC1ABF3DB80057C5FC /* bounce.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bounce.mp3; sourceTree = "<group>"; };
 		E3F30A9F1AE0004F0092CE1E /* MediumPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumPlatform.swift; sourceTree = "<group>"; };
 		E3F30AA11AE000BB0092CE1E /* BigPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPlatform.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 				ADE211BE1ABCA7F9006EE1AA /* CollisionCategories.swift */,
 				D09CF6881AD2B78700C2EA07 /* PausedGameNode.swift */,
 				AD8EB1931AE3DBFC003306EE /* CoinSprite.swift */,
-				DFAC42B11AE416BD00DA9838 /* Monster.swift */,
+				DFAC42B11AE416BD00DA9838 /* MonsterSprite.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 				D05DC3FB1AD7CB34002911A0 /* GameOverScene.swift in Sources */,
 				D094A5161AE138D20033ECCC /* FloorSprite.swift in Sources */,
 				D0B51CEB1AB7786C00C26D1F /* CommunicationStrategy.swift in Sources */,
-				DFAC42B21AE416BD00DA9838 /* Monster.swift in Sources */,
+				DFAC42B21AE416BD00DA9838 /* MonsterSprite.swift in Sources */,
 				D0B51CED1AB778BB00C26D1F /* GameCenterCommunication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
