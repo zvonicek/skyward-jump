@@ -9,8 +9,13 @@
 import SpriteKit
 
 class CloudSprite: SKSpriteNode {
-    init(pos: CGPoint, width: CGFloat) {
+    
+    var bounce: Int = 300
+    
+    init(pos: CGPoint, width: CGFloat, bounce: Int) {
         super.init(texture: nil, color: UIColor(red: 219/255.0, green: 235/255.0, blue: 195/255.0, alpha: 1.0), size: CGSize(width: width, height: 10))
+        
+        self.bounce = bounce
         
         let border = SKShapeNode(rectOfSize: self.size)
         border.lineWidth = 2

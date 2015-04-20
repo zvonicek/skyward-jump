@@ -180,13 +180,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Platform && player.physicsBody?.velocity.dy < 0) {
             //runAction(bounceSound)
-            player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300.0)
+            
+            if let platformNode = secondBody.node as? CloudSprite {
+                player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: CGFloat(platformNode.bounce))
+            } else {
+                player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 300)
+            }
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Coin) {
             secondBody.node?.removeFromParent()
             updateScore()
-        
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy > 0) {
