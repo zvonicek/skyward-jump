@@ -58,10 +58,9 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         self.sendData(data, reliable: true)
     }
     
-    func sendMove(position: CGPoint, facingRight: Bool) {
+    func sendMove(position: CGPoint, facingRight: Bool, score: Int) {
         sendPacketIndex++
-        var message = MessageMove(messageType: .Move, pos_x: Float(position.x), pos_y: Float(position.y), index: sendPacketIndex,
-            facingRight: ObjCBool(facingRight))
+        var message = MessageMove(messageType: .Move, pos_x: Float(position.x), pos_y: Float(position.y), index: sendPacketIndex, score: UInt16(score), facingRight: ObjCBool(facingRight))
         let data = NSData(bytes: &message, length: sizeof(MessageMove))
         self.sendData(data, reliable: false)
     }
@@ -122,7 +121,7 @@ class GameCenterCommunication: CommunicationStrategy, GameKitHelperDelegate {
         let message = UnsafePointer<MessageMove>(data.bytes).memory
         if (message.index > receivedPacketIndex) {
             receivedPacketIndex = message.index
-            delegate?.updateOpponentMove(CGPointMake(CGFloat(message.pos_x), CGFloat(message.pos_y)), facingRight: message.facingRight.boolValue)
+            delegate?.updateOpponentMove(CGPointMake(CGFloat(message.pos_x), CGFloat(message.pos_y)), facingRight: message.facingRight.boolValue, score: Int(message.score))
         }
     }
     
