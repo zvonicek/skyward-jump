@@ -106,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.createPlayer(playerStartHeight)
         
         //Configure pause-button
-        pauseButton.frame = CGRectMake(self.size.width * 0.9, 10, 30, 30)
+        pauseButton.frame = CGRectMake(UIScreen.mainScreen().bounds.size.width - 40, UIScreen.mainScreen().bounds.size.width == 320 ? 8 : 14, 30, 30)
         pauseButton.setImage(pauseIcon, forState: .Normal)
         pauseButton.addTarget(self, action: "pauseGame", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -120,7 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
         //Configure score-label
         scoreLabel.fontSize = 14
-        scoreLabel.position = CGPoint(x: self.size.width * 0.8, y: self.size.height - 30)
+        scoreLabel.position = CGPoint(x: self.size.width - 80, y: self.size.height - 30)
         scoreLabel.fontColor = SKColor.blackColor()
         scoreLabel.text = "Score: 0"
         
@@ -194,7 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy > 0) {
-            characterDidDie()
+            characterDidDie(true)
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy < 0) {
@@ -271,15 +271,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Check if we've finished the level
         if Int(player.position.y) > self.endLevelY {
-            /// implement finsih level 1
+            characterDidDie(false)
+            
         }
         
+        // player moves higher than maxY
         if Int(player.position.y) > maxY {
             maxY = Int(player.position.y)
+            
         }
         // Call the game over scene when falling to far downwards
         if Int(player.position.y) < maxY - 200 {
-            self.characterDidDie()
+            self.characterDidDie(true)
         }
     }
     
@@ -302,8 +305,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func characterDidDie() {
-        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil)
+    func characterDidDie(gameover: Bool) {
+        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: nil, gameover: gameover)
     }
     
     func pauseGame(){
