@@ -12,6 +12,7 @@ import SpriteKit
 class MultiplayerGameScene: GameScene, CommunicationDelegate {
     
     let opponent = OpponentSprite()
+    var opponentScore = 0
     let arrow = SKSpriteNode(imageNamed: "arrow")
     
     override func didMoveToView(view: SKView) {
@@ -30,15 +31,13 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
-        MultiplayerManager.sharedInstance.comm.sendMove(player.position, facingRight: player.facingRight)
+        MultiplayerManager.sharedInstance.comm.sendMove(player.position, facingRight: player.facingRight, score: getScoreString().toInt()!)
     }
     
     override func characterDidDie(gameover: Bool) {
         MultiplayerManager.sharedInstance.comm.sendMatchEnded(getScoreString().toInt()!, interrupted: false)
         
-        let str = "\(floor(opponent.position.y))"
-        let score = str.substringToIndex(str.endIndex.predecessor().predecessor())
-        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: score, gameover: true)
+        controllerDelegate!.showScoreboard(getScoreString(), opponentScore: "\(opponentScore)", gameover: true)
     }
     
     override func quitGame() {
@@ -47,10 +46,11 @@ class MultiplayerGameScene: GameScene, CommunicationDelegate {
     }
     
     // MARK: CommunicationDelegate
-    func updateOpponentMove(point: CGPoint, facingRight: Bool) {
+    func updateOpponentMove(point: CGPoint, facingRight: Bool, score: Int) {
         opponent.position = point
         opponent.facingRight = facingRight
-                
+        opponentScore = score
+        
         let padding = 20
         
         if -platformLayer.position.y > point.y + opponent.size.height {
