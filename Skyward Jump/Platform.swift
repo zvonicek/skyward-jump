@@ -28,7 +28,7 @@ class Platform: NSObject, NSCoding {
     
     init(position: CGPoint) {
         self.position = position
-        self.length = 50
+        self.length = 75
         self.bounce = 300
     }
     

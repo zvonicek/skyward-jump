@@ -8,7 +8,7 @@
 
 class SmallPlatform: Platform {
     override init(position: CGPoint) {
-        super.init(position: position, length: 25, bounce: 600)
+        super.init(position: position, length: 25, bounce: 400)
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -9,7 +9,7 @@
 
 class MediumPlatform: Platform {
     override init(position: CGPoint) {
-        super.init(position: position, length: 50, bounce: 450)
+        super.init(position: position, length: 50, bounce: 350)
     }
     
     required init(coder aDecoder: NSCoder) {
