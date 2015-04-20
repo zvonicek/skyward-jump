@@ -18,6 +18,7 @@
 		D0506FD01ABAF06E0009BD7E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0506FCF1ABAF06E0009BD7E /* Platform.swift */; };
 		D0506FD51ABAF9E90009BD7E /* WorldFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */; };
 		D0507AC01AB8531F00977F08 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0507ABF1AB8531F00977F08 /* GameKit.framework */; };
+		D052A19C1AE4EF8700396E5E /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = D052A19B1AE4EF8700396E5E /* Monster.swift */; };
 		D05DC3FB1AD7CB34002911A0 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05DC3FA1AD7CB34002911A0 /* GameOverScene.swift */; };
 		D094A5161AE138D20033ECCC /* FloorSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094A5151AE138D20033ECCC /* FloorSprite.swift */; };
 		D09CF6891AD2B78700C2EA07 /* PausedGameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CF6881AD2B78700C2EA07 /* PausedGameNode.swift */; };
@@ -71,6 +72,7 @@
 		D0506FCF1ABAF06E0009BD7E /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		D0506FD41ABAF9E90009BD7E /* WorldFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldFactory.swift; sourceTree = "<group>"; };
 		D0507ABF1AB8531F00977F08 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		D052A19B1AE4EF8700396E5E /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		D05DC3FA1AD7CB34002911A0 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		D094A5151AE138D20033ECCC /* FloorSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorSprite.swift; sourceTree = "<group>"; };
 		D09CF6881AD2B78700C2EA07 /* PausedGameNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PausedGameNode.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B51CF01AB7797E00C26D1F /* World.swift */,
+				D052A19B1AE4EF8700396E5E /* Monster.swift */,
 				D0506FCF1ABAF06E0009BD7E /* Platform.swift */,
 				D0B1F6CA1AE3EA8B00CD72DD /* Coin.swift */,
 				D0B6F7851ADFD26D003DC73E /* SmallPlatform.swift */,
@@ -388,6 +391,7 @@
 			files = (
 				D0506FD51ABAF9E90009BD7E /* WorldFactory.swift in Sources */,
 				E3F30AA01AE0004F0092CE1E /* MediumPlatform.swift in Sources */,
+				D052A19C1AE4EF8700396E5E /* Monster.swift in Sources */,
 				D0506FD01ABAF06E0009BD7E /* Platform.swift in Sources */,
 				D01B19171AD7F2FD00931265 /* TWSwitch.swift in Sources */,
 				D09CF6891AD2B78700C2EA07 /* PausedGameNode.swift in Sources */,
