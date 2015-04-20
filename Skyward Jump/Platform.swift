@@ -41,5 +41,6 @@ class Platform: NSObject, NSCoding {
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeCGPoint(self.position, forKey: "pos")
         aCoder.encodeFloat(Float(length), forKey: "len")
+        aCoder.encodeInteger(bounce, forKey: "bounce")
     }
 }
