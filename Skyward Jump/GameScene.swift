@@ -136,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
     }
     
-    deinit {
+    override func willMoveFromView(view: SKView) {
         self.pauseButton.removeFromSuperview()
     }
     
