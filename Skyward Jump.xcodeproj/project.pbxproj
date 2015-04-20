@@ -20,6 +20,7 @@
 		D0507AC01AB8531F00977F08 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0507ABF1AB8531F00977F08 /* GameKit.framework */; };
 		D052A19C1AE4EF8700396E5E /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = D052A19B1AE4EF8700396E5E /* Monster.swift */; };
 		D05DC3FB1AD7CB34002911A0 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05DC3FA1AD7CB34002911A0 /* GameOverScene.swift */; };
+		D061C2C71AE573D900C3F64A /* fff-forward.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D061C2C61AE573D900C3F64A /* fff-forward.regular.ttf */; };
 		D094A5161AE138D20033ECCC /* FloorSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094A5151AE138D20033ECCC /* FloorSprite.swift */; };
 		D09CF6891AD2B78700C2EA07 /* PausedGameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CF6881AD2B78700C2EA07 /* PausedGameNode.swift */; };
 		D0B1F6CB1AE3EA8B00CD72DD /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1F6CA1AE3EA8B00CD72DD /* Coin.swift */; };
@@ -74,6 +75,7 @@
 		D0507ABF1AB8531F00977F08 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D052A19B1AE4EF8700396E5E /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		D05DC3FA1AD7CB34002911A0 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		D061C2C61AE573D900C3F64A /* fff-forward.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fff-forward.regular.ttf"; sourceTree = "<group>"; };
 		D094A5151AE138D20033ECCC /* FloorSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorSprite.swift; sourceTree = "<group>"; };
 		D09CF6881AD2B78700C2EA07 /* PausedGameNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PausedGameNode.swift; sourceTree = "<group>"; };
 		D0B1F6CA1AE3EA8B00CD72DD /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				D0B51CC71AB7589100C26D1F /* Images.xcassets */,
 				D0B51CC91AB7589100C26D1F /* LaunchScreen.xib */,
 				D0B51CBA1AB7589100C26D1F /* Supporting Files */,
+				D061C2C61AE573D900C3F64A /* fff-forward.regular.ttf */,
 				D04254A31AB8AA1C00191A40 /* Skyward Jump-Bridging-Header.h */,
 			);
 			path = "Skyward Jump";
@@ -370,6 +373,7 @@
 				D0B51CCB1AB7589100C26D1F /* LaunchScreen.xib in Resources */,
 				D0B51CC81AB7589100C26D1F /* Images.xcassets in Resources */,
 				D0B51CBF1AB7589100C26D1F /* GameScene.sks in Resources */,
+				D061C2C71AE573D900C3F64A /* fff-forward.regular.ttf in Resources */,
 				D0B51CC61AB7589100C26D1F /* Main.storyboard in Resources */,
 				E338C5CD1ABF3DB80057C5FC /* bounce.mp3 in Resources */,
 			);
