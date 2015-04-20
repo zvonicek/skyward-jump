@@ -29,7 +29,7 @@ class GameOverScene: SKScene {
         var gameOverLabel = SKLabelNode(fontNamed: "Chalkduster")
         gameOverLabel.fontSize = 40
         gameOverLabel.fontColor = SKColor.blackColor()
-        gameOverLabel.position = CGPoint(x:self.size.width/2, y: 350)
+        gameOverLabel.position = CGPoint(x:self.size.width/2, y: 450)
         self.addChild(gameOverLabel)
         
         //add player score label
@@ -37,7 +37,7 @@ class GameOverScene: SKScene {
         var playerScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         playerScoreLabel.fontSize = 20
         playerScoreLabel.fontColor = SKColor.blackColor()
-        playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
+        playerScoreLabel.position = CGPoint(x: self.size.width / 2, y: 350)
         playerScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
         playerScoreLabel.text = "Your score: \(score)"
         addChild(playerScoreLabel)
@@ -98,7 +98,7 @@ class GameOverScene: SKScene {
         var highScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         highScoreLabel.fontSize = 20
         highScoreLabel.fontColor = SKColor.blackColor()
-        highScoreLabel.position = CGPoint(x: self.size.width / 2, y: 250)
+        highScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
         highScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
         highScoreLabel.text = "High score: \(highScore)"
         addChild(highScoreLabel)
@@ -108,7 +108,7 @@ class GameOverScene: SKScene {
         var opponentScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         opponentScoreLabel.fontSize = 20
         opponentScoreLabel.fontColor = SKColor.blackColor()
-        opponentScoreLabel.position = CGPoint(x: self.size.width / 2, y: 250)
+        opponentScoreLabel.position = CGPoint(x: self.size.width / 2, y: 300)
         opponentScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
         opponentScoreLabel.text = "Opponent score: \(opponentScore)"
         addChild(opponentScoreLabel)
