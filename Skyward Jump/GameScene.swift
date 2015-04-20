@@ -120,7 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
         //Configure score-label
         scoreLabel.fontSize = 14
-        scoreLabel.position = CGPoint(x: self.size.width - 80, y: self.size.height - 30)
+        scoreLabel.position = CGPoint(x: self.size.width * 0.7, y: self.size.height - 30)
         scoreLabel.fontColor = SKColor.blackColor()
         scoreLabel.text = "Score: 0"
         
