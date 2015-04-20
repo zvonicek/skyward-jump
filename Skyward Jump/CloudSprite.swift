@@ -13,14 +13,18 @@ class CloudSprite: SKSpriteNode {
     var bounce: Int = 300
     
     init(pos: CGPoint, width: CGFloat, bounce: Int) {
-        super.init(texture: nil, color: UIColor(red: 219/255.0, green: 235/255.0, blue: 195/255.0, alpha: 1.0), size: CGSize(width: width, height: 10))
+        let image: NSString
+        if width < 50 {
+            image = "platform_small"
+        } else if width == 50 {
+            image = "platform_medium"
+        } else {
+            image = "platform_big"
+        }
         
+        let texture = SKTexture(imageNamed: image as String)
+        super.init(texture: texture, color: nil, size: texture.size())
         self.bounce = bounce
-        
-        let border = SKShapeNode(rectOfSize: self.size)
-        border.lineWidth = 2
-        border.strokeColor = UIColor(red: 41/255.0, green: 104/255.0, blue: 121/255.0, alpha: 1.0)
-        self.addChild(border)
         
         self.position = pos
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
