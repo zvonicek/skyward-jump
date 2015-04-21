@@ -36,10 +36,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     //Score-label
     let scoreLabel = SKLabelNode(fontNamed: "FFFForward")
+    var bonuspoints = 0
     
     //Controll attributes
     var firstTouch = true
-    var score = 0
+    var score: CGFloat = 0
     var highestPoint: CGFloat
     let playerStartHeight: CGFloat = 60
     let coinValue = 200
@@ -197,7 +198,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             runAction(coinSound)
             secondBody.node?.removeFromParent()
             showCoinLabel(coinPosition!)
-            score += coinValue
+            bonuspoints += coinValue
         }
         
         if (firstBody.categoryBitMask == Category.Player && secondBody.categoryBitMask == Category.Monster && player.physicsBody?.velocity.dy > 0) {
@@ -209,7 +210,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.physicsBody?.velocity = CGVector(dx: player.physicsBody!.velocity.dx, dy: 350.0)
             secondBody.node?.removeFromParent()
             showMonsterLabel(monsterPosition!)
-            score += monsterValue
+            bonuspoints += monsterValue
         }
         
     }
@@ -269,13 +270,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func getScoreString() -> String {
-        let str = "\(highestPoint)"
+        let str = "\(score)"
         return str.substringToIndex(str.endIndex.predecessor().predecessor())
     }
     
     func updateScore(){
-        if player.position.y > highestPoint {
+        if (player.position.y > highestPoint) || (highestPoint + CGFloat(bonuspoints) > score){
             highestPoint = floor(player.position.y)
+            score = highestPoint + CGFloat(bonuspoints)
             scoreLabel.text = "Score: \(getScoreString())"
         }
     }
