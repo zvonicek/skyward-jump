@@ -35,7 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backgroundNodePrevPosition: CGFloat = 0
 
     //Score-label
-    let scoreLabel = SKLabelNode(fontNamed: "HelveticaNeue-Light")
+    let scoreLabel = SKLabelNode(fontNamed: "FFFForward")
     
     //Controll attributes
     var firstTouch = true
@@ -124,8 +124,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
         //Configure score-label
         scoreLabel.fontSize = 20
-        scoreLabel.position = CGPoint(x: self.size.width * 0.2, y: self.size.height - 30)
-        scoreLabel.fontColor = SKColor.blackColor()
+        scoreLabel.position = CGPoint(x: self.size.width * 0.2, y: self.size.height - 35)
+        scoreLabel.fontColor = SKColor.whiteColor()
         scoreLabel.text = "Score: 0"
         
         // CoreMotion
@@ -218,7 +218,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let xPos = position.x
         let yPos = position.y - offset
         let coinPos = CGPointMake(xPos, yPos)
-        let coinLabel = SKLabelNode(fontNamed: "HelveticaNeue-Bold")
+        let coinLabel = SKLabelNode(fontNamed: "FFFForward")
         coinLabel.fontSize = 16
         coinLabel.fontColor = SKColor.whiteColor()
         coinLabel.text = "+\(coinValue)"
@@ -231,7 +231,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let xPos = position.x
         let yPos = position.y - offset
         let monsterPos = CGPointMake(xPos, yPos)
-        let monsterLabel = SKLabelNode(fontNamed: "HelveticaNeue-Bold")
+        let monsterLabel = SKLabelNode(fontNamed: "FFFForward")
         monsterLabel.fontSize = 20
         monsterLabel.fontColor = SKColor.whiteColor()
         monsterLabel.text = "+\(monsterValue)"
